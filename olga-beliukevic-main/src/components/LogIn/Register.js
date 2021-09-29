@@ -78,8 +78,8 @@ const Register = ({ changeComponent, language, history }) => {
     e.preventDefault();
     //  chek email is it containing valid values
     const values = /.com|.lt|.de|.pl|.gb|.ru/g;
-    let userEmail = emailRef.current.value;
-
+    let userEmail = emailRef.current.value.toLowerCase();
+    
     const exists = [...userEmail.matchAll(values)].length > 0;
     if (!exists) {
       setError('Invalid Email');
