@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
-import { FaUser, FaGlobeAsia, FaAngleDoubleDown, FaHome } from 'react-icons/fa';
+import { FaGlobeAsia, FaAngleDoubleDown, FaHome } from 'react-icons/fa';
 import { FiShoppingCart } from 'react-icons/fi';
 import { FiCheckCircle } from 'react-icons/fi';
+import { ImCross } from 'react-icons/im';
 
 export const MenuRapper = styled.nav`
   opacity: 0.98;
@@ -60,6 +61,7 @@ export const Li = styled.li`
   display: flex;
   text-align: center;
   justify-content: center;
+  align-items: center;
   cursor: pointer;
 
   ${(props) =>
@@ -158,9 +160,10 @@ export const ShopA = styled(A)`
   display: none;
 `;
 
-export const User = styled(FaUser)`
+export const User = styled(ImCross)`
   color: ${(props) => props.theme.colors.grey};
   margin: 0rem 0.5em 0 0;
+  font-size: 0.9rem;
 `;
 export const Home = styled(FaHome)`
   color: ${(props) => props.theme.colors.grey};

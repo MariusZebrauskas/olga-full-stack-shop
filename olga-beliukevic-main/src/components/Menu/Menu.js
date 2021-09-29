@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Submenu from './Submenu';
 import Burger from './Burger';
 import Logo from './Logo';
+import { CurrenPerson } from '../../context/AuthContex.js';
 import {
   MenuRapper,
   List,
@@ -19,7 +20,7 @@ import { menuLt, menuEng, menuRu } from './objects';
 
 ///reeal styling
 
-const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems,history }) => {
+const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems, history }) => {
   //open sub menu
   const [openSubMenu, setOpenSubMenu] = useState(false);
   const openSubMenuButton = () => {
@@ -59,15 +60,21 @@ const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems,history })
   }, [width]);
 
   const [menuItems, setmenuItems] = useState(menuLt);
-  const { login, contact, information, languages, home } = menuItems;
+  const { logout, contact, information, languages, home } = menuItems;
   useEffect(() => {
     if (language === 'lt') return setmenuItems(menuLt);
     if (language === 'eng') return setmenuItems(menuEng);
     if (language === 'ru') return setmenuItems(menuRu);
   }, [language]);
- 
+
+  const [loggedIn, setLoggedIn] = useContext(CurrenPerson);
+  const logoutUser = () => {
+    setLoggedIn(null);
+    history.push('/login');
+    return;
+  };
   return (
-    <MenuRapper >
+    <MenuRapper>
       <Burger slideLeft={slideLeft} setOpenMenu={setOpenMenu} openMenu={openMenu} />
       <Logo onClick={() => history.push('/')} desktop='desktop' />
       <Shop onClick={() => history.push('/shop')}>
@@ -75,9 +82,9 @@ const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems,history })
         <ShopItems>{shopItems.length}</ShopItems>
       </Shop>
       <List slideMenu={slideMenu}>
-        <Li onClick={() => history.push('/login')} upperLine>
+        <Li onClick={logoutUser} upperLine>
           <User />
-          <A href='#'>{login}</A>
+          <A href='#'>{logout}</A>
         </Li>
         <Li desktop='desktop' onClick={() => history.push('/')}>
           <Home />

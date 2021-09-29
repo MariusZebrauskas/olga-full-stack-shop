@@ -1,5 +1,5 @@
 export const menuLt = {
-  login: 'PRISIJUNGTI',
+  logout: 'ATSIJUNGTI',
   shop: 'PARDUOTUVĖ',
   contact: 'KONTAKTAI',
   information: 'INFORMACIJA',
@@ -11,7 +11,7 @@ export const menuLt = {
 };
 
 export const menuEng = {
-  login: ' LOGIN',
+  logout: ' LOGOUT',
   shop: 'SHOP',
   contact: 'CONTACT',
   information: 'ABOUT',
@@ -23,7 +23,7 @@ export const menuEng = {
 };
 
 export const menuRu = {
-  login: ' ВХОД',
+  logout: ' выйти',
   shop: 'МАГАЗИН',
   contact: 'КОНТАКТЫ',
   information: 'ИНФОРМАЦИЙ',

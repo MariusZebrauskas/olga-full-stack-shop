@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
+import axios from 'axios';
 import {
   Form,
   UserIcon,
@@ -16,10 +17,14 @@ import {
   WrapperDontHaveAccount,
 } from './stylesLogIn';
 import { RenderingStyles } from '../../Shared/renderingStyles';
-import { useHistory } from 'react-router';
 import { MainWrapper } from './stylesLogIn';
+import { CurrenPerson } from '../../context/AuthContex';
+import Warning from '../../Shared/warning/Warning';
 
 const Login = ({ changeComponent, language, history }) => {
+  const [loggedIn, setLoggedIn] = useContext(CurrenPerson);
+  const emailRef = useRef();
+  const passwordRef = useRef();
   const [email, setEmail] = useState('Email');
   const [Password, setPassword] = useState('Password');
   const [rememberMe, setRememberMe] = useState('Remember Me');
@@ -28,6 +33,7 @@ const Login = ({ changeComponent, language, history }) => {
   const [dontHaveAnAccount, setDontHaveAnAccount] = useState('Don`t Have An Account');
   const [register, setRegister] = useState('Register');
   const [oneNow, setOneNow] = useState('One Now');
+  const [warningMessage, setWarningMessage] = useState();
   useEffect(() => {
     if (language === 'lt') {
       setEmail('Elektroninis Paštas');
@@ -61,6 +67,32 @@ const Login = ({ changeComponent, language, history }) => {
     }
   }, [language]);
 
+  useEffect(() => {
+    if (loggedIn) {
+      history.push('/');
+    }
+  });
+  const login = (e) => {
+    e.preventDefault();
+    axios
+      .post('/auth/login', { email: emailRef.current.value, password: passwordRef.current.value })
+      .then((response) => {
+        setLoggedIn(response);
+      })
+      .catch((err) => {
+        let errorHnadler404 = JSON.stringify(err).includes('404');
+        let errorHnadler401 = JSON.stringify(err).includes('401');
+        if (errorHnadler404) {
+          setWarningMessage('Invalid Email');
+          return;
+        } else if (errorHnadler401) {
+          setWarningMessage('Invalid Password');
+          return;
+        }
+        // console.log(err);
+      });
+  };
+
   return (
     <RenderingStyles>
       <MainWrapper>
@@ -70,19 +102,31 @@ const Login = ({ changeComponent, language, history }) => {
               <UserIcon></UserIcon>
             </div>
           </IconWrapper>
-          <Form action='submit'>
+          <Form onSubmit={login}>
             <WrapperUserName>
               <div>
                 <User></User>
               </div>
-              <NameInput type='email' placeholder={email} required />
+              <NameInput
+                ref={emailRef}
+                type='email'
+                onChange={() => setWarningMessage('')}
+                placeholder={email}
+                required
+              />
             </WrapperUserName>
 
             <WrapperPassword>
               <div>
                 <Lock></Lock>
               </div>
-              <PasswordInput type='password' placeholder={Password} required />
+              <PasswordInput
+                ref={passwordRef}
+                type='password'
+                onChange={() => setWarningMessage('')}
+                placeholder={Password}
+                required
+              />
             </WrapperPassword>
 
             <WrapperRemeberMain>
@@ -98,6 +142,7 @@ const Login = ({ changeComponent, language, history }) => {
             </WrapperRemeberMain>
 
             <SingIn type='submit'>{singIn}</SingIn>
+            {warningMessage && <Warning>{warningMessage}</Warning>}
 
             <WrapperDontHaveAccount>
               <p>

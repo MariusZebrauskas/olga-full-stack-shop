@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { CurrenPerson } from './context/AuthContex';
 import Home from './components/Home/Home';
 import styled from 'styled-components';
 import Menu from './components/Menu/Menu';
@@ -93,19 +94,29 @@ function App() {
     return setShopItems([...card]);
   };
 
+  const [loggedIn, setLoggedIn] = useContext(CurrenPerson);
+  useEffect(() => {
+    if(!loggedIn) {
+      history.push('/login')
+    }
+  })
+
   return (
     <BodyWrapper>
-      <Menu
-        pagesSetUp={pagesSetUp}
-        language={language}
-        changeLanguageGlobal={changeLanguageGlobal}
-        shopItems={shopItems}
-        history={history}
-      />
+      {loggedIn && (
+        <Menu
+          pagesSetUp={pagesSetUp}
+          language={language}
+          changeLanguageGlobal={changeLanguageGlobal}
+          shopItems={shopItems}
+          history={history}
+        />
+      )}
 
       <Switch>
+        
         {/* HOME */}
-
+        {loggedIn && (
         <Route exact path='/'>
           <Home
             language={language}
@@ -121,35 +132,24 @@ function App() {
             addToShopCartSingleSong={addToShopCartSingleSong}
           ></Home>
         </Route>
+        )}
 
         {/* INFO */}
-
+          {loggedIn && (
         <Route exact path='/info'>
           <About setLoading={setLoading} history={history} loading={loading} language={language} />
         </Route>
+          )}
 
         {/* CONTACT */}
-
+        {loggedIn && (
         <Route path='/contact'>
           <Contacts language={language}></Contacts>
         </Route>
-
-        {/* LOGIN */}
-
-        <Route path='/login'>
-          <Login history={history} language={language}></Login>
-        </Route>
-        {/* REGISTER */}
-
-        <Route path='/register'>
-          <Register history={history} language={language}></Register>
-        </Route>
-        <Route path='/recover'>
-          <ForgotPassword history={history} language={language}></ForgotPassword>
-        </Route>
+        )}
 
         {/* SHOP */}
-
+        {loggedIn && (
         <Route path='/shop'>
           <Shop
             language={language}
@@ -158,6 +158,25 @@ function App() {
             shopItems={shopItems}
           ></Shop>
         </Route>
+        )}
+
+        {/* LOGIN */}
+
+        <Route path='/login'>
+          <Login history={history} language={language}></Login>
+        </Route>
+
+        {/* REGISTER */}
+
+        <Route path='/register'>
+          <Register history={history} language={language}></Register>
+        </Route>
+        {/* RECOVER */}
+
+        <Route path='/recover'>
+          <ForgotPassword history={history} language={language}></ForgotPassword>
+        </Route>
+
 
         {/* BOTTOM */}
       </Switch>

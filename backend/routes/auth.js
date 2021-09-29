@@ -43,13 +43,13 @@ router.post('/login', async (req, res) => {
 
     if (!user) {
       //chek is user entering valid email
-      res.status(404).send('invalid email');
+      res.status(404).json('invalid email');
       return;
     } else if (user) {
       //if user entered valid email we can chek password
       const passwordValidation = await bcrypt.compare(req.body.password, user.password);
       if (!passwordValidation) {
-        res.status(401).send('invalid password');
+        res.status(401).json('invalid password');
         return;
       }
     }
