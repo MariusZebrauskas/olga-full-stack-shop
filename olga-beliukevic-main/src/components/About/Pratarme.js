@@ -16,7 +16,7 @@ const Img = styled.img`
   cursor: pointer;
   @media (min-width: 425px) {
     width: 70%;
-    max-width: 600px;
+    max-width: 400px;
   }
   @media (min-width: 1440px) {
     /* background-color: red; */
