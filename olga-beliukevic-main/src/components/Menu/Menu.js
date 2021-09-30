@@ -82,11 +82,7 @@ const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems, history }
         <ShopItems>{shopItems.length}</ShopItems>
       </Shop>
       <List slideMenu={slideMenu}>
-        <Li onClick={logoutUser} upperLine>
-          <User />
-          <A href='#'>{logout}</A>
-        </Li>
-        <Li desktop='desktop' onClick={() => history.push('/')}>
+        <Li upperLine desktop='desktop' onClick={() => history.push('/')}>
           <Home />
           <A href='#'>{home}</A>
         </Li>
@@ -102,6 +98,12 @@ const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems, history }
             {languages}
           </A>
           <ArrowDoubleDown />
+        </Li>
+        <Li onClick={logoutUser}>
+          <User color="true" className='color' />
+          <A className='tablet color' color="true" href='#'>
+            {logout}
+          </A>
         </Li>
         <Submenu
           language={language}

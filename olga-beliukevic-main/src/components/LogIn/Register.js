@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useHistory } from 'react-router-dom';
 import {
   NewUser,
   Wrapper,
@@ -40,7 +39,6 @@ const Register = ({ changeComponent, language, history }) => {
   const [success, setSuccess] = useState(null);
 
   useEffect(() => {
-    console.log('language:', language);
     if (language === 'eng') {
       setEmail('Email Adress');
       setName('Name');
@@ -98,10 +96,6 @@ const Register = ({ changeComponent, language, history }) => {
           setSuccess(null);
           setError('Email is allready in use');
         } else if (res.data.register == true) {
-          console.log('res:', res.data);
-
-          console.log('user registered');
-
           setError(null);
           setSuccess('Account has been successfully registered');
           setTimeout(() => {
@@ -139,7 +133,6 @@ const Register = ({ changeComponent, language, history }) => {
               <NewUser></NewUser>
             </div>
           </IconWrapper>
-          {/* form ******************************************************************************/}
           <Form onSubmit={register}>
             <WrapperEmail>
               <div>
@@ -182,8 +175,6 @@ const Register = ({ changeComponent, language, history }) => {
             </WrapperPassword>
 
             <RegisterButton type='submit'>{registerAccount}</RegisterButton>
-            {/* //FIXME: on submit relodina need to fix it  */}
-
             <WrapperDontHaveAccount>
               <p>
                 {doYouWantTo} <b onClick={() => history.push('recover')}>{revoverAccount}</b>

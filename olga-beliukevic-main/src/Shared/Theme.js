@@ -10,5 +10,7 @@ export const Theme = {
     h1_2: '#07282f',
     grey2: '#4c5b5f',
     fontForm: 'calc(1rem + .1vw)',
+    loggedInCollor: '#cddc39',
+    loggedInDangger: '#e1713c',
   },
 };

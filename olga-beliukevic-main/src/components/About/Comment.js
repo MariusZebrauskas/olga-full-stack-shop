@@ -3,7 +3,6 @@ import { P, Wrapper, H5 } from './styledAbout';
 
 const Comment = ({ comment }) => {
   const [data, setData] = useState([...comment]);
-  // console.log('data', data);
   return (
     <>
       {data.map((comment) => (

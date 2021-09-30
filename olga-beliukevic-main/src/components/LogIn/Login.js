@@ -89,7 +89,6 @@ const Login = ({ changeComponent, language, history }) => {
           setWarningMessage('Invalid Password');
           return;
         }
-        // console.log(err);
       });
   };
 

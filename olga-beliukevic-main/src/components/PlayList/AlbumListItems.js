@@ -4,7 +4,6 @@ import {Picture} from "./styles"
 
 
 const AlbumListItems = ({ currentCard }) => {
-  console.log('currentCard:', currentCard);
 
   return (
     <Picture currentCard={currentCard}>

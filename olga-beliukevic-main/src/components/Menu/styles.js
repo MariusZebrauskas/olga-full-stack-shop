@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
-import { FaGlobeAsia, FaAngleDoubleDown, FaHome } from 'react-icons/fa';
+import { FaGlobeAsia, FaAngleDoubleDown, FaHome, FaUserCheck } from 'react-icons/fa';
 import { FiShoppingCart } from 'react-icons/fi';
 import { FiCheckCircle } from 'react-icons/fi';
-import { ImCross } from 'react-icons/im';
+// import { ImCross } from 'react-icons/im';
 
 export const MenuRapper = styled.nav`
   opacity: 0.98;
@@ -46,7 +46,7 @@ export const List = styled.ul`
     height: 7rem;
     width: auto;
     background: none;
-    margin-right: 2rem;
+    margin-right: 3rem;
   }
   @media (min-width: 1440px) {
     width: calc(35rem + 2vw);
@@ -55,7 +55,6 @@ export const List = styled.ul`
 `;
 export const Li = styled.li`
   padding: 1.5em;
-
   opacity: 0.95;
   border-bottom: 1.2px solid ${(props) => props.theme.colors.grey};
   display: flex;
@@ -83,6 +82,12 @@ export const Li = styled.li`
     color: ${(props) => props.theme.colors.yellow};
     transform: scale(1.2);
   }
+  &:hover svg.color {
+    color: ${(props) => props.theme.colors.loggedInDangger};
+  }
+  &:hover a.color {
+    color: ${(props) => props.theme.colors.loggedInDangger};
+  }
 
   @media (min-width: 768px) {
     border: none;
@@ -109,12 +114,14 @@ export const Li = styled.li`
 `;
 
 export const A = styled.a`
-  color: ${(props) => props.theme.colors.grey};
+  color: ${(props) => (props.color ? props.theme.colors.loggedInCollor : props.theme.colors.grey)};
   font-size: calc(0.8rem + 0.5vw); //1rem;
   display: inline-block;
   transition: transform ease-in-out 150ms;
   text-transform: uppercase;
   position: relative;
+  
+
   @media (min-width: 768px) {
     &.tablet {
       border-radius: 1rem;
@@ -160,10 +167,11 @@ export const ShopA = styled(A)`
   display: none;
 `;
 
-export const User = styled(ImCross)`
-  color: ${(props) => props.theme.colors.grey};
+export const User = styled(FaUserCheck)`
+  color: ${(props) => (props.color ? props.theme.colors.loggedInCollor : props.theme.colors.grey)};
   margin: 0rem 0.5em 0 0;
-  font-size: 0.9rem;
+
+  /* font-size: 0.9rem; */
 `;
 export const Home = styled(FaHome)`
   color: ${(props) => props.theme.colors.grey};
@@ -188,7 +196,7 @@ export const ArrowDoubleDown = styled(FaAngleDoubleDown)`
   display: none;
   @media (min-width: 768px) {
     display: flex;
-    margin-right: 0.8em;
+    /* margin-right: 0.8em; */
   }
 `;
 

@@ -55,7 +55,7 @@ const ButtonAlum = ({
     }
     //muzikine pasaka
     if (props === 'MUZIKINĖ PASAKA') {
-      console.log('working MUZIKINĖ PASAKA ButtonAlbumJs compnent');
+      console.log('working MUZIKINĖ PASAKA ButtonAlbumJs compnent go to shared  button album');
     }
 
     //valsai

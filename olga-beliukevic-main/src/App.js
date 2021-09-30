@@ -35,7 +35,6 @@ const BodyWrapper = styled.section`
 function App() {
   // React router
   const history = useHistory();
-  console.log('history:', history.location.pathname === '/');
 
   //set LANGUAGE
   const [language, setLanguage] = useState(localStorage.getItem('mainLanguage') || 'lt');
@@ -85,7 +84,6 @@ function App() {
       song.buy = true;
       let item = [song];
       setShopItems([...shopItems, [...item]]);
-      // console.log('insidePlaylist:', insidePlaylist)
     }
   };
 
