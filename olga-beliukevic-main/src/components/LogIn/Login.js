@@ -120,6 +120,7 @@ const Login = ({ changeComponent, language, history }) => {
                 <Lock></Lock>
               </div>
               <PasswordInput
+                autoComplete='true'
                 ref={passwordRef}
                 type='password'
                 onChange={() => setWarningMessage('')}
