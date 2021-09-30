@@ -34,6 +34,10 @@ const Login = ({ changeComponent, language, history }) => {
   const [register, setRegister] = useState('Register');
   const [oneNow, setOneNow] = useState('One Now');
   const [warningMessage, setWarningMessage] = useState();
+  const [autoCompleate, setAutoCompleate] = useState(false);
+  const autoCompleateHandler = () => {
+    setAutoCompleate(!autoCompleate);
+  }
   useEffect(() => {
     if (language === 'lt') {
       setEmail('Elektroninis Paštas');
@@ -74,9 +78,15 @@ const Login = ({ changeComponent, language, history }) => {
   });
   const login = (e) => {
     e.preventDefault();
+    
     axios
       .post('/auth/login', { email: emailRef.current.value, password: passwordRef.current.value })
       .then((response) => {
+        // items going to local storrage
+        // FIXME:push items to local storrage
+        if(autoCompleate){
+          console.log("cliked autocompleate");
+        }
         setLoggedIn(response);
       })
       .catch((err) => {
@@ -131,7 +141,7 @@ const Login = ({ changeComponent, language, history }) => {
 
             <WrapperRemeberMain>
               <div>
-                <input type='checkbox' name='remember password' value='false' />
+                <input onClick={autoCompleateHandler} type='checkbox' name='remember password' value='false' />
                 <p>{rememberMe}</p>
               </div>
               <div>

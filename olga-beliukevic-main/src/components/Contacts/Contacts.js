@@ -1,4 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
+import { CurrenPerson } from '../../context/AuthContex';
 import styled from 'styled-components';
 import backgroundImg from './3.jpg';
 import { RenderingStyles } from '../../Shared/renderingStyles';
@@ -98,6 +99,7 @@ const Name = styled.div`
 const Input = styled.input`
   padding: 1rem;
   font-size: ${(props) => props.theme.colors.fontForm};
+  pointer-events: none;
 `;
 const Email = styled.div`
   width: 100%;
@@ -147,18 +149,8 @@ const Contacts = ({ language }) => {
   const messageFocus = useRef(null);
   const textAreaFocus = useRef(null);
   useEffect(() => {
-    nameFocus.current.focus();
+    messageFocus.current.focus();
   }, []);
-  const onName = (event) => {
-    if (event.key === 'Enter') {
-      emailFocus.current.focus();
-    }
-  };
-  const onEmail = (event) => {
-    if (event.key === 'Enter') {
-      messageFocus.current.focus();
-    }
-  };
 
   //languages
   const [header, setHeader] = useState('Contact Us');
@@ -202,35 +194,39 @@ const Contacts = ({ language }) => {
       setButtonText('Отправить электронное письмо');
     }
   }, [language]);
-
+  const [loggedIn] = useContext(CurrenPerson);
+  const sendMessage = () => {
+    if (messageFocus) {
+      setTimeout(() => {
+        messageFocus.current.value = '';
+      }, 300);
+    }
+  };
   return (
     <RenderingStyles>
       <Body>
         <ContactUsHeader>{header}</ContactUsHeader>
         <Form target='_blank' action='https://formsubmit.co/zebrauskas.mar@gmail.com' method='POST'>
           <input type='hidden' name='_autoresponse' value={replyMessage} />
-          {/* <input type="hidden" name="_next" value="http://localhost:3000/"></input> */}
           <NameAndEmail>
             <Name>
               <label htmlFor='name'>{nameLabel}:</label>
               <Input
-                onKeyDown={onName}
-                ref={nameFocus}
                 type='text'
                 name='name'
                 placeholder={namePlaceHolder}
                 required
+                value={loggedIn ? loggedIn.data.username : ''}
               />
             </Name>
             <Email>
               <label htmlFor='name'>{emailLabel}:</label>
               <Input
-                onKeyDown={onEmail}
-                ref={emailFocus}
                 type='email'
                 name='email'
                 placeholder={emailPlaceHolder}
                 required
+                value={loggedIn ? loggedIn.data.email : ''}
               />
             </Email>
           </NameAndEmail>
@@ -241,10 +237,13 @@ const Contacts = ({ language }) => {
               name='message'
               rows='10'
               required
+              ref={messageFocus}
             ></TextArea>
           </MessageWrapper>
 
-          <Button type='submit'>{buttonText}</Button>
+          <Button onClick={sendMessage} type='submit'>
+            {buttonText}
+          </Button>
         </Form>
       </Body>
     </RenderingStyles>

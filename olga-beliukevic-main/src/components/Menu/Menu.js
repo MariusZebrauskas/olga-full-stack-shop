@@ -83,7 +83,7 @@ const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems, history }
           <ShopItems>{shopItems.length}</ShopItems>
         </Shop>
       )}
-      <List slideMenu={slideMenu}>
+      <List loggedIn={loggedIn} slideMenu={slideMenu}>
         {loggedIn && (
           <>
             <Li upperLine desktop='desktop' onClick={() => history.push('/')}>

@@ -50,7 +50,7 @@ export const List = styled.ul`
   }
   @media (min-width: 1440px) {
     width: calc(35rem + 2vw);
-    justify-content: space-around;
+    justify-content: ${(props) => (props.loggedIn ? 'space-around' : 'flex-end')};
   }
 `;
 export const Li = styled.li`
@@ -83,10 +83,12 @@ export const Li = styled.li`
     transform: scale(1.2);
   }
   &:hover svg.color {
-    color: ${(props) => props.loggedIn ? props.theme.colors.loggedInDangger : props.theme.colors.yellow};
+    color: ${(props) =>
+      props.loggedIn ? props.theme.colors.loggedInDangger : props.theme.colors.yellow};
   }
   &:hover a.color {
-    color: ${(props) => props.loggedIn ? props.theme.colors.loggedInDangger : props.theme.colors.yellow};
+    color: ${(props) =>
+      props.loggedIn ? props.theme.colors.loggedInDangger : props.theme.colors.yellow};
   }
 
   @media (min-width: 768px) {
@@ -120,7 +122,6 @@ export const A = styled.a`
   transition: transform ease-in-out 150ms;
   text-transform: uppercase;
   position: relative;
-  
 
   @media (min-width: 768px) {
     &.tablet {
