@@ -93,7 +93,7 @@ export const WrapperIcon = styled.div`
 export const NameInput = styled.input`
   width: 100%;
   padding: 0.75rem 1rem;
-  background-color: rgb(218, 222, 223);
+  background:${props => props.theme.colors.inputColor};
   border: none;
   text-align: center;
   margin: 0 1rem 0 0;
@@ -106,6 +106,8 @@ export const UserIcon = styled(FaUser)`
   position: relative;
   font-size: calc(3em + 2vw);
   color: #2d4246;
+  background:${props => props.theme.colors.inputColor};
+
   @media (min-width: 1440px) {
     font-size: calc(3em + 0.2vw);
   }
@@ -172,7 +174,7 @@ export const Lock = styled(BiLock)`
 export const PasswordInput = styled.input`
   width: 100%;
   padding: 0.75rem 1rem;
-  background-color: rgb(218, 222, 223);
+  background:${props => props.theme.colors.inputColor};
   border: none;
   text-align: center;
   margin: 0 1rem 0 0;

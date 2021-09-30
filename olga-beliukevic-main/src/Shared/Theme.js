@@ -12,5 +12,6 @@ export const Theme = {
     fontForm: 'calc(1rem + .1vw)',
     loggedInCollor: '#cddc39',
     loggedInDangger: '#e1713c',
+    inputColor: '#ffffff',
   },
 };

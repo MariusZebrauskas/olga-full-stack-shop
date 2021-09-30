@@ -158,6 +158,7 @@ const Register = ({ changeComponent, language, history }) => {
                 type='text'
                 placeholder={name}
                 required
+                
               />
             </WrapperUserName>
 
