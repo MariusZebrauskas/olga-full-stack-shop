@@ -60,7 +60,7 @@ const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems, history }
   }, [width]);
 
   const [menuItems, setmenuItems] = useState(menuLt);
-  const { logout, contact, information, languages, home } = menuItems;
+  const { logged, contact, information, languages, home, disconected } = menuItems;
   useEffect(() => {
     if (language === 'lt') return setmenuItems(menuLt);
     if (language === 'eng') return setmenuItems(menuEng);
@@ -77,33 +77,40 @@ const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems, history }
     <MenuRapper>
       <Burger slideLeft={slideLeft} setOpenMenu={setOpenMenu} openMenu={openMenu} />
       <Logo onClick={() => history.push('/')} desktop='desktop' />
-      <Shop onClick={() => history.push('/shop')}>
-        <ShoppingCart />
-        <ShopItems>{shopItems.length}</ShopItems>
-      </Shop>
+      {loggedIn && (
+        <Shop onClick={() => history.push('/shop')}>
+          <ShoppingCart />
+          <ShopItems>{shopItems.length}</ShopItems>
+        </Shop>
+      )}
       <List slideMenu={slideMenu}>
-        <Li upperLine desktop='desktop' onClick={() => history.push('/')}>
-          <Home />
-          <A href='#'>{home}</A>
-        </Li>
-        <Li onClick={() => history.push('/contact')}>
-          <A href='#'>{contact}</A>
-        </Li>
-        <Li onClick={() => history.push('/info')}>
-          <A href='#'>{information}</A>
-        </Li>
-        <Li information onClick={openSubMenuButton}>
+        {loggedIn && (
+          <>
+            <Li upperLine desktop='desktop' onClick={() => history.push('/')}>
+              <Home />
+              <A href='#'>{home}</A>
+            </Li>
+            <Li onClick={() => history.push('/contact')}>
+              <A href='#'>{contact}</A>
+            </Li>
+            <Li onClick={() => history.push('/info')}>
+              <A href='#'>{information}</A>
+            </Li>
+
+            <Li loggedIn={loggedIn} onClick={logoutUser}>
+              <User color={loggedIn} className='color' />
+              <A className='tablet color' color={loggedIn} href='#'>
+                {loggedIn ? logged : disconected}
+              </A>
+            </Li>
+          </>
+        )}
+        <Li upperLine={loggedIn ? null : true} information onClick={openSubMenuButton}>
           <Globe />
           <A className='tablet' href='#'>
             {languages}
           </A>
           <ArrowDoubleDown />
-        </Li>
-        <Li onClick={logoutUser}>
-          <User color="true" className='color' />
-          <A className='tablet color' color="true" href='#'>
-            {logout}
-          </A>
         </Li>
         <Submenu
           language={language}

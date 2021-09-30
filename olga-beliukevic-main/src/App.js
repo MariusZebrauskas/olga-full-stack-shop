@@ -101,7 +101,6 @@ function App() {
 
   return (
     <BodyWrapper>
-      {loggedIn && (
         <Menu
           pagesSetUp={pagesSetUp}
           language={language}
@@ -109,7 +108,6 @@ function App() {
           shopItems={shopItems}
           history={history}
         />
-      )}
 
       <Switch>
         

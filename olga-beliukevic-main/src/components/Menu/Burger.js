@@ -8,7 +8,7 @@ const BurgerRapper = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  margin: 0 0 0 2em;
+  margin:2em;
   @media (min-width: 768px) {
     display: none;
   }

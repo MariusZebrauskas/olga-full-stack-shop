@@ -83,10 +83,10 @@ export const Li = styled.li`
     transform: scale(1.2);
   }
   &:hover svg.color {
-    color: ${(props) => props.theme.colors.loggedInDangger};
+    color: ${(props) => props.loggedIn ? props.theme.colors.loggedInDangger : props.theme.colors.yellow};
   }
   &:hover a.color {
-    color: ${(props) => props.theme.colors.loggedInDangger};
+    color: ${(props) => props.loggedIn ? props.theme.colors.loggedInDangger : props.theme.colors.yellow};
   }
 
   @media (min-width: 768px) {
@@ -175,7 +175,7 @@ export const User = styled(FaUserCheck)`
 `;
 export const Home = styled(FaHome)`
   color: ${(props) => props.theme.colors.grey};
-  margin: 0rem 0.7em 0 0;
+  margin: 0rem 0.25em 0 0;
 `;
 export const ShoppingCart = styled(FiShoppingCart)`
   color: ${(props) => props.theme.colors.grey};

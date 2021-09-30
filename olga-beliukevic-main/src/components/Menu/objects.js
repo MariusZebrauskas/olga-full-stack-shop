@@ -1,5 +1,6 @@
 export const menuLt = {
-  logout: 'PRISIJUNGĘS',
+  logged: 'PRISIJUNGĘS',
+  disconected: 'ATSIJUNGĘS',
   shop: 'PARDUOTUVĖ',
   contact: 'KONTAKTAI',
   information: 'INFORMACIJA',
@@ -11,7 +12,8 @@ export const menuLt = {
 };
 
 export const menuEng = {
-  logout: ' LOGGED IN',
+  logged: ' LOGGED IN',
+  disconected: 'DISCONNECTED',
   shop: 'SHOP',
   contact: 'CONTACT',
   information: 'ABOUT',
@@ -23,7 +25,8 @@ export const menuEng = {
 };
 
 export const menuRu = {
-  logout: ' ВО ВХОДИЛ',
+  logged: ' ВО ВХОДИЛ',
+  disconected: 'ОТКЛЮЧЕНО',
   shop: 'МАГАЗИН',
   contact: 'КОНТАКТЫ',
   information: 'ИНФОРМАЦИЙ',
