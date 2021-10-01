@@ -19,7 +19,6 @@ const Header = ({ language, currentCard, comment }) => {
         {comment ? comment : `${header} :`}{' '}
         {currentCard ? currentCard[0].album.toUpperCase() : null}
       </H1>
-      {/* <h3 >{currentCard[0].album.toUpperCase()}</h3> */}
     </Playlist>
   );
 };

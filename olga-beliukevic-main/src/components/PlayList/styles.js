@@ -11,8 +11,10 @@ export const Playlist = styled.article`
   background: ${(props) => props.theme.colors.white};
   position: relative;
   margin: ${({ comment }) => (comment ? `0rem 0 1rem 0` : `5rem 0 1rem 0`)};
-  /* background:red; */
   width: 100%;
+  @media (min-width: 1440px) {
+    width: 95%;
+  }
   div {
     position: absolute;
     border-bottom: 0.1rem solid ${(props) => props.theme.colors.grey};
@@ -130,7 +132,7 @@ export const ButtonWrapper = styled.div`
   align-content: flex-start;
   margin: 0 0 0 0.3rem;
   flex-wrap: wrap;
-  @media (min-width:768px){
+  @media (min-width: 768px) {
     justify-content: space-around;
   }
 `;

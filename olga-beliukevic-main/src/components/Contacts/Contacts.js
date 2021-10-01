@@ -166,7 +166,7 @@ const Contacts = ({ language }) => {
     if (language === 'lt') {
       setHeader('E-Mail Žinutė');
       setReplyMessage('Jūsų laiškas sėkmingai išsiustas, su jumis bus susisiekta netrukus.');
-      setNameLabel('Vardas Ir Pavardė');
+      setNameLabel('Slapyvardis');
       setNamePlaceHolder('Jūsų Vardas Ir Pavardė');
       setEmailLabel('Elektroninis Paštas');
       setEmailPlaceHolder('Jūsų Elektroninis Paštas');
@@ -176,7 +176,7 @@ const Contacts = ({ language }) => {
     if (language === 'eng') {
       setHeader('Contact Us');
       setReplyMessage('You have sent the email successfully, we will contact you shortly.');
-      setNameLabel('Full Name');
+      setNameLabel('Username');
       setNamePlaceHolder('Your Name And Surname');
       setEmailLabel('Email');
       setEmailPlaceHolder('Your Email');
@@ -186,7 +186,7 @@ const Contacts = ({ language }) => {
     if (language === 'ru') {
       setHeader('Свяжитесь с нами');
       setReplyMessage('Вы успешно отправили письмо, мы свяжемся с вами в ближайшее время.');
-      setNameLabel('Полное имя');
+      setNameLabel('Имя пользователя');
       setNamePlaceHolder('Ваше имя и фамилия');
       setEmailLabel('Электронное письмо');
       setEmailPlaceHolder('Ваш адрес электронной почты');
@@ -216,7 +216,7 @@ const Contacts = ({ language }) => {
                 name='name'
                 placeholder={namePlaceHolder}
                 required
-                value={loggedIn ? loggedIn.data.username : ''}
+                value={loggedIn ? loggedIn.data.username.charAt(0).toUpperCase() + loggedIn.data.username.slice(1) : ''}
               />
             </Name>
             <Email>
