@@ -60,7 +60,8 @@ const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems, history }
   }, [width]);
 
   const [menuItems, setmenuItems] = useState(menuLt);
-  const { logged, contact, information, languages, home, disconected } = menuItems;
+  const { logged, toLogoutMessage, sayYes, contact, information, languages, home, disconected } =
+    menuItems;
   useEffect(() => {
     if (language === 'lt') return setmenuItems(menuLt);
     if (language === 'eng') return setmenuItems(menuEng);
@@ -69,9 +70,19 @@ const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems, history }
 
   const [loggedIn, setLoggedIn] = useContext(CurrenPerson);
   const logoutUser = () => {
-    setLoggedIn(null);
-    history.push('/login');
-    return;
+    const person = loggedIn.data.username.charAt(0).toUpperCase() + loggedIn.data.username.slice(1);
+    let cheker = prompt(`
+    ${toLogoutMessage} ${person}  
+    ${sayYes}
+    `);
+    console.log(cheker);
+    if (cheker) {
+      setLoggedIn(null);
+      history.push('/login');
+      return;
+    } else {
+      return;
+    }
   };
   return (
     <MenuRapper>
