@@ -77,7 +77,7 @@ const Register = ({ changeComponent, language, history }) => {
     //  chek email is it containing valid values
     const values = /.com|.lt|.de|.pl|.gb|.ru/g;
     let userEmail = emailRef.current.value.toLowerCase();
-    
+
     const exists = [...userEmail.matchAll(values)].length > 0;
     if (!exists) {
       setError('Invalid Email');
@@ -100,7 +100,7 @@ const Register = ({ changeComponent, language, history }) => {
           setSuccess('Account has been successfully registered');
           setTimeout(() => {
             history.push('/login');
-          }, 1500);
+          }, 3000);
         } else {
           setSuccess(null);
           setError('something went wrong please refresh page');
@@ -110,7 +110,7 @@ const Register = ({ changeComponent, language, history }) => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        console.log('register error' + error);
       });
   };
 
@@ -158,7 +158,6 @@ const Register = ({ changeComponent, language, history }) => {
                 type='text'
                 placeholder={name}
                 required
-                
               />
             </WrapperUserName>
 

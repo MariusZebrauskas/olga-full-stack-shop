@@ -37,7 +37,7 @@ const Login = ({ changeComponent, language, history }) => {
   const [autoCompleate, setAutoCompleate] = useState(false);
   const autoCompleateHandler = () => {
     setAutoCompleate(!autoCompleate);
-  }
+  };
   useEffect(() => {
     if (language === 'lt') {
       setEmail('Elektroninis Paštas');
@@ -78,34 +78,29 @@ const Login = ({ changeComponent, language, history }) => {
   });
   const login = (e) => {
     e.preventDefault();
-    
+
     axios
       .post('/auth/login', { email: emailRef.current.value, password: passwordRef.current.value })
       .then((response) => {
         // items going to local storrage
         // FIXME:push items to local storrage
-        if(autoCompleate){
-          console.log("cliked autocompleate");
+        if (autoCompleate) {
+          console.log('cliked autocompleate');
         }
         setLoggedIn(response);
       })
       .catch((err) => {
-        let errorHnadler404 = JSON.stringify(err).includes('404');
-        let errorHnadler401 = JSON.stringify(err).includes('401');
-        if (errorHnadler404) {
-          setWarningMessage('Invalid Email');
-          return;
-        } else if (errorHnadler401) {
-          setWarningMessage('Invalid Password');
+       
+        if (err) {
+          setWarningMessage('Invalid Email Or Password');
           return;
         }
       });
   };
-const forgotPasswordHandler = (e) => {
-  e.preventDefault();
-  history.push(`recover`)
-
-}
+  const forgotPasswordHandler = (e) => {
+    e.preventDefault();
+    history.push(`recover`);
+  };
   return (
     <RenderingStyles>
       <MainWrapper>
@@ -145,13 +140,16 @@ const forgotPasswordHandler = (e) => {
 
             <WrapperRemeberMain>
               <div>
-                <input onClick={autoCompleateHandler} type='checkbox' name='remember password' value='false' />
+                <input
+                  onClick={autoCompleateHandler}
+                  type='checkbox'
+                  name='remember password'
+                  value='false'
+                />
                 <p>{rememberMe}</p>
               </div>
               <div>
-                <ForgotPassword onClick={forgotPasswordHandler}>
-                  {forgotPassword}?
-                </ForgotPassword>
+                <ForgotPassword onClick={forgotPasswordHandler}>{forgotPassword}?</ForgotPassword>
               </div>
             </WrapperRemeberMain>
 

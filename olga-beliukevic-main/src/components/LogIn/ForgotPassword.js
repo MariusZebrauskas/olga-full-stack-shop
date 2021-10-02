@@ -147,7 +147,7 @@ const ForgotPassword = ({ changeComponent, language, history }) => {
           </IconWrapper>
           <Form onSubmit={userId ? changePasswordDB : sendEmailRecover} action='submit'>
             {/* ask details to update pasword */}
-            {!userId && (
+            {!userId && !error && (
               <>
                 <WrapperEmail>
                   <div>
@@ -210,17 +210,19 @@ const ForgotPassword = ({ changeComponent, language, history }) => {
                 </WrapperPassword>
               </>
             )}
-            {!changed && <Recover>{userId ? changePassword : recoverAccount}</Recover>}
+            {!changed && !error && <Recover>{userId ? changePassword : recoverAccount}</Recover>}
 
             {error && <Warning>{error}</Warning>}
             {changed && <Success>{success}</Success>}
 
-            <WrapperDontHaveAccount>
-              <p>
-                {dontHaveAnAccount}? <b onClick={() => history.push('register')}>{register}</b>{' '}
-                {oneNow}! {orBackTo} <b onClick={() => history.push('login')}>{login}</b> {page}.
-              </p>
-            </WrapperDontHaveAccount>
+            {!error && (
+              <WrapperDontHaveAccount>
+                <p>
+                  {dontHaveAnAccount}? <b onClick={() => history.push('register')}>{register}</b>{' '}
+                  {oneNow}! {orBackTo} <b onClick={() => history.push('login')}>{login}</b> {page}.
+                </p>
+              </WrapperDontHaveAccount>
+            )}
           </Form>
         </Wrapper>
       </MainWrapper>
