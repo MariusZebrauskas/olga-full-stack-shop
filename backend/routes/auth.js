@@ -1,6 +1,10 @@
 const router = require('express').Router();
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
 
 //REGISTER************************************************************************
 
@@ -61,5 +65,7 @@ router.post('/login', async (req, res) => {
     return;
   }
 });
+
+
 
 module.exports = router;

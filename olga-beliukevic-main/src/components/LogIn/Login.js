@@ -101,7 +101,11 @@ const Login = ({ changeComponent, language, history }) => {
         }
       });
   };
+const forgotPasswordHandler = (e) => {
+  e.preventDefault();
+  history.push(`recover`)
 
+}
   return (
     <RenderingStyles>
       <MainWrapper>
@@ -145,7 +149,7 @@ const Login = ({ changeComponent, language, history }) => {
                 <p>{rememberMe}</p>
               </div>
               <div>
-                <ForgotPassword onClick={() => history.push('recover')}>
+                <ForgotPassword onClick={forgotPasswordHandler}>
                   {forgotPassword}?
                 </ForgotPassword>
               </div>

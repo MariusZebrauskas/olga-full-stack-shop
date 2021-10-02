@@ -216,6 +216,7 @@ const Contacts = ({ language }) => {
                 name='name'
                 placeholder={namePlaceHolder}
                 required
+                readOnly
                 value={loggedIn ? loggedIn.data.username.charAt(0).toUpperCase() + loggedIn.data.username.slice(1) : ''}
               />
             </Name>
@@ -226,6 +227,7 @@ const Contacts = ({ language }) => {
                 name='email'
                 placeholder={emailPlaceHolder}
                 required
+                readOnly
                 value={loggedIn ? loggedIn.data.email : ''}
               />
             </Email>
