@@ -99,6 +99,7 @@ const ForgotPassword = ({ changeComponent, language, history }) => {
     axios
       .post('/recover', { email: emailRef.current.value, username: usernameRef.current.value })
       .then((response) => {
+        console.log('response:', response)
         setUserId(response.data.userId);
       })
       .catch((err) => {

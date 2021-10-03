@@ -102,6 +102,8 @@ const Register = ({ changeComponent, language, history }) => {
             history.push('/login');
           }, 3000);
         } else {
+          console.log('res:', res);
+
           setSuccess(null);
           setError('something went wrong please refresh page');
           setTimeout(() => {
