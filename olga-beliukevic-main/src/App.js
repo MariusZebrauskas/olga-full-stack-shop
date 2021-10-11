@@ -98,7 +98,9 @@ function App() {
       history.push('/login')
     }
   })
-
+useEffect(() => {
+  console.log(shopItems);
+})
   return (
     <BodyWrapper>
         <Menu

@@ -19,7 +19,6 @@ router.post('/register', async (req, res) => {
       password: hasedPassword,
       isAdmin: false,
     });
-    console.log('user:', user);
 
     const takenUserName = await User.findOne({ email: user.email });
 
@@ -36,23 +35,7 @@ router.post('/register', async (req, res) => {
     res.json({ error: err.message });
   }
 });
-// Testing lag!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-router.post('/registers', async (req, res) => {
-  try {
-    //create new user
-    const user = await new User({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
-      isAdmin: false,
-    });
-    await user.save();
-    res.send({ user });
-  } catch (err) {
-    console.log(err.message);
-    res.json({ error: err.message });
-  }
-});
+
 // LOGIN****************************************************************************
 
 router.post('/login', async (req, res) => {

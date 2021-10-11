@@ -3,6 +3,8 @@ import { CurrenPerson } from '../../context/AuthContex';
 import styled from 'styled-components';
 import backgroundImg from './3.jpg';
 import { RenderingStyles } from '../../Shared/renderingStyles';
+import { useHistory } from 'react-router';
+
 
 const Body = styled.section`
   width: 100%;
@@ -144,6 +146,7 @@ const Button = styled.button`
 // Logic ************************************************************************************************
 //focus on render and enter button logic
 const Contacts = ({ language }) => {
+  const history = useHistory();
   const nameFocus = useRef(null);
   const emailFocus = useRef(null);
   const messageFocus = useRef(null);
@@ -199,6 +202,7 @@ const Contacts = ({ language }) => {
     if (messageFocus) {
       setTimeout(() => {
         messageFocus.current.value = '';
+        history.push("/")
       }, 300);
     }
   };
