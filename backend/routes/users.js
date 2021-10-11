@@ -20,6 +20,7 @@ router.post('/', async (req, res) => {
     }
   } else {
     res.status(403).json('you can update only ur account ');
+    // 
   }
 });
 
