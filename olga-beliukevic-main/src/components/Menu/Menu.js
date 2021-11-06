@@ -20,7 +20,7 @@ import { menuLt, menuEng, menuRu } from './objects';
 
 ///reeal styling
 
-const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems, history }) => {
+const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems,shopItemsDb, history }) => {
   //open sub menu
   const [openSubMenu, setOpenSubMenu] = useState(false);
   const openSubMenuButton = () => {

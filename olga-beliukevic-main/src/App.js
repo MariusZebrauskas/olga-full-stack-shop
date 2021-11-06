@@ -13,6 +13,7 @@ import LoadingComponentsAnimation from './Shared/LoadingCompononetsAnimations/Lo
 import { Switch, Route, useHistory } from 'react-router';
 import Register from './components/LogIn/Register';
 import ForgotPassword from './components/LogIn/ForgotPassword';
+import axios from 'axios';
 
 //playlists
 import {
@@ -24,9 +25,7 @@ import {
 import { valsaiLt, valsaiEng, valsaiRu } from './components/PlayList/obj-valsai';
 import Login from './components/LogIn/Login';
 //FIXME: add 3rd album
-//FIXME: add React Create new branch for router
-//FIXME: add React router
-//FIXME:  Grižti pataisyti ta zodi
+
 const BodyWrapper = styled.section`
   width: 100%;
   overflow: hidden;
@@ -35,6 +34,7 @@ const BodyWrapper = styled.section`
 function App() {
   // React router
   const history = useHistory();
+  const [loggedIn, setLoggedIn] = useContext(CurrenPerson);
 
   //set LANGUAGE
   const [language, setLanguage] = useState(localStorage.getItem('mainLanguage') || 'lt');
@@ -50,11 +50,46 @@ function App() {
   };
   //Loading logic
   const [loading, setLoading] = useState(false);
-  // useEffect(() => {
-  //     return () => setLoading(false);
-  // },[]);
 
   //**************************************************** */
+  //FIXME: fech shop items from data base on login
+  const [shopItemsDb, setShopItemsDb] = useState([]);
+
+  const fechCartData = async () => {
+    let id = loggedIn._id;
+    axios
+    .post('/cart/', { _id: id })
+    .then((res) => {
+      console.log(res.data.shopItemsDb);
+        setShopItemsDb([...res.data.shopItemsDb]);
+        console.log('shopItemsDb:', shopItemsDb)
+        console.log('shopItems:', shopItems)
+      })
+      .catch((err) => {
+        console.log(`response from db ${err}`);
+      });
+    };
+    
+  useEffect(() => {
+    if (loggedIn) {
+        fechCartData();
+    }
+  }, [loggedIn]);
+  
+  // FIXME: data base functionality
+
+  const sendDataToDB = (params) => {
+    let id = loggedIn._id;
+
+    axios
+      .post('/cart/add', { _id: id, shopItemsDb: [params] })
+      .then((res) => {
+        fechCartData();
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
   // add to shop cart Album function
   const [shopItems, setShopItems] = useState([]);
   const addToShopCartAlbum = (card) => {
@@ -72,6 +107,9 @@ function App() {
       };
       //function activation to stop buying twise
       changeItemToSold(card);
+      // send data to db and
+      //FIXME: need to make axios send data
+      sendDataToDB(card);
     }
   };
 
@@ -84,6 +122,9 @@ function App() {
       song.buy = true;
       let item = [song];
       setShopItems([...shopItems, [...item]]);
+      // send data to db and
+      //FIXME: need to make axios send data
+      sendDataToDB(item);
     }
   };
 
@@ -92,70 +133,73 @@ function App() {
     return setShopItems([...card]);
   };
 
-  const [loggedIn, setLoggedIn] = useContext(CurrenPerson);
   useEffect(() => {
-    if(!loggedIn) {
-      history.push('/login')
+    if (!loggedIn) {
+      history.push('/login');
     }
-  })
-useEffect(() => {
-  console.log(shopItems);
-})
+  });
+  useEffect(() => {
+    console.log(shopItems);
+  });
   return (
     <BodyWrapper>
-        <Menu
-          pagesSetUp={pagesSetUp}
-          language={language}
-          changeLanguageGlobal={changeLanguageGlobal}
-          shopItems={shopItems}
-          history={history}
-        />
+      <Menu
+        pagesSetUp={pagesSetUp}
+        language={language}
+        changeLanguageGlobal={changeLanguageGlobal}
+        shopItems={shopItemsDb}
+        history={history}
+      />
 
       <Switch>
-        
         {/* HOME */}
         {loggedIn && (
-        <Route exact path='/'>
-          <Home
-            language={language}
-            insidePlaylist={insidePlaylist}
-            mouseClicked={mouseClicked}
-            theCirkusHasArivedLt={theCirkusHasArivedLt}
-            theCirkusHasArivedRu={theCirkusHasArivedRu}
-            theCirkusHasArivedEng={theCirkusHasArivedEng}
-            valsaiLt={valsaiLt}
-            valsaiEng={valsaiEng}
-            valsaiRu={valsaiRu}
-            addToShopCartAlbum={addToShopCartAlbum}
-            addToShopCartSingleSong={addToShopCartSingleSong}
-          ></Home>
-        </Route>
+          <Route exact path='/'>
+            <Home
+              language={language}
+              insidePlaylist={insidePlaylist}
+              mouseClicked={mouseClicked}
+              theCirkusHasArivedLt={theCirkusHasArivedLt}
+              theCirkusHasArivedRu={theCirkusHasArivedRu}
+              theCirkusHasArivedEng={theCirkusHasArivedEng}
+              valsaiLt={valsaiLt}
+              valsaiEng={valsaiEng}
+              valsaiRu={valsaiRu}
+              addToShopCartAlbum={addToShopCartAlbum}
+              addToShopCartSingleSong={addToShopCartSingleSong}
+            ></Home>
+          </Route>
         )}
 
         {/* INFO */}
-          {loggedIn && (
-        <Route exact path='/info'>
-          <About setLoading={setLoading} history={history} loading={loading} language={language} />
-        </Route>
-          )}
+        {loggedIn && (
+          <Route exact path='/info'>
+            <About
+              setLoading={setLoading}
+              history={history}
+              loading={loading}
+              language={language}
+            />
+          </Route>
+        )}
 
         {/* CONTACT */}
         {loggedIn && (
-        <Route path='/contact'>
-          <Contacts language={language}></Contacts>
-        </Route>
+          <Route path='/contact'>
+            <Contacts language={language}></Contacts>
+          </Route>
         )}
 
         {/* SHOP */}
         {loggedIn && (
-        <Route path='/shop'>
-          <Shop
-            language={language}
-            shopCardCurrentItems={shopCardCurrentItems}
-            pagesSetUp={pagesSetUp}
-            shopItems={shopItems}
-          ></Shop>
-        </Route>
+          <Route path='/shop'>
+            <Shop
+              language={language}
+              shopCardCurrentItems={shopCardCurrentItems}
+              pagesSetUp={pagesSetUp}
+              shopItems={shopItemsDb}
+            ></Shop>
+          </Route>
         )}
 
         {/* LOGIN */}
@@ -174,7 +218,6 @@ useEffect(() => {
         <Route path='/recover'>
           <ForgotPassword history={history} language={language}></ForgotPassword>
         </Route>
-
 
         {/* BOTTOM */}
       </Switch>

@@ -221,7 +221,7 @@ const Contacts = ({ language }) => {
                 placeholder={namePlaceHolder}
                 required
                 readOnly
-                value={loggedIn ? loggedIn.data.username.charAt(0).toUpperCase() + loggedIn.data.username.slice(1) : ''}
+                value={loggedIn ? loggedIn.username.charAt(0).toUpperCase() + loggedIn.username.slice(1) : ''}
               />
             </Name>
             <Email>
@@ -232,7 +232,7 @@ const Contacts = ({ language }) => {
                 placeholder={emailPlaceHolder}
                 required
                 readOnly
-                value={loggedIn ? loggedIn.data.email : ''}
+                value={loggedIn ? loggedIn.email : ''}
               />
             </Email>
           </NameAndEmail>

@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/User');
+const ItemsDBSchema = require('../models/ItemsDB');
 const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 
@@ -28,6 +29,11 @@ router.post('/register', async (req, res) => {
     } else {
       let { password, ...rest } = await user._doc;
       //save and return respond
+      const ItemsDB = await new ItemsDBSchema({
+        _id: user._id,
+      });
+
+      await ItemsDB.save();
       await user.save();
       res.json({ register: true });
     }

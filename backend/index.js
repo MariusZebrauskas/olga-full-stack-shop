@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 8800;
-const userRoutes = require('./routes/users');
+const cartRoutes = require('./routes/cart');
 const authRoutes = require('./routes/auth');
 const recoverRoutes = require('./routes/recover');
 const mongoose = require('mongoose');
@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan('common'));
 
-app.use('/api/users', userRoutes);
+app.use('/api/cart', cartRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/recover', recoverRoutes);
 

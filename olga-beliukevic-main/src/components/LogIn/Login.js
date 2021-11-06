@@ -87,10 +87,10 @@ const Login = ({ changeComponent, language, history }) => {
         if (autoCompleate) {
           console.log('cliked autocompleate');
         }
-        setLoggedIn(response);
+        const { data } = response;
+        setLoggedIn(data);
       })
       .catch((err) => {
-       
         if (err) {
           setWarningMessage('Invalid Email Or Password');
           return;
