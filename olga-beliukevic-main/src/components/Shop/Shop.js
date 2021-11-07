@@ -27,8 +27,8 @@ import { useHistory } from 'react-router';
 import axios from 'axios';
 import { CurrenPerson } from '../../context/AuthContex';
 
-const Shop = ({ shopItems, pagesSetUp, shopCardCurrentItems, language, fechCartData }) => {
-  const [itemsInBag, setItemsInBag] = useState(shopItems);
+const Shop = ({ shopItems,shopItemsDb,  pagesSetUp, shopCardCurrentItems, language, fechCartData }) => {
+  const [itemsInBag, setItemsInBag] = useState(shopItems < shopItemsDb ? shopItemsDb : shopItems);
   const [album, setAlbum] = useState('Albums');
   const [albumSongNumber, setAlbumSongNumber] = useState('Songs');
   const [songs, setSongs] = useState('Songs');
@@ -85,7 +85,7 @@ const Shop = ({ shopItems, pagesSetUp, shopCardCurrentItems, language, fechCartD
       return addPrice(parseInt(item[0].songprice));
     }
   });
-  
+
   const deleteFromDb = async (params) => {
     //FIXME: delete from DB
     axios
@@ -101,9 +101,10 @@ const Shop = ({ shopItems, pagesSetUp, shopCardCurrentItems, language, fechCartD
       });
 
   };
-
+// FIXME: item in the bagh need to change on main obj i gues not in a bag :O
   const deleteItems = (id) => {
     //if deleting first song wich control album as well
+   
     
     if (
       (itemsInBag[id][0].song === 'The Circus March' && itemsInBag[id].length === 1) ||

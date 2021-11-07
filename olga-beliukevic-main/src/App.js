@@ -135,9 +135,7 @@ function App() {
       history.push('/login');
     }
   });
-  useEffect(() => {
-    console.log(shopItems);
-  });
+ 
   return (
     <BodyWrapper>
       <Menu
@@ -194,7 +192,8 @@ function App() {
               language={language}
               shopCardCurrentItems={shopCardCurrentItems}
               pagesSetUp={pagesSetUp}
-              shopItems={shopItemsDb}
+              shopItems={shopItems}
+              shopItemsDb={shopItemsDb}
               fechCartData={fechCartData}
             ></Shop>
           </Route>
