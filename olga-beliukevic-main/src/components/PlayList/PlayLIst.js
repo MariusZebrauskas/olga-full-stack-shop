@@ -109,13 +109,13 @@ const PlayLIst = ({
     // }
     mouseClicked = true;
     e.preventDefault();
-    if (insidePlaylist && mouseClicked) {
-      currentMarginX.current = ref.current.offsetLeft;
-      mouseCoordinateX.current = e.clientX;
-    }
     if (insidePlaylist === false) {
       //when buy item insidePlaylist sets to false for some reason this fixs it
       insidePlaylist = true;
+    }
+    if (mouseClicked) {
+      currentMarginX.current = ref.current.offsetLeft;
+      mouseCoordinateX.current = e.clientX;
     }
     //protect dont disapier left
     dontMoveOutOfScreenLeft();
