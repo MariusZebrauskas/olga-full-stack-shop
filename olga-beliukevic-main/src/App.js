@@ -14,6 +14,8 @@ import { Switch, Route, useHistory } from 'react-router';
 import Register from './components/LogIn/Register';
 import ForgotPassword from './components/LogIn/ForgotPassword';
 import axios from 'axios';
+import { ClipLoader } from 'react-spinners';
+import { LoadingContext } from './context/LoadingContext';
 
 //playlists
 import {
@@ -32,6 +34,8 @@ const BodyWrapper = styled.section`
 `;
 
 function App() {
+  // loading logic
+  const [loadingDb, setLoadingDb] = useContext(LoadingContext);
   // React router
   const history = useHistory();
   const [loggedIn, setLoggedIn] = useContext(CurrenPerson);
@@ -58,21 +62,24 @@ function App() {
   const fechCartData = async () => {
     let id = loggedIn._id;
     axios
-    .post('/cart/', { _id: id })
-    .then((res) => {
+      .post('/cart/', { _id: id })
+      .then((res) => {
+
         setShopItemsDb([...res.data.shopItemsDb]);
+        setLoadingDb(false)
       })
       .catch((err) => {
         console.log(`response from db ${err}`);
       });
-    };
-    
+  };
+
   useEffect(() => {
     if (loggedIn) {
-        fechCartData();
+      setLoadingDb(true)
+      fechCartData();
     }
   }, [loggedIn]);
-  
+
   // FIXME: data base functionality
 
   const sendDataToDB = (params) => {
@@ -81,6 +88,7 @@ function App() {
     axios
       .post('/cart/add', { _id: id, shopItemsDb: [params] })
       .then((res) => {
+        setLoadingDb(false);
         fechCartData();
       })
       .catch((err) => {
@@ -90,6 +98,12 @@ function App() {
   // add to shop cart Album function
   const [shopItems, setShopItems] = useState([]);
   const addToShopCartAlbum = (card) => {
+    // loading logic
+    if (loadingDb === true || card[0].holealbumsold === true) {
+      return;
+    }
+    setLoadingDb(true);
+
     if (!card[0].holealbumsold) {
       //makes all songs in object sold to prevent buying twise
       card.forEach((item) => {
@@ -115,6 +129,10 @@ function App() {
   let mouseClicked;
 
   const addToShopCartSingleSong = (song) => {
+    if (loadingDb === true || song.buy === true) {
+      return;
+    }
+    setLoadingDb(true);
     if (!song.buy) {
       song.buy = true;
       let item = [song];
@@ -135,7 +153,7 @@ function App() {
       history.push('/login');
     }
   });
- 
+
   return (
     <BodyWrapper>
       <Menu

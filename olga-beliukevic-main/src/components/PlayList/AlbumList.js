@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
+import { ClipLoader } from 'react-spinners';
+import { LoadingContext } from '../../context/LoadingContext';
 
 const P = styled.h3`
   font-size: calc(0.8rem + 0.5vw);
@@ -64,6 +66,8 @@ const ButtonBuyAllbum = styled.button`
 `;
 
 const AlbumList = ({ currentCard, language, addToShopCartAlbum }) => {
+  // loading logical
+  const [loadingDb, setLoadingDb] = useContext(LoadingContext);
   // const [header, setHeader] = useState('DAINU SARAŠAS');
   const [buttonText, setButtonText] = useState(
     `PRIDĖTI VISĄ RINKINĮ TIK UŽ ${currentCard[0].albumprice} €`
@@ -99,7 +103,7 @@ const AlbumList = ({ currentCard, language, addToShopCartAlbum }) => {
       </SongList>
       <AlbumFlexCenter>
         <ButtonBuyAllbum isAlbumSold={isAlbumSold} onClick={() => addToShopCartAlbum(currentCard)}>
-          {!currentCard[0].holealbumsold ? <h2>{buttonText}</h2> : <h2>{isAlbumSold}</h2>}
+          {loadingDb ? <ClipLoader size={"2rem"} /> : !currentCard[0].holealbumsold ? <h2>{buttonText}</h2> : <h2>{isAlbumSold}</h2>}
         </ButtonBuyAllbum>
       </AlbumFlexCenter>
     </SongListWrapper>

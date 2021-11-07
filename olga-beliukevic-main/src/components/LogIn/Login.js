@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
 import axios from 'axios';
+import { ClipLoader } from 'react-spinners';
+import { LoadingContext } from '../../context/LoadingContext';
 import {
   Form,
   UserIcon,
@@ -23,6 +25,7 @@ import Warning from '../../Shared/warning/Warning';
 
 const Login = ({ changeComponent, language, history }) => {
   const [loggedIn, setLoggedIn] = useContext(CurrenPerson);
+  const [loadingDb, setLoadingDb] = useContext(LoadingContext);
   const emailRef = useRef();
   const passwordRef = useRef();
   const [email, setEmail] = useState('Email');
@@ -78,12 +81,14 @@ const Login = ({ changeComponent, language, history }) => {
   });
   const login = (e) => {
     e.preventDefault();
+    setLoadingDb(true);
 
     axios
       .post('/auth/login', { email: emailRef.current.value, password: passwordRef.current.value })
       .then((response) => {
         // items going to local storrage
         // FIXME:push items to local storrage
+        setLoadingDb(false);
         if (autoCompleate) {
           console.log('cliked autocompleate');
         }
@@ -140,20 +145,20 @@ const Login = ({ changeComponent, language, history }) => {
 
             <WrapperRemeberMain>
               <div>
-                <input
+                {/* <input
                   onClick={autoCompleateHandler}
                   type='checkbox'
                   name='remember password'
                   value='false'
                 />
-                <p>{rememberMe}</p>
+                <p>{rememberMe}</p> */}
               </div>
               <div>
                 <ForgotPassword onClick={forgotPasswordHandler}>{forgotPassword}?</ForgotPassword>
               </div>
             </WrapperRemeberMain>
 
-            <SingIn type='submit'>{singIn}</SingIn>
+            <SingIn type='submit'>{loadingDb ? <ClipLoader size='1.3rem' /> : singIn}</SingIn>
             {warningMessage && <Warning>{warningMessage}</Warning>}
 
             <WrapperDontHaveAccount>

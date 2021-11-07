@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { ClipLoader } from 'react-spinners';
+import { LoadingContext } from '../../context/LoadingContext';
 import {
   Wrapper,
   ButtonX,
@@ -28,6 +30,10 @@ import axios from 'axios';
 import { CurrenPerson } from '../../context/AuthContex';
 
 const Shop = ({ shopItems,shopItemsDb,  pagesSetUp, shopCardCurrentItems, language, fechCartData }) => {
+  // loading logic
+  const [loadingDb, setLoadingDb] = useContext(LoadingContext);
+
+  // 
   const [itemsInBag, setItemsInBag] = useState(shopItems < shopItemsDb ? shopItemsDb : shopItems);
   const [album, setAlbum] = useState('Albums');
   const [albumSongNumber, setAlbumSongNumber] = useState('Songs');
@@ -87,13 +93,13 @@ const Shop = ({ shopItems,shopItemsDb,  pagesSetUp, shopCardCurrentItems, langua
   });
 
   const deleteFromDb = async (params) => {
+ 
     //FIXME: delete from DB
     axios
       .post('/cart/delete/', { _id: loggedIn._id, deleteId: params })
       .then((res) => {
         fechCartData();
-        console.log(res);
-        // FIXME: add spinners
+        setLoadingDb(false)
       })
       .catch((err) => {
           console.log(err.message);
@@ -103,6 +109,11 @@ const Shop = ({ shopItems,shopItemsDb,  pagesSetUp, shopCardCurrentItems, langua
   };
 // FIXME: item in the bagh need to change on main obj i gues not in a bag :O
   const deleteItems = (id) => {
+    // loading logic
+    if(loadingDb === true) {
+      return
+    }
+    setLoadingDb(true)
     //if deleting first song wich control album as well
    
     
@@ -200,7 +211,8 @@ const Shop = ({ shopItems,shopItemsDb,  pagesSetUp, shopCardCurrentItems, langua
                     </h4>
                   </MidleBag>
                   <RightBag>
-                    <Button onClick={() => deleteItems(i)}>X</Button>
+                    {loadingDb ? <ClipLoader size="1.3rem"/>  : <Button onClick={() => deleteItems(i)}>X</Button>}
+                    
                     <h4>{item.length === 1 ? item[0].songprice : item[0].albumprice}€</h4>
                   </RightBag>
                 </ShopItem>

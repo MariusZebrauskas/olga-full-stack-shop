@@ -3,6 +3,9 @@ import Submenu from './Submenu';
 import Burger from './Burger';
 import Logo from './Logo';
 import { CurrenPerson } from '../../context/AuthContex.js';
+import { LoadingContext } from '../../context/LoadingContext';
+import { ClipLoader } from 'react-spinners';
+
 import {
   MenuRapper,
   List,
@@ -21,6 +24,9 @@ import { menuLt, menuEng, menuRu } from './objects';
 ///reeal styling
 
 const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems,shopItemsDb, history }) => {
+  // loading logic
+  const [loadingDb, setLoadingDb] = useContext(LoadingContext);
+
   //open sub menu
   const [openSubMenu, setOpenSubMenu] = useState(false);
   const openSubMenuButton = () => {
@@ -70,12 +76,11 @@ const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems,shopItemsD
 
   const [loggedIn, setLoggedIn] = useContext(CurrenPerson);
   const logoutUser = () => {
-    const person = loggedIn.data.username.charAt(0).toUpperCase() + loggedIn.data.username.slice(1);
+    const person = loggedIn.username.charAt(0).toUpperCase() + loggedIn.username.slice(1);
     let cheker = prompt(`
     ${toLogoutMessage} ${person}  
     ${sayYes}
     `);
-    console.log(cheker);
     if (cheker) {
       setLoggedIn(null);
       history.push('/login');
@@ -91,7 +96,7 @@ const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems,shopItemsD
       {loggedIn && (
         <Shop onClick={() => history.push('/shop')}>
           <ShoppingCart />
-          <ShopItems>{shopItems.length}</ShopItems>
+          <ShopItems>{loadingDb ? <ClipLoader size="1.3rem"/> : shopItems.length}</ShopItems>
         </Shop>
       )}
       <List loggedIn={loggedIn} slideMenu={slideMenu}>

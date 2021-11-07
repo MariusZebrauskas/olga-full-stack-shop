@@ -1,9 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { Card, Video, Img, H5, Play, Close } from './styles';
+import { ClipLoader } from 'react-spinners';
+import { LoadingContext } from '../../context/LoadingContext';
 import ButtonBuy from '../../Shared/ButtonBuy';
 
 const Cards = ({ id, song, picture, video, language, addToShopCartSingleSong, albumOne }) => {
   const [videoIsOpen, setVideoIsOpen] = useState(false);
+  const [loadingDb, setLoadingDb] = useContext(LoadingContext);
 
   let ref = useRef(null);
 
@@ -52,7 +55,7 @@ const Cards = ({ id, song, picture, video, language, addToShopCartSingleSong, al
         id={id}
         addToShopCartSingleSong={addToShopCartSingleSong}
       >
-        {buy}
+        {loadingDb ? <ClipLoader size={"1rem"}/> : buy}
       </ButtonBuy>
       {videoIsOpen ? (
         <>
