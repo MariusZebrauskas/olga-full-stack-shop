@@ -46,4 +46,29 @@ router.post('/add', async (req, res) => {
   }
 });
 
+//delete items from
+router.post('/delete', async (req, res) => {
+  const id = req.body._id;
+  console.log('id:', id)
+  const deleteItemId = req.body.deleteId;
+  console.log('deleteItemId:', deleteItemId)
+  try {
+    const item = await ItemsDBSchema.findOne({ _id: id });
+    console.log(item.shopItemsDb.length);
+    // console.log(JSON.stringify(item))
+    const deletedStuff = item.shopItemsDb.splice(deleteItemId, 1);
+
+    await ItemsDBSchema.findByIdAndUpdate(
+      { _id: id },
+      { shopItemsDb: item.shopItemsDb },
+      {
+        new: true,
+      }
+    );
+    return res.status(200).json({message: 'success', stuffDaleted: deletedStuff});
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 module.exports = router;

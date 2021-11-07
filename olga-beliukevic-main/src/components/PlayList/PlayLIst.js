@@ -161,10 +161,6 @@ const PlayLIst = ({
       dontMoveOutOfScreenLeft();
       dontMoveOutOfScreenRight();
 
-      // moveElement.current = (x, end) => {
-      //   let finalResult = end + x;
-      //   return finalResult;
-      // };
 
       moveElement.current =
         currentMarginX.current +

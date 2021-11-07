@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   Wrapper,
   ButtonX,
@@ -24,8 +24,10 @@ import {
 } from './stylesShop';
 import { RenderingStyles } from '../../Shared/renderingStyles';
 import { useHistory } from 'react-router';
+import axios from 'axios';
+import { CurrenPerson } from '../../context/AuthContex';
 
-const Shop = ({ shopItems, pagesSetUp, shopCardCurrentItems, language }) => {
+const Shop = ({ shopItems, pagesSetUp, shopCardCurrentItems, language, fechCartData }) => {
   const [itemsInBag, setItemsInBag] = useState(shopItems);
   const [album, setAlbum] = useState('Albums');
   const [albumSongNumber, setAlbumSongNumber] = useState('Songs');
@@ -35,6 +37,8 @@ const Shop = ({ shopItems, pagesSetUp, shopCardCurrentItems, language }) => {
   const [backToTheShop, setBackToTheShop] = useState('Back To The Shop');
   const [chekoutsecurity, setChekoutsecurity] = useState('chekoutsecurity');
   const history = useHistory();
+
+  const [loggedIn] = useContext(CurrenPerson);
 
   useEffect(() => {
     if (language === 'lt') {
@@ -81,9 +85,26 @@ const Shop = ({ shopItems, pagesSetUp, shopCardCurrentItems, language }) => {
       return addPrice(parseInt(item[0].songprice));
     }
   });
+  
+  const deleteFromDb = async (params) => {
+    //FIXME: delete from DB
+    axios
+      .post('/cart/delete/', { _id: loggedIn._id, deleteId: params })
+      .then((res) => {
+        fechCartData();
+        console.log(res);
+        // FIXME: add spinners
+      })
+      .catch((err) => {
+          console.log(err.message);
+          fechCartData();
+      });
+
+  };
 
   const deleteItems = (id) => {
     //if deleting first song wich control album as well
+    
     if (
       (itemsInBag[id][0].song === 'The Circus March' && itemsInBag[id].length === 1) ||
       (itemsInBag[id][0].song === 'Cirko maršas' && itemsInBag[id].length === 1) ||
@@ -97,7 +118,8 @@ const Shop = ({ shopItems, pagesSetUp, shopCardCurrentItems, language }) => {
       itemsInBag[id][0].buy = false;
       itemsInBag.splice(id, 1);
       setItemsInBag([...itemsInBag]);
-      return shopCardCurrentItems([...itemsInBag]);
+      shopCardCurrentItems([...itemsInBag]);
+      return deleteFromDb(id);
     }
 
     //if deleting album
@@ -120,7 +142,8 @@ const Shop = ({ shopItems, pagesSetUp, shopCardCurrentItems, language }) => {
       });
 
       setItemsInBag([...itemsInBag]);
-      return shopCardCurrentItems([...itemsInBag]);
+      shopCardCurrentItems([...itemsInBag]);
+      return deleteFromDb(id);
     }
     //deleteing single song
     if (itemsInBag[id].length === 1) {
@@ -136,7 +159,8 @@ const Shop = ({ shopItems, pagesSetUp, shopCardCurrentItems, language }) => {
         }
       });
       setItemsInBag([...itemsInBag]);
-      return shopCardCurrentItems([...itemsInBag]);
+      shopCardCurrentItems([...itemsInBag]);
+      return deleteFromDb(id);
     }
   };
 

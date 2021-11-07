@@ -60,10 +60,7 @@ function App() {
     axios
     .post('/cart/', { _id: id })
     .then((res) => {
-      console.log(res.data.shopItemsDb);
         setShopItemsDb([...res.data.shopItemsDb]);
-        console.log('shopItemsDb:', shopItemsDb)
-        console.log('shopItems:', shopItems)
       })
       .catch((err) => {
         console.log(`response from db ${err}`);
@@ -198,6 +195,7 @@ function App() {
               shopCardCurrentItems={shopCardCurrentItems}
               pagesSetUp={pagesSetUp}
               shopItems={shopItemsDb}
+              fechCartData={fechCartData}
             ></Shop>
           </Route>
         )}
