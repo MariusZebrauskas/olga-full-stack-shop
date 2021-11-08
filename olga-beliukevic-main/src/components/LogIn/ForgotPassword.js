@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import axios from 'axios';
 import {
   Wrapper,
@@ -99,7 +99,6 @@ const ForgotPassword = ({ changeComponent, language, history }) => {
     axios
       .post('/recover', { email: emailRef.current.value, username: usernameRef.current.value })
       .then((response) => {
-        console.log('response:', response)
         setUserId(response.data.userId);
       })
       .catch((err) => {
@@ -212,7 +211,6 @@ const ForgotPassword = ({ changeComponent, language, history }) => {
               </>
             )}
             {!changed && !error && <Recover>{userId ? changePassword : recoverAccount}</Recover>}
-
             {error && <Warning>{error}</Warning>}
             {changed && <Success>{success}</Success>}
 

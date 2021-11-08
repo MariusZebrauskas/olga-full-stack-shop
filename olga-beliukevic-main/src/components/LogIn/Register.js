@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import { ClipLoader } from 'react-spinners';
-import { LoadingContext } from '../../context/LoadingContext';
 import {
   NewUser,
   Wrapper,
@@ -25,7 +23,6 @@ import Warning from '../../Shared/warning/Warning';
 import Success from '../../Shared/success/Success';
 
 const Register = ({ changeComponent, language, history }) => {
-  const [loadingDb, setLoadingDb] = useContext(LoadingContext);
 
   const emailRef = useRef(null);
   const nameRef = useRef(null);
@@ -78,10 +75,6 @@ const Register = ({ changeComponent, language, history }) => {
 
   const register = async (e) => {
     e.preventDefault();
-    if (loadingDb === true) {
-      return;
-    }
-    setLoadingDb(true);
     //  chek email is it containing valid values
     const values = /.com|.lt|.de|.pl|.gb|.ru/g;
     let userEmail = emailRef.current.value.toLowerCase();
@@ -100,7 +93,6 @@ const Register = ({ changeComponent, language, history }) => {
         password: await passwordRef.current.value,
       })
       .then((res) => {
-        setLoadingDb(false);
         if (res.data.register == false) {
           setSuccess(null);
           setError('Email is allready in use');
@@ -112,7 +104,6 @@ const Register = ({ changeComponent, language, history }) => {
           }, 3000);
         } else {
           console.log('res:', res);
-
           setSuccess(null);
           setError('something went wrong please refresh page');
           setTimeout(() => {
@@ -186,7 +177,7 @@ const Register = ({ changeComponent, language, history }) => {
             </WrapperPassword>
 
             <RegisterButton type='submit'>
-              {loadingDb ? <ClipLoader size='1.3rem' /> : registerAccount}
+              {registerAccount}
             </RegisterButton>
             <WrapperDontHaveAccount>
               <p>
