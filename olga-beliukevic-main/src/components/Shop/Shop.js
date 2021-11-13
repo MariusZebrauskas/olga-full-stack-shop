@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { ClipLoader } from 'react-spinners';
 import { LoadingContext } from '../../context/LoadingContext';
+import StripeCheckout from 'react-stripe-checkout';
+
 import {
   Wrapper,
   ButtonX,
@@ -28,12 +30,20 @@ import { RenderingStyles } from '../../Shared/renderingStyles';
 import { useHistory } from 'react-router';
 import axios from 'axios';
 import { CurrenPerson } from '../../context/AuthContex';
+import Warning from '../../Shared/warning/Warning';
 
-const Shop = ({ shopItems,shopItemsDb,  pagesSetUp, shopCardCurrentItems, language, fechCartData }) => {
+const Shop = ({
+  shopItems,
+  shopItemsDb,
+  pagesSetUp,
+  shopCardCurrentItems,
+  language,
+  fechCartData,
+}) => {
   // loading logic
   const [loadingDb, setLoadingDb] = useContext(LoadingContext);
 
-  // 
+  //
   const [itemsInBag, setItemsInBag] = useState(shopItems < shopItemsDb ? shopItemsDb : shopItems);
   const [album, setAlbum] = useState('Albums');
   const [albumSongNumber, setAlbumSongNumber] = useState('Songs');
@@ -43,6 +53,8 @@ const Shop = ({ shopItems,shopItemsDb,  pagesSetUp, shopCardCurrentItems, langua
   const [backToTheShop, setBackToTheShop] = useState('Back To The Shop');
   const [chekoutsecurity, setChekoutsecurity] = useState('chekoutsecurity');
   const history = useHistory();
+  // errors
+  const [errorHandler, setErrorHandler] = useState();
 
   const [loggedIn] = useContext(CurrenPerson);
 
@@ -93,30 +105,26 @@ const Shop = ({ shopItems,shopItemsDb,  pagesSetUp, shopCardCurrentItems, langua
   });
 
   const deleteFromDb = async (params) => {
- 
-    //FIXME: delete from DB
     axios
       .post('/cart/delete/', { _id: loggedIn._id, deleteId: params })
       .then((res) => {
         fechCartData();
-        setLoadingDb(false)
+        setLoadingDb(false);
       })
       .catch((err) => {
-          console.log(err.message);
-          fechCartData();
+        console.log(err.message);
+        fechCartData();
       });
-
   };
-// FIXME: item in the bagh need to change on main obj i gues not in a bag :O
+
   const deleteItems = (id) => {
     // loading logic
-    if(loadingDb === true) {
-      return
+    if (loadingDb === true) {
+      return;
     }
-    setLoadingDb(true)
+    setLoadingDb(true);
     //if deleting first song wich control album as well
-   
-    
+
     if (
       (itemsInBag[id][0].song === 'The Circus March' && itemsInBag[id].length === 1) ||
       (itemsInBag[id][0].song === 'Cirko maršas' && itemsInBag[id].length === 1) ||
@@ -176,6 +184,38 @@ const Shop = ({ shopItems,shopItemsDb,  pagesSetUp, shopCardCurrentItems, langua
     }
   };
 
+  // FIXME: send items to buyer
+  // FIXME: make warning messages
+  // FIXME: delete items for db
+
+  const handleStripe = async (token) => {
+    setErrorHandler(null);
+    const id = loggedIn._id;
+    const email = loggedIn.email;
+    axios
+      .post('/cart/pay', { token, id, email })
+      .then((res) => {
+        const { status } = res;
+        console.log('res:', res);
+        console.log('status:', status);
+        if (status === 200) {
+          console.log('we will delete now');
+        } else {
+          setErrorHandler('Error something went wrong');
+          console.log('need to make warning message because status not right');
+          setTimeout(() => {
+            setErrorHandler(null)
+          }, 3000);
+        }
+      })
+      .catch((err) => {
+        setErrorHandler('Error something went wrong');
+        console.log(err);
+        setTimeout(() => {
+          setErrorHandler(null)
+        }, 3000);
+      });
+  };
   return (
     <RenderingStyles>
       <Wrapper>
@@ -211,8 +251,12 @@ const Shop = ({ shopItems,shopItemsDb,  pagesSetUp, shopCardCurrentItems, langua
                     </h4>
                   </MidleBag>
                   <RightBag>
-                    {loadingDb ? <ClipLoader size="1.3rem"/>  : <Button onClick={() => deleteItems(i)}>X</Button>}
-                    
+                    {loadingDb ? (
+                      <ClipLoader size='1.3rem' />
+                    ) : (
+                      <Button onClick={() => deleteItems(i)}>X</Button>
+                    )}
+
                     <h4>{item.length === 1 ? item[0].songprice : item[0].albumprice}€</h4>
                   </RightBag>
                 </ShopItem>
@@ -228,9 +272,14 @@ const Shop = ({ shopItems,shopItemsDb,  pagesSetUp, shopCardCurrentItems, langua
             </TotalPrice>
             {itemsInBag.length > 0 ? (
               <ButtonWrapper>
-                <ButtonSecureChekOut>{chekoutsecurity.toUpperCase()}</ButtonSecureChekOut>
+                <StripeCheckout stripeKey={process.env.REACT_APP_STRIPE} token={handleStripe}>
+                  <ButtonSecureChekOut>{chekoutsecurity.toUpperCase()}</ButtonSecureChekOut>
+                </StripeCheckout>
               </ButtonWrapper>
             ) : null}
+            {errorHandler && <Warning>{errorHandler}</Warning>}
+
+            <br />
           </RightWrapper>
         </ShopMainWrapper>
       </Wrapper>

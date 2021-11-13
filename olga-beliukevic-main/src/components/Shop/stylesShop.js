@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 import { IoTrashBin } from 'react-icons/io5';
 
 export const Wrapper = styled.section`
@@ -25,7 +26,7 @@ export const ButtonX = styled.button`
     background-color: ${(props) => props.theme.colors.filtras};
     color: ${(props) => props.theme.colors.yellow};
   }
-  
+
   @media (min-width: 1024px) {
     top: calc(6rem + 3.5vw);
     right: calc(1rem + 2.8vw);
@@ -33,7 +34,6 @@ export const ButtonX = styled.button`
   @media (min-width: 2560px) {
     right: calc(1rem + 2.2vw);
     top: calc(6rem + 2.5vw);
-
   }
 `;
 export const GapToMakeSomeSpace = styled.div`
@@ -138,7 +138,7 @@ export const MidleBag = styled.div`
   h4 {
     @media (min-width: 1440px) {
       /* background-color: red; */
-      font-size: calc(.7rem + 0.8vw);
+      font-size: calc(0.7rem + 0.8vw);
     }
     @media (min-width: 2560px) {
       /* background-color: red; */
@@ -205,7 +205,17 @@ export const ButtonWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 0 5rem 0;
+  span {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
 `;
+
+
+// FIXME: add chekout button +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 export const ButtonSecureChekOut = styled.button`
   color: ${(props) => props.theme.colors.white};
   position: absolute;
