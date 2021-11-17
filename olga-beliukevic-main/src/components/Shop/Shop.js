@@ -91,16 +91,15 @@ const Shop = ({
   }, [language]);
 
   let sum = 0;
-
   itemsInBag.forEach((item, i) => {
     const addPrice = (a) => {
       sum += a;
       return sum;
     };
     if (item.length > 1) {
-      return addPrice(parseInt(item[i].albumprice));
+      return addPrice(parseFloat(item[i].albumprice));
     } else {
-      return addPrice(parseInt(item[0].songprice));
+      return addPrice(parseFloat(item[0].songprice));
     }
   });
 

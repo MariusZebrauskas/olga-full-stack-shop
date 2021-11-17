@@ -81,6 +81,7 @@ const Login = ({ changeComponent, language, history }) => {
   });
   const login = (e) => {
     e.preventDefault();
+    setWarningMessage(null);
     setLoadingDb(true);
 
     axios
@@ -96,8 +97,9 @@ const Login = ({ changeComponent, language, history }) => {
         setLoggedIn(data);
       })
       .catch((err) => {
+        setLoadingDb(false);
         if (err) {
-          setWarningMessage('Invalid Email Or Password');
+          setWarningMessage(err.message);
           return;
         }
       });
