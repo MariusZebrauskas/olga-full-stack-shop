@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 export const H4 = styled.h3`
   margin: 0;
-  padding: 0.2rem 0.5rem;
-  font-size: 0.9rem;
-  letter-spacing: 0.135rem;
+  padding: ${props => props.language === "ru" ? "0.4rem 0.3rem" : "0.2rem 0.5rem"};
+  font-size: ${props => props.language === "ru" ? "0.8rem" : "0.9rem"};
+  letter-spacing: ${props => props.language === "ru" ? "0.1rem" : "0.135rem"};
 `;
 
 export const Button = styled.button`
@@ -47,7 +47,7 @@ const ButtonBuy = ({ language, children, albumOne, id, addToShopCartSingleSong }
 
   return (
     <Button onClick={() => addToShopCartSingleSong(albumOne)}>
-      {!albumOne.buy ? <H4>{children}</H4> : <H4>{itemSold}</H4>}
+      {!albumOne.buy ? <H4 language={language} >{children}</H4> : <H4>{itemSold}</H4>}
     </Button>
   );
 };

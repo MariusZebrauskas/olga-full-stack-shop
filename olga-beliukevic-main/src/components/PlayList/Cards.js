@@ -56,7 +56,7 @@ const Cards = ({ id, song, picture, video, language, addToShopCartSingleSong, al
         addToShopCartSingleSong={addToShopCartSingleSong}
       >
         {loadingDb ? <ClipLoader size={"1rem"}/> : buy}
-      </ButtonBuy>
+      </ButtonBuy >
       {videoIsOpen ? (
         <>
           <Close onClick={closeVideo}></Close>

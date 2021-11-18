@@ -64,18 +64,18 @@ function App() {
     axios
       .post('/cart/', { _id: id })
       .then((res) => {
-
         setShopItemsDb([...res.data.shopItemsDb]);
-        setLoadingDb(false)
+        setLoadingDb(false);
       })
       .catch((err) => {
+        setLoadingDb(false);
         console.log(`response from db ${err}`);
       });
   };
 
   useEffect(() => {
     if (loggedIn) {
-      setLoadingDb(true)
+      setLoadingDb(true);
       fechCartData();
     }
   }, [loggedIn]);
@@ -92,6 +92,8 @@ function App() {
         fechCartData();
       })
       .catch((err) => {
+        fechCartData();
+        setLoadingDb(false);
         console.log(err.message);
       });
   };
