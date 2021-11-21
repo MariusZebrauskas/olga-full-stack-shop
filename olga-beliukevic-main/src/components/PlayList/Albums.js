@@ -11,8 +11,7 @@ import backgroundImg from './images/background.jpg';
 
 import ButtonAlbum from '../../Shared/ButtonAlum';
 import AlbumList from './AlbumList';
-//FIXME:MAKE ALBUMS DYNAMIC AND ALBUM STYLESS
-//FIXME: MAKE A COMPONENT FOR ALBUM
+
 
 const Albums = ({
   currentCard,

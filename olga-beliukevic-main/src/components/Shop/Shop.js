@@ -59,35 +59,37 @@ const Shop = ({
   const [loggedIn] = useContext(CurrenPerson);
 
   useEffect(() => {
-    if (language === 'lt') {
-      setAlbum('Albumai');
-      setSongs('Dainos / Nr Albume');
-      setAlbumSongNumber('Dainų');
-      setPrice('Kaina');
-      setTotalPrice('Bendra kaina');
-      setBackToTheShop('Gryžti Į Parduotuvę');
-      setChekoutsecurity('Sumokėti Už Prekes');
-    }
-    if (language === 'eng') {
-      setAlbum('Albums');
-      setSongs('Song name / Index In Album');
-      setAlbumSongNumber('Songs');
+    return () => {
+      if (language === 'lt') {
+        setAlbum('Albumai');
+        setSongs('Dainos / Nr Albume');
+        setAlbumSongNumber('Dainų');
+        setPrice('Kaina');
+        setTotalPrice('Bendra kaina');
+        setBackToTheShop('Gryžti Į Parduotuvę');
+        setChekoutsecurity('Sumokėti Už Prekes');
+      }
+      if (language === 'eng') {
+        setAlbum('Albums');
+        setSongs('Song name / Index In Album');
+        setAlbumSongNumber('Songs');
 
-      setPrice('Price');
-      setTotalPrice('Total Price');
-      setBackToTheShop('Back To The Shop');
-      setChekoutsecurity('chekout securly');
-    }
-    if (language === 'ru') {
-      setAlbum('Альбомы');
-      setSongs('Песни / Nr B Aльбоме');
-      setAlbumSongNumber('Песни');
+        setPrice('Price');
+        setTotalPrice('Total Price');
+        setBackToTheShop('Back To The Shop');
+        setChekoutsecurity('chekout securly');
+      }
+      if (language === 'ru') {
+        setAlbum('Альбомы');
+        setSongs('Песни / Nr B Aльбоме');
+        setAlbumSongNumber('Песни');
 
-      setPrice('Цена');
-      setTotalPrice('Итоговая цена');
-      setBackToTheShop('Вернуться в магазин');
-      setChekoutsecurity('безопасность на кассе');
-    }
+        setPrice('Цена');
+        setTotalPrice('Итоговая цена');
+        setBackToTheShop('Вернуться в магазин');
+        setChekoutsecurity('безопасность на кассе');
+      }
+    };
   }, [language]);
 
   let sum = 0;
@@ -186,40 +188,86 @@ const Shop = ({
   // FIXME: send items to buyer
   // FIXME: make warning messages
   // FIXME: delete items for db
-
+  const [puchaseCompleate, setpuchaseCompleate] = useState(false);
   const handleStripe = async (token) => {
+    setLoadingDb(true);
     setErrorHandler(null);
     const id = loggedIn._id;
     const email = loggedIn.email;
     axios
       .post('/cart/pay', { token, id, email })
       .then((res) => {
-        const { status } = res;
-        console.log('res:', res);
-        console.log('status:', status);
-        if (status === 200) {
-          console.log('we will delete now');
-        } else {
-          setErrorHandler('Error something went wrong');
-          console.log('need to make warning message because status not right');
-          setTimeout(() => {
-            setErrorHandler(null)
-          }, 3000);
-        }
+        axios
+          .post('/cart/email', { res, id, email })
+          .then((res) => {
+            const { message } = res.data;
+            if (message === 'success') {
+              fechCartData();
+              setpuchaseCompleate(true);
+              setLoadingDb(false);
+            }
+          })
+          .catch((err) => console.log(err.message));
       })
       .catch((err) => {
         setErrorHandler('Error something went wrong');
         console.log(err);
         setTimeout(() => {
-          setErrorHandler(null)
+          setErrorHandler(null);
         }, 3000);
       });
   };
+
+  // function change states of sold item
+  const cleanUpBags = () => {
+    // shopItems
+    itemsInBag.forEach((item) => {
+      item.forEach((one) => {
+        one.buy = false;
+        one.holealbumsold = false;
+      });
+    });
+    shopItems.forEach((item) => {
+      item.forEach((one) => {
+        one.buy = false;
+        one.holealbumsold = false;
+      });
+    });
+    shopItemsDb.forEach((item) => {
+      item.forEach((one) => {
+        one.buy = false;
+        one.holealbumsold = false;
+      });
+    });
+  };
+
+  useEffect(() => {
+    let id = loggedIn._id;
+  if(puchaseCompleate){
+    axios
+    .post('/cart/', { _id: id })
+    .then((res) => {
+        cleanUpBags();
+        shopCardCurrentItems([...res.data.shopItemsDb]);
+        setItemsInBag([...res.data.shopItemsDb]);
+        setLoadingDb(false);
+        setpuchaseCompleate(false);
+      })
+      .catch((err) => {
+        setpuchaseCompleate(false);
+        setLoadingDb(false);
+        console.log(`response from db ${err}`);
+        setpuchaseCompleate(false);
+      });
+
+  }
+  }, [puchaseCompleate === true]);
+
   return (
     <RenderingStyles>
       <Wrapper>
         <GapToMakeSomeSpace />
-        <ButtonX onClick={() => history.push('/')}>{backToTheShop}</ButtonX>
+        <ButtonX onClick={() => loadingDb? null : history.push('/')}>{backToTheShop}</ButtonX>
         <ShopMainWrapper>
           <LeftWrapper>
             {/* kaire */}
@@ -269,7 +317,7 @@ const Shop = ({
               <h2>{totalPrice}:</h2>
               <h2>{sum} €</h2>
             </TotalPrice>
-            {itemsInBag.length > 0 ? (
+            {itemsInBag.length > 0 && !loadingDb ? (
               <ButtonWrapper>
                 <StripeCheckout stripeKey={process.env.REACT_APP_STRIPE} token={handleStripe}>
                   <ButtonSecureChekOut>{chekoutsecurity.toUpperCase()}</ButtonSecureChekOut>

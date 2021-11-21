@@ -23,7 +23,7 @@ import { menuLt, menuEng, menuRu } from './objects';
 
 ///reeal styling
 
-const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems,shopItemsDb, history }) => {
+const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems, shopItemsDb, history }) => {
   // loading logic
   const [loadingDb, setLoadingDb] = useContext(LoadingContext);
 
@@ -92,11 +92,11 @@ const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems,shopItemsD
   return (
     <MenuRapper>
       <Burger slideLeft={slideLeft} setOpenMenu={setOpenMenu} openMenu={openMenu} />
-      <Logo onClick={() => history.push('/')} desktop='desktop' />
+      <Logo onClick={() => (loggedIn && !loadingDb ? history.push('/') : null)} desktop='desktop' />
       {loggedIn && (
         <Shop onClick={() => history.push('/shop')}>
           <ShoppingCart />
-          <ShopItems>{loadingDb ? <ClipLoader size="1.3rem"/> : shopItems.length}</ShopItems>
+          <ShopItems>{loadingDb ? <ClipLoader size='1.3rem' /> : shopItems.length}</ShopItems>
         </Shop>
       )}
       <List loggedIn={loggedIn} slideMenu={slideMenu}>
@@ -106,10 +106,10 @@ const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems,shopItemsD
               <Home />
               <A href='#'>{home}</A>
             </Li>
-            <Li onClick={() => history.push('/contact')}>
+            <Li onClick={() => loggedIn && !loadingDb? history.push('/contact') : null}>
               <A href='#'>{contact}</A>
             </Li>
-            <Li onClick={() => history.push('/info')}>
+            <Li onClick={() => loggedIn && !loadingDb ? history.push('/info') : null}>
               <A href='#'>{information}</A>
             </Li>
 
@@ -136,7 +136,7 @@ const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems,shopItemsD
           openSubMenuButton={openSubMenuButton}
         />
 
-        <Logo onClick={() => history.push('/')} mobile='mobile' />
+        <Logo onClick={() => loggedIn && !loadingDb? history.push('/') : null} mobile='mobile' />
       </List>
     </MenuRapper>
   );

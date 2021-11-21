@@ -1,4 +1,5 @@
-require('dotenv').config()
+require('dotenv').config();
+const nodemailer = require('nodemailer');
 const router = require('express').Router();
 const ItemsDBSchema = require('../models/ItemsDB');
 const stripe = require('stripe')(process.env.STRIPE_SECRET);
@@ -50,7 +51,6 @@ router.post('/add', async (req, res) => {
 
 //delete items from
 router.post('/delete', async (req, res) => {
-
   const id = req.body._id;
   const deleteItemId = req.body.deleteId;
   try {
@@ -77,8 +77,6 @@ router.post('/pay', async (req, res) => {
   const personId = req.body.id;
   const { token } = req.body;
 
-
-
   //get total ammount
   try {
     const item = await ItemsDBSchema.findOne({ _id: personId });
@@ -100,34 +98,140 @@ router.post('/pay', async (req, res) => {
 
     //STRIPE CHARGE
     const priceInCents = sum * 100;
-    
-    return stripe.customers
-    .create({
-      email: email,
-      source: token.id,
-    })
-    .then((customer) => {
-      // have access to the customer object
-      return stripe.charges
-        .create({
-          customer: customer.id, // set the customer id
-          amount: priceInCents,
-          currency: 'eur',
-        })
 
-        .then((compleate) => {
-          res.status(200).json({ compleate });
-          // New invoice created on a new customer
-        })
-        .catch((err) => {
-          res.status(500).json({ err });
-          // Deal with an error
-        });
-    });
+    return stripe.customers
+      .create({
+        email: email,
+        source: token.id,
+      })
+      .then((customer) => {
+        // have access to the customer object
+        return stripe.charges
+          .create({
+            customer: customer.id, // set the customer id
+            amount: priceInCents,
+            currency: 'eur',
+          })
+
+          .then((compleate) => {
+            res.status(200).json({ compleate });
+            // New invoice created on a new customer
+          })
+          .catch((err) => {
+            res.status(500).json({ err });
+            // Deal with an error
+          });
+      });
 
     //STRIPE CHARGE
   } catch (err) {
     res.status(500).json(err.message || { message: 'you can only update your account' } || err);
+  }
+});
+
+router.post('/email', async (req, res) => {
+  const email2 = req.body.res.data.compleate.billing_details.name;
+  const { email } = req.body;
+  let emails = [email, email2];
+  const { id } = req.body;
+  const { status } = req.body.res;
+  try {
+    if (status === 200) {
+      const itemsFromDB = await ItemsDBSchema.findOne({ _id: id });
+      const allItems = itemsFromDB.shopItemsDb;
+      // find files ID
+
+      let itemsIds = [];
+      const itemFilter = allItems.forEach((item, i) => {
+        if (item.length > 1) {
+          item.forEach((single) => {
+            itemsIds.push(single.noteID);
+          });
+        } else {
+          itemsIds.push(item[0].noteID);
+        }
+      });
+
+      // FIXME::send files++++++++++++++++++++++++++++++++++++++++++++++++++++++
+      async function sendEmail() {
+        // FIXME:test account + env data
+        const testAccount = {
+          user: process.env.EMAIL_NAME,
+          pass: process.env.EMAIL_PASS,
+        };
+
+        const client = emails.toString(); //FIXME:client
+
+        const transporter = nodemailer.createTransport({
+          host: 'smtp.mail.yahoo.com',
+          port: 465,
+          auth: {
+            user: testAccount.user,
+            pass: testAccount.pass,
+          },
+          secure: true, // true for 465, false for other ports
+          tls: {
+            rejectUnauthorized: false,
+          },
+        });
+
+        // FIXME:: shop send all atimes to user logica
+        // items from db
+        // const itemsFromDB = [3]; //FIXME:item ids vaiable
+        //   download items
+        const attachments = [];
+        // class constructor
+        let Store = class {
+          constructor(name) {
+            this.filename = `${name}.pdf`;
+            this.path = `${__dirname}/files/${name}.pdf`;
+          }
+        };
+        // file maker
+        const fileBuilder = itemsIds.map((item) => {
+          let items = new Store(item);
+          return attachments.push({ filename: items.filename, path: items.path });
+        });
+
+        let info = await transporter.sendMail({
+          from: testAccount.user, // sender address
+          to: emails, // list of receivers
+          subject: '✔ Note purchase', // Subject line
+          html: `<div>
+              <h1>Thanks ${client}  for using our service,</h1>
+              <h4>do not respond to this email because it is automatic email</h4>
+          </div>`,
+          attachments,
+        });
+
+        console.log('Message sent: %s', info.messageId);
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+      }
+
+      sendEmail()
+        .catch(console.error)
+        .then(() => {
+          // FIXME:delte from db and
+          const deletingFromDBAllItems = async () => {
+            const deletingItems = await ItemsDBSchema.findByIdAndUpdate(
+              { _id: id },
+              { shopItemsDb: [] },
+              {
+                new: true,
+              }
+            );
+          };
+          deletingFromDBAllItems();
+          return res.json({ message: 'success' });
+
+          // FIXME:delte from db and
+        });
+    } else {
+      // console.log('need help');
+      res.json({ message: 'faill' });
+    }
+  } catch (err) {
+    console.log(err.message);
   }
 });
 

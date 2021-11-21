@@ -18,6 +18,7 @@ const ButtonForAlbums = styled.button`
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease 0s;
   font-weight: bold;
+  background-color: white;
   &:hover {
     background-color: #08282f;
     box-shadow: 0px 5px 10px #08282f;

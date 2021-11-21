@@ -54,10 +54,11 @@ function App() {
   };
   //Loading logic
   const [loading, setLoading] = useState(false);
-
+  
   //**************************************************** */
   //FIXME: fech shop items from data base on login
   const [shopItemsDb, setShopItemsDb] = useState([]);
+  const [shopItems, setShopItems] = useState([]);
 
   const fechCartData = async () => {
     let id = loggedIn._id;
@@ -98,7 +99,6 @@ function App() {
       });
   };
   // add to shop cart Album function
-  const [shopItems, setShopItems] = useState([]);
   const addToShopCartAlbum = (card) => {
     // loading logic
     if (loadingDb === true || card[0].holealbumsold === true) {
