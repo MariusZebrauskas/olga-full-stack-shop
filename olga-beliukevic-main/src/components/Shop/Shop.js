@@ -59,40 +59,36 @@ const Shop = ({
   const [loggedIn] = useContext(CurrenPerson);
 
   useEffect(() => {
-    return () => {
-      if (language === 'lt') {
-        setAlbum('Albumai');
-        setSongs('Dainos / Nr Albume');
-        setAlbumSongNumber('Dainų');
-        setPrice('Kaina');
-        setTotalPrice('Bendra kaina');
-        setBackToTheShop('Gryžti Į Parduotuvę');
-        setChekoutsecurity('Sumokėti Už Prekes');
-      }
-      if (language === 'eng') {
-        setAlbum('Albums');
-        setSongs('Song name / Index In Album');
-        setAlbumSongNumber('Songs');
-
-        setPrice('Price');
-        setTotalPrice('Total Price');
-        setBackToTheShop('Back To The Shop');
-        setChekoutsecurity('chekout securly');
-      }
-      if (language === 'ru') {
-        setAlbum('Альбомы');
-        setSongs('Песни / Nr B Aльбоме');
-        setAlbumSongNumber('Песни');
-
-        setPrice('Цена');
-        setTotalPrice('Итоговая цена');
-        setBackToTheShop('Вернуться в магазин');
-        setChekoutsecurity('безопасность на кассе');
-      }
-    };
+    if (language === 'lt') {
+      setAlbum('Albumai');
+      setSongs('Dainos / Nr Albume');
+      setAlbumSongNumber('Dainų');
+      setPrice('Kaina');
+      setTotalPrice('Bendra kaina su pvm');
+      setBackToTheShop('Gryžti Į Parduotuvę');
+      setChekoutsecurity('Sumokėti Už Prekes');
+    }
+    if (language === 'eng') {
+      setAlbum('Albums');
+      setSongs('Song name / Index In Album');
+      setAlbumSongNumber('Songs');
+      setPrice('Price');
+      setTotalPrice('Total Price with pvm');
+      setBackToTheShop('Back To The Shop');
+      setChekoutsecurity('chekout securly');
+    }
+    if (language === 'ru') {
+      setAlbum('Альбомы');
+      setSongs('Песни / Nr B Aльбоме');
+      setAlbumSongNumber('Песни');
+      setPrice('Цена');
+      setTotalPrice('общая цена с пвм');
+      setBackToTheShop('Вернуться в магазин');
+      setChekoutsecurity('безопасность на кассе');
+    }
   }, [language]);
 
-  let sum = 0;
+  let sum = 0.75;
   itemsInBag.forEach((item, i) => {
     const addPrice = (a) => {
       sum += a;
@@ -185,9 +181,6 @@ const Shop = ({
     }
   };
 
-  // FIXME: send items to buyer
-  // FIXME: make warning messages
-  // FIXME: delete items for db
   const [puchaseCompleate, setpuchaseCompleate] = useState(false);
   const handleStripe = async (token) => {
     setLoadingDb(true);
@@ -243,31 +236,30 @@ const Shop = ({
 
   useEffect(() => {
     let id = loggedIn._id;
-  if(puchaseCompleate){
-    axios
-    .post('/cart/', { _id: id })
-    .then((res) => {
-        cleanUpBags();
-        shopCardCurrentItems([...res.data.shopItemsDb]);
-        setItemsInBag([...res.data.shopItemsDb]);
-        setLoadingDb(false);
-        setpuchaseCompleate(false);
-      })
-      .catch((err) => {
-        setpuchaseCompleate(false);
-        setLoadingDb(false);
-        console.log(`response from db ${err}`);
-        setpuchaseCompleate(false);
-      });
-
-  }
-  }, [puchaseCompleate === true]);
+    if (puchaseCompleate) {
+      axios
+        .post('/cart/', { _id: id })
+        .then((res) => {
+          cleanUpBags();
+          shopCardCurrentItems([...res.data.shopItemsDb]);
+          setItemsInBag([...res.data.shopItemsDb]);
+          setLoadingDb(false);
+          setpuchaseCompleate(false);
+        })
+        .catch((err) => {
+          setpuchaseCompleate(false);
+          setLoadingDb(false);
+          console.log(`response from db ${err}`);
+          setpuchaseCompleate(false);
+        });
+    }
+  }, [puchaseCompleate]);
 
   return (
     <RenderingStyles>
       <Wrapper>
         <GapToMakeSomeSpace />
-        <ButtonX onClick={() => loadingDb? null : history.push('/')}>{backToTheShop}</ButtonX>
+        <ButtonX onClick={() => (loadingDb ? null : history.push('/'))}>{backToTheShop}</ButtonX>
         <ShopMainWrapper>
           <LeftWrapper>
             {/* kaire */}
@@ -315,7 +307,7 @@ const Shop = ({
             {/* desine */}
             <TotalPrice>
               <h2>{totalPrice}:</h2>
-              <h2>{sum} €</h2>
+              <h2>{sum === 0.75 ? 0 : sum} €</h2>
             </TotalPrice>
             {itemsInBag.length > 0 && !loadingDb ? (
               <ButtonWrapper>

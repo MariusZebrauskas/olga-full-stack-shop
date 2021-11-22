@@ -82,7 +82,7 @@ router.post('/pay', async (req, res) => {
     const item = await ItemsDBSchema.findOne({ _id: personId });
     const allItems = item.shopItemsDb;
 
-    let sum = 0;
+    let sum = 0.75;
 
     allItems.forEach((item, i) => {
       const addPrice = (a) => {

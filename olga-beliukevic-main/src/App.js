@@ -73,11 +73,13 @@ function App() {
         console.log(`response from db ${err}`);
       });
   };
-
+// FIXME make logged out person shop item to 0 items
   useEffect(() => {
     if (loggedIn) {
       setLoadingDb(true);
       fechCartData();
+    }else if(!loggedIn) {
+      setShopItems([])
     }
   }, [loggedIn]);
 
@@ -100,6 +102,9 @@ function App() {
   };
   // add to shop cart Album function
   const addToShopCartAlbum = (card) => {
+    if(!loggedIn){
+      return history.push('/login')
+    }
     // loading logic
     if (loadingDb === true || card[0].holealbumsold === true) {
       return;
@@ -131,6 +136,9 @@ function App() {
   let mouseClicked;
 
   const addToShopCartSingleSong = (song) => {
+    if(!loggedIn){
+      return history.push('/login')
+    }
     if (loadingDb === true || song.buy === true) {
       return;
     }
@@ -150,12 +158,14 @@ function App() {
     return setShopItems([...card]);
   };
 
-  useEffect(() => {
-    if (!loggedIn) {
-      history.push('/login');
-    }
-  });
 
+useEffect(() => {
+  const {pathname} = history.location;
+  if(pathname === '/shop' && !loggedIn || pathname === '/contact' && !loggedIn) {
+    history.push('/login')
+  }
+  
+})
   return (
     <BodyWrapper>
       <Menu
@@ -164,11 +174,12 @@ function App() {
         changeLanguageGlobal={changeLanguageGlobal}
         shopItems={shopItemsDb}
         history={history}
+        setShopItemsDb={setShopItemsDb}
+        setShopItems={setShopItems}
       />
 
       <Switch>
         {/* HOME */}
-        {loggedIn && (
           <Route exact path='/'>
             <Home
               language={language}
@@ -184,10 +195,9 @@ function App() {
               addToShopCartSingleSong={addToShopCartSingleSong}
             ></Home>
           </Route>
-        )}
 
         {/* INFO */}
-        {loggedIn && (
+    
           <Route exact path='/info'>
             <About
               setLoading={setLoading}
@@ -196,7 +206,7 @@ function App() {
               language={language}
             />
           </Route>
-        )}
+ 
 
         {/* CONTACT */}
         {loggedIn && (

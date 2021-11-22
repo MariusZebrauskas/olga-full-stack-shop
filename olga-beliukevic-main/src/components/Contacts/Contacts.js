@@ -132,6 +132,7 @@ const Button = styled.button`
   width: 80%;
   font-family: 'Poppins', sans-serif;
   font-size: ${(props) => props.theme.colors.fontForm};
+  background:white;
 
   margin: 0 0 0.7rem 0;
   padding: 1rem 0.75rem;

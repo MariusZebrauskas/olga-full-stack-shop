@@ -23,7 +23,16 @@ import { menuLt, menuEng, menuRu } from './objects';
 
 ///reeal styling
 
-const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems, shopItemsDb, history }) => {
+const Menu = ({
+  changeLanguageGlobal,
+  language,
+  pagesSetUp,
+  shopItems,
+  setShopItems,
+  setShopItemsDb,
+  shopItemsDb,
+  history,
+}) => {
   // loading logic
   const [loadingDb, setLoadingDb] = useContext(LoadingContext);
 
@@ -76,6 +85,9 @@ const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems, shopItems
 
   const [loggedIn, setLoggedIn] = useContext(CurrenPerson);
   const logoutUser = () => {
+    if (!loggedIn) {
+      return history.push('/login');
+    }
     const person = loggedIn.username.charAt(0).toUpperCase() + loggedIn.username.slice(1);
     let cheker = prompt(`
     ${toLogoutMessage} ${person}  
@@ -83,44 +95,70 @@ const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems, shopItems
     `);
     if (cheker) {
       setLoggedIn(null);
+      setShopItems([]);
+      setShopItemsDb([]);
       history.push('/login');
       return;
     } else {
       return;
     }
   };
+  const blocker = (params) => {
+    if (params === '/') {
+      if (loggedIn && !loadingDb) {
+        return history.push(`${params}`);
+      } else if (!loggedIn && !loadingDb) {
+        return history.push(`${params}`);
+      }
+    } else if (params === '/shop') {
+      if (loggedIn && !loadingDb) {
+        return history.push(`${params}`);
+      } else if (!loggedIn && !loadingDb) {
+        return history.push(`/login`);
+      }
+    } else if (params === '/contact') {
+      if (loggedIn && !loadingDb) {
+        return history.push(`${params}`);
+      } else if (!loggedIn && !loadingDb) {
+        return history.push(`/login`);
+      }
+    } else if (params === '/info') {
+      if (loggedIn && !loadingDb) {
+        return history.push(`${params}`);
+      } else if (!loggedIn && !loadingDb) {
+        return history.push(`${params}`);
+      }
+    }
+  };
+
   return (
     <MenuRapper>
       <Burger slideLeft={slideLeft} setOpenMenu={setOpenMenu} openMenu={openMenu} />
-      <Logo onClick={() => (loggedIn && !loadingDb ? history.push('/') : null)} desktop='desktop' />
-      {loggedIn && (
-        <Shop onClick={() => history.push('/shop')}>
-          <ShoppingCart />
-          <ShopItems>{loadingDb ? <ClipLoader size='1.3rem' /> : shopItems.length}</ShopItems>
-        </Shop>
-      )}
+      <Logo onClick={() => blocker(`/`)} desktop='desktop' />
+      <Shop onClick={() => blocker(`/shop`)}>
+        <ShoppingCart />
+        <ShopItems>{loadingDb ? <ClipLoader size='1.3rem' /> : shopItems.length}</ShopItems>
+      </Shop>
       <List loggedIn={loggedIn} slideMenu={slideMenu}>
-        {loggedIn && (
-          <>
-            <Li upperLine desktop='desktop' onClick={() => history.push('/')}>
-              <Home />
-              <A href='#'>{home}</A>
-            </Li>
-            <Li onClick={() => loggedIn && !loadingDb? history.push('/contact') : null}>
-              <A href='#'>{contact}</A>
-            </Li>
-            <Li onClick={() => loggedIn && !loadingDb ? history.push('/info') : null}>
-              <A href='#'>{information}</A>
-            </Li>
+        <>
+          <Li upperLine onClick={() => blocker(`/`)}>
+            <Home />
+            <A href='#'>{home}</A>
+          </Li>
+          <Li onClick={() => blocker('/contact')}>
+            <A href='#'>{contact}</A>
+          </Li>
+          <Li onClick={() => blocker('/info')}>
+            <A href='#'>{information}</A>
+          </Li>
 
-            <Li loggedIn={loggedIn} onClick={logoutUser}>
-              <User color={loggedIn} className='color' />
-              <A className='tablet color' color={loggedIn} href='#'>
-                {loggedIn ? logged : disconected}
-              </A>
-            </Li>
-          </>
-        )}
+          <Li loggedIn={loggedIn} onClick={logoutUser}>
+            <User color={loggedIn} className='color' />
+            <A className='tablet color' color={loggedIn} href='#'>
+              {loggedIn ? logged : disconected}
+            </A>
+          </Li>
+        </>
         <Li upperLine={loggedIn ? null : true} information onClick={openSubMenuButton}>
           <Globe />
           <A className='tablet' href='#'>
@@ -136,7 +174,7 @@ const Menu = ({ changeLanguageGlobal, language, pagesSetUp, shopItems, shopItems
           openSubMenuButton={openSubMenuButton}
         />
 
-        <Logo onClick={() => loggedIn && !loadingDb? history.push('/') : null} mobile='mobile' />
+        <Logo onClick={() => blocker(`/`)} mobile='mobile' />
       </List>
     </MenuRapper>
   );
