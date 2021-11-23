@@ -1,5 +1,6 @@
 require('dotenv').config();
 const nodemailer = require('nodemailer');
+const User = require('../models/User');
 const router = require('express').Router();
 const ItemsDBSchema = require('../models/ItemsDB');
 const stripe = require('stripe')(process.env.STRIPE_SECRET);
@@ -232,6 +233,74 @@ router.post('/email', async (req, res) => {
     }
   } catch (err) {
     console.log(err.message);
+  }
+});
+
+
+// ////////////////////////////////////////////////////////message
+
+
+router.post('/message', async (req, res) => {
+  const person = {
+    id: req.body._id,
+    email: req.body.email,
+    message: req.body.message
+  };
+
+  try{
+    const userRequest = await User.findOne({ _id: person.id});
+    if(userRequest.email === person.email){
+
+      async function sendEmail() {
+        const testAccount = {
+          user: process.env.EMAIL_NAME,
+          pass: process.env.EMAIL_PASS,
+        };
+
+        const sendTo = "zebrauskas.mar@gmail.com" //FIXME:OLGOS EMAILA
+
+        const transporter = nodemailer.createTransport({
+          host: 'smtp.mail.yahoo.com',
+          port: 465,
+          auth: {
+            user: testAccount.user,
+            pass: testAccount.pass,
+          },
+          secure: true, // true for 465, false for other ports
+          tls: {
+            rejectUnauthorized: false,
+          },
+        });
+
+
+        let info = await transporter.sendMail({
+          from: testAccount.user, // sender address
+          to: sendTo, // list of receivers
+          subject: '✔ Client Message', // Subject line
+          html: `<div>
+              
+              <h4>${person.message}</h4>
+          </div>`,
+        });
+
+        console.log('Message sent: %s', info.messageId);
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+      }
+
+      sendEmail()
+        .catch(console.error)
+        .then(()=> {
+          return res.status(200).json({message:`your message been sent`});
+        })
+      // FIXME:email
+
+
+    } else {
+      return res.status(500).json({ error:"something went wrong"})
+    }
+  } catch(err){
+    console.log(err);
+    return res.status(500).json({ error: err.message})
   }
 });
 

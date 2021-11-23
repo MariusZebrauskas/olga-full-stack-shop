@@ -4,7 +4,11 @@ import styled from 'styled-components';
 import backgroundImg from './3.jpg';
 import { RenderingStyles } from '../../Shared/renderingStyles';
 import { useHistory } from 'react-router';
-
+import axios from 'axios';
+import Success from '../../Shared/success/Success';
+import Warning from '../../Shared/warning/Warning';
+import { ClipLoader } from 'react-spinners';
+import { LoadingContext } from '../../context/LoadingContext';
 
 const Body = styled.section`
   width: 100%;
@@ -71,6 +75,26 @@ const Form = styled.form`
     z-index: -10;
   }
 `;
+const WarningAndSuccessWrapper = styled.section`
+width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 1.5rem 0 0 0;
+  @media (min-width: 540px) {
+    width: 60%;
+  }
+  @media (min-width: 768px) {
+    width: 50%;
+  }
+  @media (min-width: 1024px) {
+    width: 30%;
+  }
+  @media (min-width: 2560px) {
+    width: 20%;
+  }
+`;
 
 const ContactUsHeader = styled.h1`
   font-size: calc(1.5rem + 0.1vw);
@@ -132,7 +156,7 @@ const Button = styled.button`
   width: 80%;
   font-family: 'Poppins', sans-serif;
   font-size: ${(props) => props.theme.colors.fontForm};
-  background:white;
+  background: white;
 
   margin: 0 0 0.7rem 0;
   padding: 1rem 0.75rem;
@@ -148,13 +172,13 @@ const Button = styled.button`
 //focus on render and enter button logic
 const Contacts = ({ language }) => {
   const history = useHistory();
-  const nameFocus = useRef(null);
-  const emailFocus = useRef(null);
   const messageFocus = useRef(null);
-  const textAreaFocus = useRef(null);
   useEffect(() => {
     messageFocus.current.focus();
   }, []);
+  const [success, setSuccess] = useState(null);
+  const [fail, setFail] = useState(null);
+  const [loadingDb, setLoadingDb] = useContext(LoadingContext);
 
   //languages
   const [header, setHeader] = useState('Contact Us');
@@ -199,20 +223,48 @@ const Contacts = ({ language }) => {
     }
   }, [language]);
   const [loggedIn] = useContext(CurrenPerson);
-  const sendMessage = () => {
-    if (messageFocus) {
-      setTimeout(() => {
-        messageFocus.current.value = '';
-        history.push("/")
-      }, 300);
-    }
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setLoadingDb(true);
+    const id = loggedIn._id;
+    const email = loggedIn.email;
+    const newMessage = messageFocus.current.value;
+    axios
+      .post('/cart/message', { _id: id, email: email, newMessage: newMessage })
+      .then((response) => {
+        const { status } = response;
+        if (status === 200) {
+          setLoadingDb(false);
+          setSuccess('Message been sent');
+          messageFocus.current.value = '';
+          setTimeout(() => {
+            history.push('/');
+          }, 3000);
+        } else {
+          setLoadingDb(false);
+          setFail('error something went wrong');
+        }
+      })
+      .catch((error) => {
+        setLoadingDb(false);
+        setFail(error.message);
+        console.log(error.message);
+      });
   };
+  const cleanUp = () => {
+    setSuccess(null);
+    setFail(null);
+    setSuccess(null);
+  };
+  // FIXME: SEND _id, email, message to http://localhost:8800/api/cart/message api
+  // FIXME: make states to enable disable page
   return (
     <RenderingStyles>
       <Body>
         <ContactUsHeader>{header}</ContactUsHeader>
-        <Form target='_blank' action='https://formsubmit.co/zebrauskas.mar@gmail.com' method='POST'>
-          <input type='hidden' name='_autoresponse' value={replyMessage} />
+        <Form onSubmit={sendEmail}>
+          {/* <input type='hidden' name='_autoresponse' value={replyMessage} /> */}
           <NameAndEmail>
             <Name>
               <label htmlFor='name'>{nameLabel}:</label>
@@ -222,7 +274,11 @@ const Contacts = ({ language }) => {
                 placeholder={namePlaceHolder}
                 required
                 readOnly
-                value={loggedIn ? loggedIn.username.charAt(0).toUpperCase() + loggedIn.username.slice(1) : ''}
+                value={
+                  loggedIn
+                    ? loggedIn.username.charAt(0).toUpperCase() + loggedIn.username.slice(1)
+                    : ''
+                }
               />
             </Name>
             <Email>
@@ -240,6 +296,7 @@ const Contacts = ({ language }) => {
 
           <MessageWrapper>
             <TextArea
+              onClick={cleanUp}
               placeholder={textAreaPlaceHolder}
               name='message'
               rows='10'
@@ -248,10 +305,12 @@ const Contacts = ({ language }) => {
             ></TextArea>
           </MessageWrapper>
 
-          <Button onClick={sendMessage} type='submit'>
-            {buttonText}
-          </Button>
+          <Button type='submit'>{loadingDb ? <ClipLoader size='1.3rem' /> : buttonText}</Button>
         </Form>
+        <WarningAndSuccessWrapper>
+          {fail ? <Warning>{fail}</Warning> : null}
+          {success ? <Success>{success}</Success> : null}
+        </WarningAndSuccessWrapper>
       </Body>
     </RenderingStyles>
   );
