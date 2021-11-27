@@ -15,6 +15,9 @@ const Home = ({
   theCirkusHasArivedLt,
   theCirkusHasArivedRu,
   theCirkusHasArivedEng,
+  muzikinePasakaLt,
+  muzikinePasakaRu,
+  muzikinePasakaEng,
 }) => {
   return (
     <RenderingStyles>
@@ -29,6 +32,9 @@ const Home = ({
         valsaiLt={valsaiLt}
         valsaiEng={valsaiEng}
         valsaiRu={valsaiRu}
+        muzikinePasakaLt={muzikinePasakaLt}
+        muzikinePasakaRu={muzikinePasakaRu}
+        muzikinePasakaEng={muzikinePasakaEng}
         addToShopCartAlbum={addToShopCartAlbum}
         addToShopCartSingleSong={addToShopCartSingleSong}
       ></Playlist>

@@ -8,14 +8,15 @@ const Welcome = ({ language }) => {
     const chekScreenSize = () => {
       let cheker = window.innerWidth;
       if (cheker >= 768) {
-        setScreenSizeSmall(false);
-        return screenSizeSmall;
+        return setScreenSizeSmall(false);
+         
       }
       if (cheker <= 768) {
-        setScreenSizeSmall(true);
-        return screenSizeSmall;
+        return setScreenSizeSmall(true);
+         
       }
     };
+    chekScreenSize();
     window.addEventListener('resize', chekScreenSize);
     return () => window.removeEventListener('resize', chekScreenSize);
   }, [screenSizeSmall]);

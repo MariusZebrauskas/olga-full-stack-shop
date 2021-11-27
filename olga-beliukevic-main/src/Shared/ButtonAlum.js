@@ -1,11 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-// import { valsaiLt, valsaiRu, valsaiEng } from '../components/PlayList/obj-valsai';
-// import {
-//   theCirkusHasArivedLt,
-//   theCirkusHasArivedEng,
-//   theCirkusHasArivedRu,
-// } from '../components/PlayList/obj-cirkasAtvaziavo';
 
 const ButtonForAlbums = styled.button`
   margin: 0rem 0.5rem 1rem 0;
@@ -18,14 +12,15 @@ const ButtonForAlbums = styled.button`
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease 0s;
   font-weight: bold;
-  background-color: white;
+  background-color: ${(props) => (props.click ? 'cyan' : null)};
   &:hover {
-    background-color: #08282f;
-    box-shadow: 0px 5px 10px #08282f;
-    color: #fff;
+    background-color: ${(props) => (props.click ? 'cyan' : '#08282f')};
+    box-shadow:  ${(props) => (props.click ? '0px 1px 4px cyan' : '0px 5px 10px #08282f')};
+    color: ${(props) => (props.click ? '#08282f' : '#fff')};
+    cursor: pointer;
   }
   @media (min-width: 768px) {
-    font-size: calc(.85rem + .1vw);
+    font-size: calc(0.85rem + 0.1vw);
   }
 `;
 // let albumScreen;
@@ -40,6 +35,9 @@ const ButtonAlum = ({
   theCirkusHasArivedLt,
   theCirkusHasArivedEng,
   theCirkusHasArivedRu,
+  muzikinePasakaLt,
+  muzikinePasakaRu,
+  muzikinePasakaEng,
 }) => {
   const albumOnShowingOnScreen = (props) => {
     //this logic turn on album on screen
@@ -56,7 +54,13 @@ const ButtonAlum = ({
     }
     //muzikine pasaka
     if (props === 'MUZIKINĖ PASAKA') {
-      console.log('working MUZIKINĖ PASAKA ButtonAlbumJs compnent go to shared  button album');
+      changeAlbum(muzikinePasakaLt);
+    }
+    if (props === 'MUSIC FAIRY STORIES') {
+      changeAlbum(muzikinePasakaEng);
+    }
+    if (props === 'МУЗЫКАЛЬНЫЕ СКАЗКИ') {
+      changeAlbum(muzikinePasakaRu);
     }
 
     //valsai
@@ -70,9 +74,28 @@ const ButtonAlum = ({
       changeAlbum(valsaiRu);
     }
   };
+
+  const [click, togler] = useState(false);
+  const handler = () => {
+    togler(() => !click);
+  };
+  const leave = () => {
+    if (click) {
+      return togler(false);
+    }
+  };
+
   return (
     <>
-      <ButtonForAlbums onClick={() => albumOnShowingOnScreen(album)}>{children}</ButtonForAlbums>
+      <ButtonForAlbums
+        onMouseLeave={leave}
+        click={click}
+        onMouseDown={handler}
+        onMouseUp={handler}
+        onClick={() => albumOnShowingOnScreen(album)}
+      >
+        {children}
+      </ButtonForAlbums>
     </>
   );
 };

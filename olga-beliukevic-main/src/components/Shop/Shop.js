@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { ClipLoader } from 'react-spinners';
 import { LoadingContext } from '../../context/LoadingContext';
 import StripeCheckout from 'react-stripe-checkout';
+import PurchaseDetails from './PurchaseDetails';
 
 import {
   Wrapper,
@@ -180,7 +181,7 @@ const Shop = ({
       return deleteFromDb(id);
     }
   };
-
+  const [purchaseDetales, setPurchaseDetales] = useState(null);
   const [puchaseCompleate, setpuchaseCompleate] = useState(false);
   const handleStripe = async (token) => {
     setLoadingDb(true);
@@ -193,6 +194,27 @@ const Shop = ({
         axios
           .post('/cart/email', { res, id, email })
           .then((res) => {
+            // console.log('res:', res.config.data);
+            const recepyData = async () => {
+              try {
+                const dataFromStripe = await JSON.parse(res.config.data);
+                if (dataFromStripe) {
+                  const { email } = dataFromStripe;
+                  const { id, amount, currency } = dataFromStripe.res.data.compleate;
+                  const recepy = { email, id, amount, currency };
+                  setPurchaseDetales(recepy);
+                }
+              } catch (err) {
+                console.log(err);
+              }
+            };
+            recepyData();
+            // FIXME: PULL DATA ON SCREEN AFTER SUCCESS PAYMENT
+            // FIXME: PULL DATA ON SCREEN AFTER SUCCESS PAYMENT
+            // FIXME: PULL DATA ON SCREEN AFTER SUCCESS PAYMENT
+            // FIXME: PULL DATA ON SCREEN AFTER SUCCESS PAYMENT
+            // let b = res.config.data.text();
+            // console.log(b)
             const { message } = res.data;
             if (message === 'success') {
               fechCartData();
@@ -260,67 +282,73 @@ const Shop = ({
       <Wrapper>
         <GapToMakeSomeSpace />
         <ButtonX onClick={() => (loadingDb ? null : history.push('/'))}>{backToTheShop}</ButtonX>
-        <ShopMainWrapper>
-          <LeftWrapper>
-            {/* kaire */}
-            {itemsInBag.length > 0 ? (
-              <InfoPanel>
-                <Item>
-                  <H5>{album}</H5>
-                </Item>
-                <Song>
-                  <H5 songs>{songs}</H5>
-                </Song>
-                <Price>
-                  <H5>{price}</H5>
-                </Price>
-              </InfoPanel>
-            ) : null}
-            <ItemsWrapper>
-              {/* items */}
-              {itemsInBag.map((item, i) => (
-                <ShopItem key={i}>
-                  <LeftBag>
-                    <Img src={itemsInBag[i][0].picture} alt='img' />
-                  </LeftBag>
-                  <MidleBag>
-                    <h4>
-                      {item.length === 1 ? item[0].song : `${item.length} ${albumSongNumber}`}{' '}
-                      {item.length === 1 && <>({item[0].id})</>}
-                    </h4>
-                  </MidleBag>
-                  <RightBag>
-                    {loadingDb ? (
-                      <ClipLoader size='1.3rem' />
-                    ) : (
-                      <Button onClick={() => deleteItems(i)}>X</Button>
-                    )}
+        {purchaseDetales && itemsInBag.length === 0 ? (
+          <PurchaseDetails language={language} purchaseDetales={purchaseDetales} />
+        ) : (
+          <ShopMainWrapper>
+            <LeftWrapper>
+              {/* kaire */}
+              {itemsInBag.length > 0 ? (
+                <InfoPanel>
+                  <Item>
+                    <H5>{album}</H5>
+                  </Item>
+                  <Song>
+                    <H5 songs>{songs}</H5>
+                  </Song>
+                  <Price>
+                    <H5>{price}</H5>
+                  </Price>
+                </InfoPanel>
+              ) : null}
+              <ItemsWrapper>
+                {/* items */}
+                {itemsInBag.map((item, i) => (
+                  <ShopItem key={i}>
+                    <LeftBag>
+                      <Img src={itemsInBag[i][0].picture} alt='img' />
+                    </LeftBag>
+                    <MidleBag>
+                      <h4>
+                        {item.length === 1 ? item[0].song : `${item.length} ${albumSongNumber}`}{' '}
+                        {item.length === 1 && <>({item[0].id})</>}
+                      </h4>
+                    </MidleBag>
+                    <RightBag>
+                      {loadingDb ? (
+                        <ClipLoader size='1.3rem' />
+                      ) : (
+                        <Button onClick={() => deleteItems(i)}>X</Button>
+                      )}
 
-                    <h4>{item.length === 1 ? item[0].songprice : item[0].albumprice}€</h4>
-                  </RightBag>
-                </ShopItem>
-              ))}
-            </ItemsWrapper>
-          </LeftWrapper>
+                      <h4>{item.length === 1 ? item[0].songprice : item[0].albumprice}€</h4>
+                    </RightBag>
+                  </ShopItem>
+                ))}
+              </ItemsWrapper>
+            </LeftWrapper>
 
-          <RightWrapper>
-            {/* desine */}
-            <TotalPrice>
-              <h2>{totalPrice}:</h2>
-              <h2>{sum === 0.75 ? 0 : sum} €</h2>
-            </TotalPrice>
-            {itemsInBag.length > 0 && !loadingDb ? (
-              <ButtonWrapper>
-                <StripeCheckout stripeKey={process.env.REACT_APP_STRIPE} token={handleStripe}>
-                  <ButtonSecureChekOut>{chekoutsecurity.toUpperCase()}</ButtonSecureChekOut>
-                </StripeCheckout>
-              </ButtonWrapper>
-            ) : null}
-            {errorHandler && <Warning>{errorHandler}</Warning>}
+            <RightWrapper>
+              {/* desine */}
+              {purchaseDetales ? null : (
+                <TotalPrice>
+                  <h2>{totalPrice}:</h2>
+                  <h2>{sum === 0.75 ? 0 : sum} €</h2>
+                </TotalPrice>
+              )}
+              {itemsInBag.length > 0 && !loadingDb ? (
+                <ButtonWrapper>
+                  <StripeCheckout stripeKey={process.env.REACT_APP_STRIPE} token={handleStripe}>
+                    <ButtonSecureChekOut>{chekoutsecurity.toUpperCase()}</ButtonSecureChekOut>
+                  </StripeCheckout>
+                </ButtonWrapper>
+              ) : null}
+              {errorHandler && <Warning>{errorHandler}</Warning>}
 
-            <br />
-          </RightWrapper>
-        </ShopMainWrapper>
+              <br />
+            </RightWrapper>
+          </ShopMainWrapper>
+        )}
       </Wrapper>
     </RenderingStyles>
   );

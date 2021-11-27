@@ -69,7 +69,6 @@ import video22 from '../../Albumbs/valsai-baleto-pamokos/Valsas Nr.22/22.mp4';
 //card23
 import video23 from '../../Albumbs/valsai-baleto-pamokos/Valsas Nr.23/23.mp4';
 
-//---------------------------------------------------------------------------------------
 
 //card24
 import video24 from '../../Albumbs/valsai-baleto-pamokos/Valsas Nr.24/24.mp4';
@@ -122,6 +121,7 @@ import video38 from '../../Albumbs/valsai-baleto-pamokos/Valsas Nr.38/38.mp4';
 import testPictureRu from '../../Albumbs/valsai-baleto-pamokos/Valsas Nr.1/A4 virselis - rišimui spirale RU 2021 03 17_1 - derinimui (1).jpg';
 import testPictureLt from '../../Albumbs/valsai-baleto-pamokos/A4+3mm virselis - rišimui spirale LT_1.jpg';
 import testPictureEng from '../../Albumbs/valsai-baleto-pamokos/A4+3mm virselis - rišimui spirale EN - x-WEB_Page_1.jpg';
+
 export const valsaiLt = [
   {
     id: 1,

@@ -25,6 +25,11 @@ import {
 } from './components/PlayList/obj-cirkasAtvaziavo';
 
 import { valsaiLt, valsaiEng, valsaiRu } from './components/PlayList/obj-valsai';
+import {
+  muzikinePasakaLt,
+  muzikinePasakaEng,
+  muzikinePasakaRu,
+} from './components/PlayList/obj-musikinePasaka';
 import Login from './components/LogIn/Login';
 //FIXME: add 3rd album
 
@@ -54,7 +59,7 @@ function App() {
   };
   //Loading logic
   const [loading, setLoading] = useState(false);
-  
+
   //**************************************************** */
   //FIXME: fech shop items from data base on login
   const [shopItemsDb, setShopItemsDb] = useState([]);
@@ -73,13 +78,13 @@ function App() {
         console.log(`response from db ${err}`);
       });
   };
-// FIXME make logged out person shop item to 0 items
+  // FIXME make logged out person shop item to 0 items
   useEffect(() => {
     if (loggedIn) {
       setLoadingDb(true);
       fechCartData();
-    }else if(!loggedIn) {
-      setShopItems([])
+    } else if (!loggedIn) {
+      setShopItems([]);
     }
   }, [loggedIn]);
 
@@ -102,8 +107,8 @@ function App() {
   };
   // add to shop cart Album function
   const addToShopCartAlbum = (card) => {
-    if(!loggedIn){
-      return history.push('/login')
+    if (!loggedIn) {
+      return history.push('/login');
     }
     // loading logic
     if (loadingDb === true || card[0].holealbumsold === true) {
@@ -136,8 +141,8 @@ function App() {
   let mouseClicked;
 
   const addToShopCartSingleSong = (song) => {
-    if(!loggedIn){
-      return history.push('/login')
+    if (!loggedIn) {
+      return history.push('/login');
     }
     if (loadingDb === true || song.buy === true) {
       return;
@@ -158,14 +163,12 @@ function App() {
     return setShopItems([...card]);
   };
 
-
-useEffect(() => {
-  const {pathname} = history.location;
-  if(pathname === '/shop' && !loggedIn || pathname === '/contact' && !loggedIn) {
-    history.push('/login')
-  }
-  
-})
+  useEffect(() => {
+    const { pathname } = history.location;
+    if ((pathname === '/shop' && !loggedIn) || (pathname === '/contact' && !loggedIn)) {
+      history.push('/login');
+    }
+  });
   return (
     <BodyWrapper>
       <Menu
@@ -180,33 +183,30 @@ useEffect(() => {
 
       <Switch>
         {/* HOME */}
-          <Route exact path='/'>
-            <Home
-              language={language}
-              insidePlaylist={insidePlaylist}
-              mouseClicked={mouseClicked}
-              theCirkusHasArivedLt={theCirkusHasArivedLt}
-              theCirkusHasArivedRu={theCirkusHasArivedRu}
-              theCirkusHasArivedEng={theCirkusHasArivedEng}
-              valsaiLt={valsaiLt}
-              valsaiEng={valsaiEng}
-              valsaiRu={valsaiRu}
-              addToShopCartAlbum={addToShopCartAlbum}
-              addToShopCartSingleSong={addToShopCartSingleSong}
-            ></Home>
-          </Route>
+        <Route exact path='/'>
+          <Home
+            language={language}
+            insidePlaylist={insidePlaylist}
+            mouseClicked={mouseClicked}
+            theCirkusHasArivedLt={theCirkusHasArivedLt}
+            theCirkusHasArivedRu={theCirkusHasArivedRu}
+            theCirkusHasArivedEng={theCirkusHasArivedEng}
+            valsaiLt={valsaiLt}
+            valsaiEng={valsaiEng}
+            valsaiRu={valsaiRu}
+            muzikinePasakaLt={muzikinePasakaLt}
+            muzikinePasakaRu={muzikinePasakaRu}
+            muzikinePasakaEng={muzikinePasakaEng}
+            addToShopCartAlbum={addToShopCartAlbum}
+            addToShopCartSingleSong={addToShopCartSingleSong}
+          ></Home>
+        </Route>
 
         {/* INFO */}
-    
-          <Route exact path='/info'>
-            <About
-              setLoading={setLoading}
-              history={history}
-              loading={loading}
-              language={language}
-            />
-          </Route>
- 
+
+        <Route exact path='/info'>
+          <About setLoading={setLoading} history={history} loading={loading} language={language} />
+        </Route>
 
         {/* CONTACT */}
         {loggedIn && (

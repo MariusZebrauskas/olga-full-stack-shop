@@ -226,6 +226,11 @@ const Contacts = ({ language }) => {
 
   const sendEmail = (e) => {
     e.preventDefault();
+    setFail(null);
+    setSuccess(null);
+    if(loadingDb){
+      return;
+    }
     setLoadingDb(true);
     const id = loggedIn._id;
     const email = loggedIn.email;
@@ -240,7 +245,7 @@ const Contacts = ({ language }) => {
           messageFocus.current.value = '';
           setTimeout(() => {
             history.push('/');
-          }, 3000);
+          }, 4000);
         } else {
           setLoadingDb(false);
           setFail('error something went wrong');
@@ -253,12 +258,9 @@ const Contacts = ({ language }) => {
       });
   };
   const cleanUp = () => {
-    setSuccess(null);
     setFail(null);
     setSuccess(null);
   };
-  // FIXME: SEND _id, email, message to http://localhost:8800/api/cart/message api
-  // FIXME: make states to enable disable page
   return (
     <RenderingStyles>
       <Body>

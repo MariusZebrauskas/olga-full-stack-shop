@@ -12,7 +12,6 @@ import backgroundImg from './images/background.jpg';
 import ButtonAlbum from '../../Shared/ButtonAlum';
 import AlbumList from './AlbumList';
 
-
 const Albums = ({
   currentCard,
   language,
@@ -24,6 +23,9 @@ const Albums = ({
   theCirkusHasArivedLt,
   theCirkusHasArivedEng,
   theCirkusHasArivedRu,
+  muzikinePasakaLt,
+  muzikinePasakaRu,
+  muzikinePasakaEng,
 }) => {
   const [albumHeader, setAlbumHeader] = useState('ALBUMAI');
   const [cirkasAtvaziavo, setCirkasAtvaziavo] = useState('CIRKAS ATVAŽIAVO');
@@ -65,7 +67,13 @@ const Albums = ({
           >
             {cirkasAtvaziavo.toUpperCase()}
           </ButtonAlbum>
-          <ButtonAlbum changeAlbum={changeAlbum} album={muzikinePasaka.toUpperCase()}>
+          <ButtonAlbum
+            muzikinePasakaLt={muzikinePasakaLt}
+            muzikinePasakaRu={muzikinePasakaRu}
+            muzikinePasakaEng={muzikinePasakaEng}
+            changeAlbum={changeAlbum}
+            album={muzikinePasaka.toUpperCase()}
+          >
             {muzikinePasaka.toUpperCase()}
           </ButtonAlbum>
           <ButtonAlbum

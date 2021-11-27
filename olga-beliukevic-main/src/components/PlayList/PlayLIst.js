@@ -16,6 +16,9 @@ const PlayLIst = ({
   addToShopCartSingleSong,
   mouseClicked,
   insidePlaylist,
+  muzikinePasakaLt,
+  muzikinePasakaRu,
+  muzikinePasakaEng,
 }) => {
   //playlist media query logic
   //remove playlist margin and set it to 0 on small screen devices
@@ -183,6 +186,9 @@ const PlayLIst = ({
         theCirkusHasArivedLt={theCirkusHasArivedLt}
         theCirkusHasArivedRu={theCirkusHasArivedRu}
         theCirkusHasArivedEng={theCirkusHasArivedEng}
+        muzikinePasakaLt={muzikinePasakaLt}
+        muzikinePasakaRu={muzikinePasakaRu}
+        muzikinePasakaEng={muzikinePasakaEng}
       ></Albums>
       <Header currentCard={currentCard} language={language}></Header>
       <MainWrapper>
