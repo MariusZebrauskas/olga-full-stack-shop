@@ -9,6 +9,7 @@ import Success from '../../Shared/success/Success';
 import Warning from '../../Shared/warning/Warning';
 import { ClipLoader } from 'react-spinners';
 import { LoadingContext } from '../../context/LoadingContext';
+import { motion } from 'framer-motion';
 
 const Body = styled.section`
   width: 100%;
@@ -24,7 +25,7 @@ const Body = styled.section`
   font-family: 'Poppins', sans-serif;
 `;
 
-const Form = styled.form`
+const Form = styled(motion.form)`
   background-color: #8276766e;
   width: 80%;
   display: flex;
@@ -76,7 +77,7 @@ const Form = styled.form`
   }
 `;
 const WarningAndSuccessWrapper = styled.section`
-width: 80%;
+  width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -96,7 +97,7 @@ width: 80%;
   }
 `;
 
-const ContactUsHeader = styled.h1`
+const ContactUsHeader = styled(motion.h1)`
   font-size: calc(1.5rem + 0.1vw);
   font-weight: 600;
   /* color: #dcdbd9; */
@@ -167,7 +168,10 @@ const Button = styled.button`
     color: #009688;
   }
 `;
-
+const H4 = styled.h4`
+  margin: 0;
+  padding: 0;
+`;
 // Logic ************************************************************************************************
 //focus on render and enter button logic
 const Contacts = ({ language }) => {
@@ -228,7 +232,7 @@ const Contacts = ({ language }) => {
     e.preventDefault();
     setFail(null);
     setSuccess(null);
-    if(loadingDb){
+    if (loadingDb) {
       return;
     }
     setLoadingDb(true);
@@ -261,11 +265,37 @@ const Contacts = ({ language }) => {
     setFail(null);
     setSuccess(null);
   };
+  const variantsForm = {
+    hidden: {
+      opacity: 0,
+      y: '3rem',
+    },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: { type: 'spring', stiffness: 300, damping: 10, delay: 0.3 },
+    },
+  };
+  const variantsHeader = {
+    hidden: {
+      opacity: 0,
+      scale: 1.5,
+      y: '-10rem',
+    },
+    animate: {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      transition: { type: 'spring', stiffness: 300, damping: 18, delay: 1 },
+    },
+  };
   return (
     <RenderingStyles>
       <Body>
-        <ContactUsHeader>{header}</ContactUsHeader>
-        <Form onSubmit={sendEmail}>
+        <ContactUsHeader variants={variantsHeader} initial='hidden' animate='animate'>
+          {header}
+        </ContactUsHeader>
+        <Form onSubmit={sendEmail} variants={variantsForm} initial='hidden' animate='animate'>
           {/* <input type='hidden' name='_autoresponse' value={replyMessage} /> */}
           <NameAndEmail>
             <Name>
@@ -307,7 +337,9 @@ const Contacts = ({ language }) => {
             ></TextArea>
           </MessageWrapper>
 
-          <Button type='submit'>{loadingDb ? <ClipLoader size='1.3rem' /> : buttonText}</Button>
+          <Button type='submit'>
+            {loadingDb ? <ClipLoader size='1.3rem' /> : <H4>{buttonText}</H4>}
+          </Button>
         </Form>
         <WarningAndSuccessWrapper>
           {fail ? <Warning>{fail}</Warning> : null}

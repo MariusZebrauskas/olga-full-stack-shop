@@ -1,6 +1,7 @@
 import React from 'react';
 import { Wrapper, H1 } from './styles';
 
+
 const Header = ({ h1, h12 }) => {
   return (
     <Wrapper>

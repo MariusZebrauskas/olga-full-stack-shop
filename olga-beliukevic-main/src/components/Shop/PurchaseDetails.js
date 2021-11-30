@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Body, Table, Box, H1, H2, FlexContainer } from './styles';
 
 const PurchaseDetails = ({ purchaseDetales, language }) => {
@@ -13,13 +13,27 @@ const PurchaseDetails = ({ purchaseDetales, language }) => {
     With In One Day`,
   });
   let today = new Date();
-  let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+  const variantsBill = {
+    hidden: {
+      opacity: 0,
+      scale: 1.5,
+     
+    },
+    animate: {
+    
+      opacity: 1,
+      scale: 1,
+      transition: { type: 'spring', stiffness: 300, damping: 15, delay: 0.5 },
+    },
+  }
   return (
-    <Body>
+    <Body >
       <FlexContainer>
         <H1>{staticDetaisls.h1}</H1>
       </FlexContainer>
-      <Table>
+      <Table variants={variantsBill} initial='hidden' animate='animate'>
         <Box first>
           <h4>{staticDetaisls.email}:</h4>
           <h4>{purchaseDetales.email}</h4>

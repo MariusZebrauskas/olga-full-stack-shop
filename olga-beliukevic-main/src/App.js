@@ -37,7 +37,8 @@ const BodyWrapper = styled.section`
   width: 100%;
   overflow: hidden;
 `;
-
+// FIXME:add linear gradient to white space then
+// FIXME: add animation when wisible 
 function App() {
   // loading logic
   const [loadingDb, setLoadingDb] = useContext(LoadingContext);
@@ -162,10 +163,15 @@ function App() {
   const shopCardCurrentItems = (card) => {
     return setShopItems([...card]);
   };
-
+ // menu slider
+ const [slideMenu, setSlideMenu] = useState(false);
+ //X animation in burger
+ const [openMenu, setOpenMenu] = useState(false);
   useEffect(() => {
     const { pathname } = history.location;
     if ((pathname === '/shop' && !loggedIn) || (pathname === '/contact' && !loggedIn)) {
+      setOpenMenu(false);
+      setSlideMenu(false);
       history.push('/login');
     }
   });
@@ -179,6 +185,10 @@ function App() {
         history={history}
         setShopItemsDb={setShopItemsDb}
         setShopItems={setShopItems}
+        slideMenu={slideMenu}
+        setSlideMenu={setSlideMenu}
+        openMenu={openMenu}
+        setOpenMenu={setOpenMenu}
       />
 
       <Switch>

@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
+
 
 export const Body = styled.section`
   margin: 2rem 0rem;
@@ -8,7 +10,7 @@ export const Body = styled.section`
   align-items: center;
   flex-direction: column;
 `;
-export const Table = styled.div`
+export const Table = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;

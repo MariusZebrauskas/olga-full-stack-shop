@@ -12,7 +12,7 @@ const ButtonForAlbums = styled.button`
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.2s ease 0s;
   font-weight: bold;
-  background-color: ${(props) => (props.click ? 'cyan' : null)};
+  background-color: ${(props) => (props.click ? 'cyan' : "#fff")};
   &:hover {
     background-color: ${(props) => (props.click ? 'cyan' : '#08282f')};
     box-shadow:  ${(props) => (props.click ? '0px 1px 4px cyan' : '0px 5px 10px #08282f')};

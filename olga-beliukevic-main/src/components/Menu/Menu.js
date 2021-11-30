@@ -32,6 +32,10 @@ const Menu = ({
   setShopItemsDb,
   shopItemsDb,
   history,
+  slideMenu,
+  setSlideMenu,
+  openMenu,
+  setOpenMenu,
 }) => {
   // loading logic
   const [loadingDb, setLoadingDb] = useContext(LoadingContext);
@@ -45,10 +49,6 @@ const Menu = ({
     if (openSubMenu === false) return;
     setOpenSubMenu(false);
   };
-  // menu slider
-  const [slideMenu, setSlideMenu] = useState(false);
-  //X animation in burger
-  const [openMenu, setOpenMenu] = useState(false);
 
   const slideLeft = () => {
     setSlideMenu(!slideMenu);
@@ -86,6 +86,8 @@ const Menu = ({
   const [loggedIn, setLoggedIn] = useContext(CurrenPerson);
   const logoutUser = () => {
     if (!loggedIn) {
+      setOpenMenu(false);
+      setSlideMenu(false);
       return history.push('/login');
     }
     const person = loggedIn.username.charAt(0).toUpperCase() + loggedIn.username.slice(1);
@@ -106,26 +108,42 @@ const Menu = ({
   const blocker = (params) => {
     if (params === '/') {
       if (loggedIn && !loadingDb) {
+        setOpenMenu(false);
+        setSlideMenu(false);
         return history.push(`${params}`);
       } else if (!loggedIn && !loadingDb) {
+        setOpenMenu(false);
+        setSlideMenu(false);
         return history.push(`${params}`);
       }
     } else if (params === '/shop') {
       if (loggedIn && !loadingDb) {
+        setOpenMenu(false);
+        setSlideMenu(false);
         return history.push(`${params}`);
       } else if (!loggedIn && !loadingDb) {
-        return history.push(`/login`);
+        setOpenMenu(false);
+        setSlideMenu(false);
+        return history.push(`${params}`);
       }
     } else if (params === '/contact') {
       if (loggedIn && !loadingDb) {
+        setOpenMenu(false);
+        setSlideMenu(false);
         return history.push(`${params}`);
       } else if (!loggedIn && !loadingDb) {
-        return history.push(`/login`);
+        setOpenMenu(false);
+        setSlideMenu(false);
+        return history.push(`${params}`);
       }
     } else if (params === '/info') {
       if (loggedIn && !loadingDb) {
+        setOpenMenu(false);
+        setSlideMenu(false);
         return history.push(`${params}`);
       } else if (!loggedIn && !loadingDb) {
+        setOpenMenu(false);
+        setSlideMenu(false);
         return history.push(`${params}`);
       }
     }

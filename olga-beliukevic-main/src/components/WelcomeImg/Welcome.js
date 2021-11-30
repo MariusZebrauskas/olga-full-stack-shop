@@ -41,7 +41,7 @@ const Welcome = ({ language }) => {
 
   return (
     <Section screenSizeSmall={screenSizeSmall}>
-      <Header h1={h1} h12={h12}></Header>
+      <Header language={language} h1={h1} h12={h12}></Header>
     </Section>
   );
 };

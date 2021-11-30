@@ -1,53 +1,68 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-
+// import './styles.css';
 const MainWrapper = styled.div`
   /* background: red; */
   width: 16.5rem;
   height: 5.31rem;
   position: relative;
-
 `;
 const AlertLeft = keyframes`
  0% {  
-   box-shadow: 0px 0px 1px 2px black;background:red;
+  box-shadow: 0px 0px 1px 2px black;
+  -webkit-box-shadow: 0px 0px 1px 2px black;
+  -moz-box-shadow:0px 0px 1px 2px black;
+  background:red;
    }
  25% {  
-   
   background:red;
   box-shadow: 0px 0px 1px 2px yellow;
+  -webkit-box-shadow: 0px 0px 1px 2px yellow;
+  -moz-box-shadow:0px 0px 1px 2px yellow;
   }
  50% { 
   background:red;
   box-shadow: 0px 0px 1px 2px black;
+  -webkit-box-shadow: 0px 0px 1px 2px black;
+  -moz-box-shadow:0px 0px 1px 2px black;
   }
  75% {  
   background:red;
   box-shadow: 0px 0px 1px 2px yellow;
+  -webkit-box-shadow: 0px 0px 1px 2px yellow;
+  -moz-box-shadow:0px 0px 1px 2px yellow;
   }
  99% {  
   background:red;
   box-shadow: 0px 0px 1px 2px black;
+  -webkit-box-shadow: 0px 0px 1px 2px black;
+  -moz-box-shadow:0px 0px 1px 2px black;
   }
 
 `;
 const AlertRight = keyframes`
  15% {  
-   box-shadow: 0px 0px 1px 2px black;background:red;
+   box-shadow: 0px 0px 1px 2px black;
+  -webkit-box-shadow: 0px 0px 1px 2px black;
+  -moz-box-shadow:0px 0px 1px 2px black;
+   background:red;
    }
  50% {  
    
   background:red;
   box-shadow: 0px 0px 1px 2px yellow;
+  -webkit-box-shadow: 0px 0px 1px 2px yellow;
+  -moz-box-shadow:0px 0px 1px 2px yellow;
+
   }
  100% { 
   background:red;
   box-shadow: 0px 0px 1px 2px black;
+  -webkit-box-shadow: 0px 0px 1px 2px black;
+  -moz-box-shadow:0px 0px 1px 2px black;
   }
-
-
-
 `;
+
 const Hold = keyframes`
 100%{
   background:black;
@@ -55,7 +70,7 @@ const Hold = keyframes`
 }
 `;
 const Left = styled.div`
-  background: black;
+  background: red;
   width: 0.5rem;
   height: 0.5rem;
   position: absolute;
@@ -64,9 +79,10 @@ const Left = styled.div`
   border-radius: 50%;
   z-index: 99;
   animation: ${AlertLeft} 0.9s forwards infinite, ${Hold} 2s forwards infinite;
+
 `;
 const Right = styled.div`
-  background: black;
+  background: red;
   width: 0.5rem;
   height: 0.5rem;
   position: absolute;
@@ -77,14 +93,15 @@ const Right = styled.div`
   animation: ${AlertRight} 0.6s forwards infinite, ${Hold} 2s forwards infinite;
   animation-delay: 1s;
 `;
+
 const LogoFrame = styled.g`
   border: 1px solid red;
 `;
 const LogoMZ = () => {
   return (
     <MainWrapper>
-      <Left></Left>
-      <Right></Right>
+      <Left ></Left>
+      <Right ></Right>
       <svg
         width='280'
         height='86'
