@@ -23,7 +23,7 @@ import { MainWrapper } from './stylesLogIn';
 import { CurrenPerson } from '../../context/AuthContex';
 import Warning from '../../Shared/warning/Warning';
 
-const Login = ({ changeComponent, language, history }) => {
+const Login = ({ changeComponent, language, history, pleaseLogIN, setPleaseLogIN }) => {
   const [loggedIn, setLoggedIn] = useContext(CurrenPerson);
   const [loadingDb, setLoadingDb] = useContext(LoadingContext);
   const emailRef = useRef();
@@ -82,6 +82,7 @@ const Login = ({ changeComponent, language, history }) => {
   const login = (e) => {
     e.preventDefault();
     setWarningMessage(null);
+    setPleaseLogIN(null);
     setLoadingDb(true);
 
     axios
@@ -108,10 +109,21 @@ const Login = ({ changeComponent, language, history }) => {
     e.preventDefault();
     history.push(`recover`);
   };
+  const onChangeHandler = () => {
+    setWarningMessage('');
+    if (warningMessage) {
+      setPleaseLogIN(null);
+    }
+  };
   return (
     <RenderingStyles>
       <MainWrapper>
         <Wrapper>
+          {pleaseLogIN && (
+            <Warning margin='2rem' color='#b87a04' background='#fff3cd'>
+              {pleaseLogIN}
+            </Warning>
+          )}
           <IconWrapper>
             <div>
               <UserIcon></UserIcon>
@@ -125,7 +137,7 @@ const Login = ({ changeComponent, language, history }) => {
               <NameInput
                 ref={emailRef}
                 type='email'
-                onChange={() => setWarningMessage('')}
+                onChange={() => onChangeHandler()}
                 placeholder={email}
                 required
               />
@@ -139,22 +151,14 @@ const Login = ({ changeComponent, language, history }) => {
                 autoComplete='true'
                 ref={passwordRef}
                 type='password'
-                onChange={() => setWarningMessage('')}
+                onChange={() => onChangeHandler()}
                 placeholder={Password}
                 required
               />
             </WrapperPassword>
 
             <WrapperRemeberMain>
-              <div>
-                {/* <input
-                  onClick={autoCompleateHandler}
-                  type='checkbox'
-                  name='remember password'
-                  value='false'
-                />
-                <p>{rememberMe}</p> */}
-              </div>
+              <div></div>
               <div>
                 <ForgotPassword onClick={forgotPasswordHandler}>{forgotPassword}?</ForgotPassword>
               </div>

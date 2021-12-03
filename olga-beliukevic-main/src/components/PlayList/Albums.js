@@ -92,6 +92,7 @@ const Albums = ({
           addToShopCartAlbum={addToShopCartAlbum}
           language={language}
           currentCard={currentCard}
+       
         />
       </AlbumWrapper>
     </MainAlbumWrapper>

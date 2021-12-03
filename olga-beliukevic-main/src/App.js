@@ -35,7 +35,7 @@ const BodyWrapper = styled.section`
   overflow: hidden;
 `;
 // FIXME:add linear gradient to white space then
-// FIXME: add animation when wisible 
+// FIXME: add animation when wisible
 function App() {
   // loading logic
   const [loadingDb, setLoadingDb] = useContext(LoadingContext);
@@ -106,6 +106,7 @@ function App() {
   // add to shop cart Album function
   const addToShopCartAlbum = (card) => {
     if (!loggedIn) {
+      popEror();
       return history.push('/login');
     }
     // loading logic
@@ -140,6 +141,7 @@ function App() {
 
   const addToShopCartSingleSong = (song) => {
     if (!loggedIn) {
+      popEror();
       return history.push('/login');
     }
     if (loadingDb === true || song.buy === true) {
@@ -160,10 +162,10 @@ function App() {
   const shopCardCurrentItems = (card) => {
     return setShopItems([...card]);
   };
- // menu slider
- const [slideMenu, setSlideMenu] = useState(false);
- //X animation in burger
- const [openMenu, setOpenMenu] = useState(false);
+  // menu slider
+  const [slideMenu, setSlideMenu] = useState(false);
+  //X animation in burger
+  const [openMenu, setOpenMenu] = useState(false);
   useEffect(() => {
     const { pathname } = history.location;
     if ((pathname === '/shop' && !loggedIn) || (pathname === '/contact' && !loggedIn)) {
@@ -172,6 +174,20 @@ function App() {
       history.push('/login');
     }
   });
+  // warning message
+  const [pleaseLogIN, setPleaseLogIN] = useState(null);
+  const popEror = () => {
+    const pleaseLogInToYourAccount = (params) => {
+      setPleaseLogIN(params);
+    };
+    if (language === 'eng') {
+      pleaseLogInToYourAccount('Please logIn To Your Account');
+    } else if (language === 'ru') {
+      pleaseLogInToYourAccount('Пожалуйста, войдите в свою учетную запись');
+    } else if (language === 'lt') {
+      pleaseLogInToYourAccount('Prašome Prisijungti Prie Savo Paskyros');
+    }
+  };
   return (
     <BodyWrapper>
       <Menu
@@ -186,6 +202,7 @@ function App() {
         setSlideMenu={setSlideMenu}
         openMenu={openMenu}
         setOpenMenu={setOpenMenu}
+        popEror={popEror}
       />
 
       <Switch>
@@ -212,7 +229,7 @@ function App() {
         {/* INFO */}
 
         <Route exact path='/info'>
-          <About  language={language} />
+          <About language={language} />
         </Route>
 
         {/* CONTACT */}
@@ -239,7 +256,12 @@ function App() {
         {/* LOGIN */}
 
         <Route path='/login'>
-          <Login history={history} language={language}></Login>
+          <Login
+            history={history}
+            language={language}
+            pleaseLogIN={pleaseLogIN}
+            setPleaseLogIN={setPleaseLogIN}
+          ></Login>
         </Route>
 
         {/* REGISTER */}

@@ -164,7 +164,6 @@ const PlayLIst = ({
       dontMoveOutOfScreenLeft();
       dontMoveOutOfScreenRight();
 
-
       moveElement.current =
         currentMarginX.current +
         walk.current(mouseCoordinateX.current, mouseCoordinateXEnd.current);

@@ -36,6 +36,7 @@ const Menu = ({
   setSlideMenu,
   openMenu,
   setOpenMenu,
+  popEror,
 }) => {
   // loading logic
   const [loadingDb, setLoadingDb] = useContext(LoadingContext);
@@ -105,6 +106,7 @@ const Menu = ({
       return;
     }
   };
+
   const blocker = (params) => {
     if (params === '/') {
       if (loggedIn && !loadingDb) {
@@ -122,6 +124,7 @@ const Menu = ({
         setSlideMenu(false);
         return history.push(`${params}`);
       } else if (!loggedIn && !loadingDb) {
+        popEror();
         setOpenMenu(false);
         setSlideMenu(false);
         return history.push(`/login`);
@@ -132,6 +135,7 @@ const Menu = ({
         setSlideMenu(false);
         return history.push(`${params}`);
       } else if (!loggedIn && !loadingDb) {
+        popEror();
         setOpenMenu(false);
         setSlideMenu(false);
         return history.push(`/login`);
