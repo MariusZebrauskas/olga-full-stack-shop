@@ -41,11 +41,11 @@ function App() {
   const [loadingDb, setLoadingDb] = useContext(LoadingContext);
   // React router
   const history = useHistory();
-  const [loggedIn, setLoggedIn] = useContext(CurrenPerson);
+  const [loggedIn] = useContext(CurrenPerson);
 
   //set LANGUAGE
   const [language, setLanguage] = useState(localStorage.getItem('mainLanguage') || 'lt');
-  const [page, setPage] = useState('home');
+  const [setPage] = useState('home');
   const pagesSetUp = (params) => {
     setPage(params);
   };
@@ -56,7 +56,7 @@ function App() {
     setLanguage(parameter);
   };
   //Loading logic
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
 
   //**************************************************** */
   //FIXME: fech shop items from data base on login

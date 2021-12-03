@@ -9,7 +9,7 @@ const PurchaseDetails = ({ purchaseDetales, language }) => {
     ammount: 'Ammount',
     currency: 'Currency',
     date: 'Date',
-    thankYou: `Thank You For Buying At http://localhost:3000/shop Your Items Will Be Sent To Your Email
+    thankYou: `Thank You For Buying From Olga Beliukevičienė Shop. Your Items Will Be Sent To Your Email
     With In One Day`,
   });
   let today = new Date();

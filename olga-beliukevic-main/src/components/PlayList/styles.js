@@ -1,4 +1,4 @@
-import React from 'react';
+
 import styled, { keyframes } from 'styled-components';
 import { FaPlayCircle } from 'react-icons/fa';
 import { AiOutlineCloseCircle } from 'react-icons/ai';

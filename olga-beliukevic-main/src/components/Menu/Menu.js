@@ -39,7 +39,7 @@ const Menu = ({
   popEror,
 }) => {
   // loading logic
-  const [loadingDb, setLoadingDb] = useContext(LoadingContext);
+  const [loadingDb] = useContext(LoadingContext);
 
   //open sub menu
   const [openSubMenu, setOpenSubMenu] = useState(false);
@@ -54,12 +54,7 @@ const Menu = ({
   const slideLeft = () => {
     setSlideMenu(!slideMenu);
   };
-  //change page if menu clicked
-  const pageChanger = (params) => {
-    pagesSetUp(params); //render page wich selected
-    setSlideMenu(false); //turn on or off menu slider
-    setOpenMenu(false); //mini animation in burger X trigger
-  };
+
   //remove menu if resize
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {

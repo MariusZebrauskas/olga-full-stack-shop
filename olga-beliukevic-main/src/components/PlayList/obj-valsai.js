@@ -521,7 +521,6 @@ export const valsaiEng = [
     song: 'Vals ',
     picture: testPictureEng,
     album: 'Waltzes for ballet lessons',
-    albumprice: 14,
     holealbumsold: false,
   },
   {
@@ -910,7 +909,6 @@ export const valsaiRu = [
     song: 'Вальс ',
     picture: testPictureRu,
     album: 'Вальсы для уроков балета',
-    albumprice: 14,
     holealbumsold: false,
   },
   {

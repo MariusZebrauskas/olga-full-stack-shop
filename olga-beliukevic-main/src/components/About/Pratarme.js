@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { onRenderText, onCloseText, P, Wrapper } from './styledAbout';
+import {  P, Wrapper } from './styledAbout';
 import { cirkasPratarmeLt, cirkasPratarmeEng, cirkasPratarmeRu } from './obj-about';
 import { valsaiPratarmeLt, valsaiPratarmeEng, valsaiPratarmeRu } from './obj-about';
 import {

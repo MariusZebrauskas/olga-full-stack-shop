@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { P, Wrapper, H5 } from './styledAbout';
 
 const Comment = ({ comment }) => {
-  const [data, setData] = useState([...comment]);
+  const [data] = useState([...comment]);
   return (
     <>
       {data.map((comment) => (

@@ -49,7 +49,6 @@ export const List = styled.ul`
     margin-right: calc(2.4rem + 0.8vw);
   }
   @media (min-width: 1440px) {
-    width: calc(35rem + 2vw);
     justify-content: ${(props) => (props.loggedIn ? 'space-around' : 'flex-end')};
   }
 `;

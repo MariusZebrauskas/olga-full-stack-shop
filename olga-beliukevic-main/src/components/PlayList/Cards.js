@@ -6,7 +6,7 @@ import ButtonBuy from '../../Shared/ButtonBuy';
 
 const Cards = ({ id, song, picture, video, language, addToShopCartSingleSong, albumOne }) => {
   const [videoIsOpen, setVideoIsOpen] = useState(false);
-  const [loadingDb, setLoadingDb] = useContext(LoadingContext);
+  const [loadingDb] = useContext(LoadingContext);
 
   let ref = useRef(null);
 

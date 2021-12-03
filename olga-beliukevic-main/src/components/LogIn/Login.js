@@ -30,22 +30,18 @@ const Login = ({ changeComponent, language, history, pleaseLogIN, setPleaseLogIN
   const passwordRef = useRef();
   const [email, setEmail] = useState('Email');
   const [Password, setPassword] = useState('Password');
-  const [rememberMe, setRememberMe] = useState('Remember Me');
   const [forgotPassword, setforgotPassword] = useState('Forgot Password');
   const [singIn, setSingIn] = useState('Sing In');
   const [dontHaveAnAccount, setDontHaveAnAccount] = useState('Don`t Have An Account');
   const [register, setRegister] = useState('Register');
   const [oneNow, setOneNow] = useState('One Now');
   const [warningMessage, setWarningMessage] = useState();
-  const [autoCompleate, setAutoCompleate] = useState(false);
-  const autoCompleateHandler = () => {
-    setAutoCompleate(!autoCompleate);
-  };
+  const [autoCompleate] = useState(false);
+ 
   useEffect(() => {
     if (language === 'lt') {
       setEmail('Elektroninis Paštas');
       setPassword('Slaptažodis');
-      setRememberMe('Prisiminti Slaptažodį');
       setforgotPassword('Pamiršai Slaptažodį');
       setSingIn('Prisijungti');
       setDontHaveAnAccount('Neturite Paskyros');
@@ -55,7 +51,6 @@ const Login = ({ changeComponent, language, history, pleaseLogIN, setPleaseLogIN
     if (language === 'eng') {
       setEmail('Email');
       setPassword('Password');
-      setRememberMe('Remember Me');
       setforgotPassword('Forgot Password');
       setSingIn('Sing In');
       setDontHaveAnAccount('Don`t Have An Account');
@@ -65,7 +60,6 @@ const Login = ({ changeComponent, language, history, pleaseLogIN, setPleaseLogIN
     if (language === 'ru') {
       setEmail('Эл. адрес');
       setPassword('PasswoПарольrd');
-      setRememberMe('Запомните меня');
       setforgotPassword('Забыли пароль');
       setSingIn('Войти');
       setDontHaveAnAccount('Нет учетной записи');

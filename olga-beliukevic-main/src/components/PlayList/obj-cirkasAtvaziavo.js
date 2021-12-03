@@ -272,7 +272,6 @@ export const theCirkusHasArivedEng = [
     picture: testPicture,
     albumprice: 12,
     album: 'The circus has arrived!',
-    albumprice: 12,
   },
   {
     id: 2,
@@ -473,7 +472,6 @@ export const theCirkusHasArivedRu = [
     picture: testPictureRu,
     albumprice: 12,
     album: 'Цирк приехал!',
-    albumprice: 12,
   },
   {
     id: 2,

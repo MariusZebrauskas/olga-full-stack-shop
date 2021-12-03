@@ -67,7 +67,7 @@ const ButtonBuyAllbum = styled.button`
 
 const AlbumList = ({ currentCard, language, addToShopCartAlbum }) => {
   // loading logical
-  const [loadingDb, setLoadingDb] = useContext(LoadingContext);
+  const [loadingDb] = useContext(LoadingContext);
   // const [header, setHeader] = useState('DAINU SARAŠAS');
   const [buttonText, setButtonText] = useState(
     `PRIDĖTI VISĄ RINKINĮ TIK UŽ ${currentCard[0].albumprice} €`

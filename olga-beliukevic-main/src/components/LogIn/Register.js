@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   NewUser,
   Wrapper,
@@ -93,17 +93,16 @@ const Register = ({ changeComponent, language, history }) => {
         password: await passwordRef.current.value,
       })
       .then((res) => {
-        if (res.data.register == false) {
+        if (res.data.register === false) {
           setSuccess(null);
           setError('Email is allready in use');
-        } else if (res.data.register == true) {
+        } else if (res.data.register === true) {
           setError(null);
           setSuccess('Account has been successfully registered');
           setTimeout(() => {
             history.push('/login');
           }, 3000);
         } else {
-          console.log('res:', res);
           setSuccess(null);
           setError('something went wrong please refresh page');
           setTimeout(() => {

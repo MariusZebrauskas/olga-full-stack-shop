@@ -94,9 +94,8 @@ const Right = styled.div`
   animation-delay: 1s;
 `;
 
-const LogoFrame = styled.g`
-  border: 1px solid red;
-`;
+
+
 const LogoMZ = () => {
   return (
     <MainWrapper>

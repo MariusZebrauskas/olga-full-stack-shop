@@ -186,7 +186,6 @@ const Contacts = ({ language }) => {
 
   //languages
   const [header, setHeader] = useState('Contact Us');
-  const [replyMessage, setReplyMessage] = useState('Jūsų laiškas sėkmingai išsiustas');
   const [namePlaceHolder, setNamePlaceHolder] = useState('Full Name');
   const [nameLabel, setNameLabel] = useState('Name');
   const [emailPlaceHolder, setEmailPlaceHolder] = useState('Enter Your Email Address');
@@ -197,7 +196,6 @@ const Contacts = ({ language }) => {
   useEffect(() => {
     if (language === 'lt') {
       setHeader('E-Mail Žinutė');
-      setReplyMessage('Jūsų laiškas sėkmingai išsiustas, su jumis bus susisiekta netrukus.');
       setNameLabel('Slapyvardis');
       setNamePlaceHolder('Jūsų Vardas Ir Pavardė');
       setEmailLabel('Elektroninis Paštas');
@@ -207,7 +205,6 @@ const Contacts = ({ language }) => {
     }
     if (language === 'eng') {
       setHeader('Contact Us');
-      setReplyMessage('You have sent the email successfully, we will contact you shortly.');
       setNameLabel('Username');
       setNamePlaceHolder('Your Name And Surname');
       setEmailLabel('Email');
@@ -217,7 +214,6 @@ const Contacts = ({ language }) => {
     }
     if (language === 'ru') {
       setHeader('Свяжитесь с нами');
-      setReplyMessage('Вы успешно отправили письмо, мы свяжемся с вами в ближайшее время.');
       setNameLabel('Имя пользователя');
       setNamePlaceHolder('Ваше имя и фамилия');
       setEmailLabel('Электронное письмо');
@@ -296,7 +292,7 @@ const Contacts = ({ language }) => {
           {header}
         </ContactUsHeader>
         <Form onSubmit={sendEmail} variants={variantsForm} initial='hidden' animate='animate'>
-          {/* <input type='hidden' name='_autoresponse' value={replyMessage} /> */}
+        
           <NameAndEmail>
             <Name>
               <label htmlFor='name'>{nameLabel}:</label>
