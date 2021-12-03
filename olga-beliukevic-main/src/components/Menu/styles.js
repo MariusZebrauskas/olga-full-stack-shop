@@ -180,7 +180,7 @@ export const User = styled(FaUserCheck)`
 `;
 export const Home = styled(FaHome)`
   color: ${(props) => props.theme.colors.grey};
-  margin: 0rem 0.25em 0 0;
+  margin: 0rem ${({ language }) => (language === 'lt' ? '0.75em' : '0.25em')} 0 0;
 `;
 export const ShoppingCart = styled(FiShoppingCart)`
   color: ${(props) => props.theme.colors.grey};

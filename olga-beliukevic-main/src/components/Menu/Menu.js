@@ -26,11 +26,9 @@ import { menuLt, menuEng, menuRu } from './objects';
 const Menu = ({
   changeLanguageGlobal,
   language,
-  pagesSetUp,
   shopItems,
   setShopItems,
   setShopItemsDb,
-  shopItemsDb,
   history,
   slideMenu,
   setSlideMenu,
@@ -159,7 +157,7 @@ const Menu = ({
       <List loggedIn={loggedIn} slideMenu={slideMenu}>
         <>
           <Li upperLine onClick={() => blocker(`/`)}>
-            <Home />
+            <Home language={language} />
             <A href='#'>{home}</A>
           </Li>
           <Li onClick={() => blocker('/contact')}>
