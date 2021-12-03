@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { onRenderText, onCloseText, P, Wrapper } from './styledAbout';
+import { cirkasPratarmeLt, cirkasPratarmeEng, cirkasPratarmeRu } from './obj-about';
+import { valsaiPratarmeLt, valsaiPratarmeEng, valsaiPratarmeRu } from './obj-about';
+import {
+  muzikinePasakaPratarmeLt,
+  muzikinePasakaPratarmeEng,
+  muzikinePasakaPratarmeRu,
+} from './obj-about';
 
 const Albums = styled.section`
   @media (min-width: 425px) {
@@ -29,21 +36,11 @@ const Img = styled.img`
   }
 `;
 
-const Pratarme = ({
-  cirkasPratarmeLt,
-  language,
-  cirkasPratarmeEng,
-  cirkasPratarmeRu,
-  valsaiPratarmeLt,
-  valsaiPratarmeEng,
-  valsaiPratarmeRu,
-  muzikinePasakaPratarmeLt,
-  muzikinePasakaPratarmeEng,
-  muzikinePasakaPratarmeRu,
-}) => {
+const Pratarme = ({ language }) => {
   //obj containers
   const [albumOne, setAlbumOne] = useState([]);
   const [albumTwo, setAlbumTwo] = useState([]);
+
   const [albumThree, setAlbumThree] = useState([]);
   //for open close text
   const [isOpen1, setIsOpen1] = useState(false);
@@ -129,43 +126,46 @@ const Pratarme = ({
 
   return (
     <Albums>
-      {albumOne.map((item, i) => (
-        <Wrapper key={i}>
-          {item.img ? (
-            <Img onClick={() => openTextHandler(item.id)} src={item.img} alt='IMAGE NOT FOUND' />
-          ) : null}
+      {albumOne &&
+        albumOne.map((item) => (
+          <Wrapper key={Math.random(10)}>
+            {item.img ? (
+              <Img onClick={() => openTextHandler(item.id)} src={item.img} alt='IMAGE NOT FOUND' />
+            ) : null}
 
-          {isOpen1 ? (
-            <P isOpen={isOpen1Main} onClick={() => openTextHandler(item.id)}>
-              {item.text}
-            </P>
-          ) : null}
-        </Wrapper>
-      ))}
-      {albumTwo.map((item, i) => (
-        <Wrapper key={i}>
-          {item.img ? (
-            <Img onClick={() => openTextHandler(item.id)} src={item.img} alt='IMAGE NOT FOUND' />
-          ) : null}
-          {isOpen2 ? (
-            <P isOpen={isOpen2Main} onClick={() => openTextHandler(item.id)}>
-              {item.text}
-            </P>
-          ) : null}
-        </Wrapper>
-      ))}
-      {albumThree.map((item, i) => (
-        <Wrapper key={i}>
-          {item.img ? (
-            <Img onClick={() => openTextHandler(item.id)} src={item.img} alt='IMAGE NOT FOUND' />
-          ) : null}
-          {isOpen3 ? (
-            <P isOpen={isOpen3Main} onClick={() => openTextHandler(item.id)}>
-              {item.text}
-            </P>
-          ) : null}
-        </Wrapper>
-      ))}
+            {isOpen1 ? (
+              <P isOpen={isOpen1Main} onClick={() => openTextHandler(item.id)}>
+                {item.text}
+              </P>
+            ) : null}
+          </Wrapper>
+        ))}
+      {albumTwo &&
+        albumTwo.map((item) => (
+          <Wrapper key={Math.random(10)}>
+            {item.img ? (
+              <Img onClick={() => openTextHandler(item.id)} src={item.img} alt='IMAGE NOT FOUND' />
+            ) : null}
+            {isOpen2 ? (
+              <P isOpen={isOpen2Main} onClick={() => openTextHandler(item.id)}>
+                {item.text}
+              </P>
+            ) : null}
+          </Wrapper>
+        ))}
+      {albumThree &&
+        albumThree.map((item) => (
+          <Wrapper key={Math.random(10)}>
+            {item.img ? (
+              <Img onClick={() => openTextHandler(item.id)} src={item.img} alt='IMAGE NOT FOUND' />
+            ) : null}
+            {isOpen3 ? (
+              <P isOpen={isOpen3Main} onClick={() => openTextHandler(item.id)}>
+                {item.text}
+              </P>
+            ) : null}
+          </Wrapper>
+        ))}
     </Albums>
   );
 };

@@ -98,7 +98,7 @@ const WarningAndSuccessWrapper = styled.section`
 `;
 
 const ContactUsHeader = styled(motion.h1)`
-  font-size: calc(1.5rem + 0.1vw);
+  font-size: calc(1.5rem + 0.25vw);
   font-weight: 600;
   /* color: #dcdbd9; */
   color: ${(props) => props.theme.colors.grey};
@@ -273,7 +273,7 @@ const Contacts = ({ language }) => {
     animate: {
       opacity: 1,
       y: 0,
-      transition: { type: 'spring', stiffness: 300, damping: 10, delay: 0.3 },
+      transition: { type: 'spring', stiffness: 300, damping: 10, delay: 0.3, },
     },
   };
   const variantsHeader = {

@@ -124,7 +124,7 @@ const Menu = ({
       } else if (!loggedIn && !loadingDb) {
         setOpenMenu(false);
         setSlideMenu(false);
-        return history.push(`${params}`);
+        return history.push(`/login`);
       }
     } else if (params === '/contact') {
       if (loggedIn && !loadingDb) {
@@ -134,7 +134,7 @@ const Menu = ({
       } else if (!loggedIn && !loadingDb) {
         setOpenMenu(false);
         setSlideMenu(false);
-        return history.push(`${params}`);
+        return history.push(`/login`);
       }
     } else if (params === '/info') {
       if (loggedIn && !loadingDb) {

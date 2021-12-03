@@ -43,10 +43,10 @@ export const List = styled.ul`
     align-items: center;
     flex-direction: row;
     justify-content: flex-end;
-    height: 7rem;
+    height: calc(7rem + 0.7vw);
     width: auto;
     background: none;
-    margin-right: 3rem;
+    margin-right: calc(2.4rem + 0.8vw);
   }
   @media (min-width: 1440px) {
     width: calc(35rem + 2vw);
@@ -67,6 +67,11 @@ export const Li = styled.li`
     props.upperLine &&
     css`
       border-top: 1.2px solid ${(props) => props.theme.colors.grey};
+    `}
+  ${(props) =>
+    props.information &&
+    css`
+      margin-right: calc(0.5rem + 0.2vw);
     `}
 
   &:hover a {
@@ -93,7 +98,7 @@ export const Li = styled.li`
 
   @media (min-width: 768px) {
     border: none;
-    padding: 1.5em 1.6em 1.5em 0em;
+    padding: 1.5em calc(1.6em + 0.5vw) 1.5em 0em;
     ${(props) => {
       if (props.information) {
         return css`

@@ -3,8 +3,6 @@ import { CurrenPerson } from './context/AuthContex';
 import Home from './components/Home/Home';
 import styled from 'styled-components';
 import Menu from './components/Menu/Menu';
-// import Welcome from './components/WelcomeImg/Welcome';
-// import Playlist from './components/PlayList/PlayLIst';
 import Contacts from './components/Contacts/Contacts';
 import Shop from './components/Shop/Shop';
 import About from './components/About/About';
@@ -14,7 +12,6 @@ import { Switch, Route, useHistory } from 'react-router';
 import Register from './components/LogIn/Register';
 import ForgotPassword from './components/LogIn/ForgotPassword';
 import axios from 'axios';
-import { ClipLoader } from 'react-spinners';
 import { LoadingContext } from './context/LoadingContext';
 
 //playlists
@@ -215,7 +212,7 @@ function App() {
         {/* INFO */}
 
         <Route exact path='/info'>
-          <About setLoading={setLoading} history={history} loading={loading} language={language} />
+          <About  language={language} />
         </Route>
 
         {/* CONTACT */}

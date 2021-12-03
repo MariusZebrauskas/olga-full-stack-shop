@@ -1,6 +1,7 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import mobile from './backgrounds/9.jpg';
 import plancet from './backgrounds/12.jpg';
+import { motion } from 'framer-motion';
 
 export const Section = styled.section`
   /* background-image: url(${mobile}); */
@@ -32,19 +33,7 @@ export const Section = styled.section`
     background: rgba(36, 188, 223, 0.212);
   }
 `;
-const fadeIn = keyframes`
-0%{
-    opacity: 0;
-    transform: translateY(1rem);
-    
-} 50%{
-    opacity: 0.3;
-}
-100%{
-    opacity: 1;
-    transform: translateY(0);
-}
-`;
+
 export const Wrapper = styled.div`
   position: absolute;
   z-index: 3;
@@ -53,13 +42,11 @@ export const Wrapper = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
-  transition: all ease-in-out 300ms;
   justify-content: center;
   align-items: center;
-  animation: ${fadeIn} 1s forwards 1;
 `;
 
-export const H1 = styled.h1`
+export const H1 = styled(motion.h1)`
   font-family: 'Charm', cursive;
   font-weight: 400;
   font-size: 2.5rem;
