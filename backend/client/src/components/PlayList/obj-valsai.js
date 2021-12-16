@@ -19,7 +19,7 @@ import video5 from '../../Albumbs/valsai-baleto-pamokos/Valsas Nr.5/5.mp4';
 import video6 from '../../Albumbs/valsai-baleto-pamokos/Valsas Nr.6/6.mp4';
 
 //card7
-import video7 from '../../Albumbs/valsai-baleto-pamokos/Valsas Nr.7/20210526_101236_394285848222137.mp4';
+import video7 from '../../Albumbs/valsai-baleto-pamokos/Valsas Nr.7/7.mp4';
 
 //card8
 import video8 from '../../Albumbs/valsai-baleto-pamokos/Valsas Nr.8/8.mp4';

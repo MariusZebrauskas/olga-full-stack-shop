@@ -10,7 +10,7 @@ export const menuLt = {
   languageRu: 'RUSŲ K.',
   sayYes: 'Rašykite Taip',
   toLogoutMessage: "Jaigu norite atjungti vartotoja: ",
-  home: 'PAGRINDINIS PUSLAPIS',
+  home: 'PRADŽIA',
   
 };
 
@@ -42,5 +42,5 @@ export const menuRu = {
   languageRu: 'РУССКИЙ',
   sayYes: "Напишите да",
   toLogoutMessage: "Если вы хотите выйти из системы пользователя: ",
-  home: 'ДОМ',
+  home: 'главный',
 };

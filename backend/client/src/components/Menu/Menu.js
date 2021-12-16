@@ -158,7 +158,7 @@ const Menu = ({
         <>
           <Li upperLine onClick={() => blocker(`/`)}>
             <Home language={language} />
-            <A language={language} href='#'>{home}</A>
+            <A  href='#'>{home}</A>
           </Li>
           <Li onClick={() => blocker('/contact')}>
             <A href='#'>{contact}</A>

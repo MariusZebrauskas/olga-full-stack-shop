@@ -19,7 +19,7 @@ import video18 from '../../Albumbs/muzikinė-pasaka/18.Katė/18.mp4';
 import video19 from '../../Albumbs/muzikinė-pasaka/19.Žuvėdra/19.mp4';
 import video20 from '../../Albumbs/muzikinė-pasaka/20.Bangos/20.mp4';
 import video21 from '../../Albumbs/muzikinė-pasaka/21.Gulbė/21.mp4';
-import video22 from "../../Albumbs/muzikinė-pasaka/22.Žirgaii II/20210607_150232_001.mp4"; 
+import video22 from "../../Albumbs/muzikinė-pasaka/22.Žirgaii II/22.mp4"; 
 import video23 from '../../Albumbs/muzikinė-pasaka/23.Gėlės/23.mp4';
 import video24 from '../../Albumbs/muzikinė-pasaka/24.Oro-balionėlis/24.mp4';
 import video25 from '../../Albumbs/muzikinė-pasaka/25.Pavasaris/25.mp4';

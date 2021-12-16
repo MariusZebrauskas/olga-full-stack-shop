@@ -128,7 +128,6 @@ export const A = styled.a`
   display: inline-block;
 
   @media (min-width: 768px) {
-    display: ${({ language }) => (language === 'lt' ? 'none' : 'inline-block')};
     &.tablet {
       border-radius: 1rem;
       position: absolute;
@@ -182,9 +181,7 @@ export const User = styled(FaUserCheck)`
 export const Home = styled(FaHome)`
   color: ${(props) => props.theme.colors.grey};
   margin: 0rem ${({ language }) => (language === 'lt' ? '0.75em' : '0.25em')} 0 0;
-  @media (min-width: 768px) {
-    margin: 0rem ${({ language }) => (language === 'lt' ? '0' : '0.25em')} 0 0;
-  }
+
 `;
 export const ShoppingCart = styled(FiShoppingCart)`
   color: ${(props) => props.theme.colors.grey};

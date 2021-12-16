@@ -10,7 +10,10 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path');
+// https force
 const enforce = require('express-sslify');
+// compres data
+// const compression = require('compression');
 dotenv.config();
 
 const errorHandler = (err, req, res, next) => {
@@ -31,9 +34,11 @@ app.use(helmet.noSniff());
 app.use(helmet.permittedCrossDomainPolicies());
 app.use(helmet.referrerPolicy());
 app.use(helmet.xssFilter());
-
+// info about requests
 app.use(morgan('common'));
+// cors alloow front to back comunicate
 app.use(cors());
+// app.use(compression());
 
 app.use('/api/cart', cartRoutes);
 app.use('/api/auth', authRoutes);
@@ -56,7 +61,6 @@ mongoose.connect(process.env.MONGO_URL, () => {
   });
 });
 
-
 // FIXME: valsai  ,31, , dar neturime
 // FIXME: music fairy stories 2,3 dar neturime
-//FIXME: About page comments nustumti zemiau 
+//FIXME: About page comments nustumti zemiau
