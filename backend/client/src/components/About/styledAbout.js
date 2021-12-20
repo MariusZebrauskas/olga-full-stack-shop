@@ -1,8 +1,9 @@
 import styled, { keyframes } from 'styled-components';
+import { motion } from 'framer-motion';
+import { CgArrowRightR, CgArrowLeftR } from 'react-icons/cg';
 
 export const Wrapeer = styled.section`
-  margin: 7rem 0 0 0;
-  /* background: red; */
+  margin: 0.5rem 0 0 0;
   display: flex;
   flex-direction: column;
 `;
@@ -51,11 +52,14 @@ export const P = styled.p`
   }
 `;
 export const Wrapper = styled.section`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
+  @media (max-width: 767px) {
+    /* galioja iki plancet wiev */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 export const H1Wrapper = styled.div`
   width: 100%;
@@ -108,3 +112,87 @@ export const H5 = styled.h5`
     line-height: calc(1rem + 0.3vw);
   }
 `;
+// About headers
+
+export const Header = styled.h1`
+  margin: 10rem 0 0 0;
+  text-align: center;
+`;
+
+// Album SlideWrapper
+
+export const SliderWrapper = styled.section`
+  width: 100%;
+  margin: 3rem 0;
+  height: 30rem;
+  /* background: #dbdfe0; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
+`;
+export const BookAdjuster = styled(motion.div)`
+  display: flex;
+  justify-content: center;
+  margin-right: 0.5rem;
+`;
+
+export const ButtonWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  pointer-events: none;
+  
+`;
+
+export const RightButton = styled(CgArrowRightR)`
+  font-size: calc(2em + 1vw);
+  margin: 0.7rem;
+  position: absolute;
+  cursor: ${(props) => (props.right < 0 ? null : 'pointer')};
+  color: ${(props) => (props.right < 0 ? '#00000000' : '#dbdfe0')};
+  background-color: ${(props) => (props.right < 0 ? '#00000000' : '#676767')};
+  right: 0;
+  transition: all  cubic-bezier(.69,.13,.18,.5) 1s;
+`;
+export const LeftButton = styled(CgArrowLeftR)`
+  font-size: calc(2rem + 1vw);
+  margin: 0.7rem;
+  position: absolute;
+  cursor: ${(props) => (props.left > 0 ? null : 'pointer')};
+  color: ${(props) => (props.left > 0 ? '#00000000' : '#dbdfe0')};
+  background-color: ${(props) => (props.left > 0 ? '#00000000' : '#676767')};
+  left: 0;
+  transition: all  cubic-bezier(.69,.13,.18,.5) 1s;
+`;
+
+// SIGLE BOOK CSS
+
+export const ImgWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  transition: height ease-in-out 0.3s;
+`;
+export const SingleBook = styled.div`
+  background-color: #dbdfe0;
+  min-width: ${(props) => (props.bookSize ? `${props.bookSize}px` : '15rem')};
+  max-width: ${(props) => (props.bookSize ? `${props.bookSize}px` : '15rem')};
+  height: 25rem;
+  text-align: center;
+  position: relative;
+  transition: height 0.3s ease-in-out 0.3s;
+  margin: 0 0.5rem;
+  &:hover ${ImgWrapper} {
+    height: ${({ animationActivatedChek }) => (animationActivatedChek ? '100%' : '85%')};
+    transition: height 0.3s ease-in-out 0.1s;
+  }
+`;
+export const Image = styled.img`
+  height: 100%;
+  width: 100%;
+  background-color: #ebf1f5;
+`;
+export const ReadMoreWrapper = styled.div``;

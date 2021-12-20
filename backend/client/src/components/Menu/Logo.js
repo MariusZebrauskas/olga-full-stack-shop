@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components';
 const LogoRapper = styled.div`
   cursor: pointer;
   width: 6rem;
-  height: 5rem;
+  height: 4rem;
 
   @media (max-width: 768px) {
     ${({ desktop }) => {

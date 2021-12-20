@@ -11,11 +11,12 @@ import muzikinePasakaImgEng from '../../Albumbs/muzikinė-pasaka/virselis/Muziki
 import muzikinePasakaImgRu from '../../Albumbs/muzikinė-pasaka/virselis/Muzikine pasaka RU-EN - web-pages-1-1.jpg';
 
 // --------------------------------------------------------------------------------------
+export const cirkasLt = {
+  img: cirkasAtvaziavoImgLt,
+  id: 1,
+};
+
 export const cirkasPratarmeLt = [
-  {
-    img: cirkasAtvaziavoImgLt,
-    id: 1,
-  },
   {
     id: 1,
     text: 'Muzikos mokyklų mokytojai ir moksleiviai jau susipažinę su mano pirmojo rinkinio      „Muzikinės pasakos“ kūriniais. Juos atlikdami jauni atlikėjai tarsi susitinka su pasakų herojais („Raudonkepuraitė“, „Vilkas“, „Meškiukas Pūkuotukas“,  „Ragana“, „Fėja“),  mielais gyvūnais („Meška“, „Lapė“, „Katė“), regi nuostabius gamtos vaizdus (pjesės „Vandens lašai“, „Vėjas ir lapai“, „Preliudija“). 2011 m. išleistas rinkinys vis dar plačiai naudojamas muzikos ir menų mokyklose. Muzikinės pjesės skambėjo koncertuose, festivaliuose, įtrauktos į ugdymo  programas. Įkvėpta gerų atsiliepimų ir recenzijų nusprendžiau išleisti antrąjį leidinį.',
@@ -46,12 +47,11 @@ export const cirkasPratarmeLt = [
   },
 ];
 // --------------------------------------------------------------------------------------
-
+export const cirkasEng = {
+  img: cirkasAtvaziavoImgEng,
+  id: 1,
+};
 export const cirkasPratarmeEng = [
-  {
-    img: cirkasAtvaziavoImgEng,
-    id: 1,
-  },
   {
     id: 1,
     text: `Teachers and students in music schools are already familiar with the works from my first collection Musical Tales. When performing, the young performers meet with fairy-tale characters (Little Red Riding Hood, Wolf, Winnie-the-Pooh, Witch and Fairy), cute animals (Bear, Fox, Cat) and see beautiful views of nature (pieces Water Drops, Wind and Leaves, Prelude). The collection, which was released in 2011, is still widely used in music and arts classes. The musical pieces have been performed at concerts and festivals, as well as being included in the curriculum. Inspired by these good responses and reviews, I have decided to release a second issue.
@@ -83,11 +83,11 @@ export const cirkasPratarmeEng = [
   },
 ];
 // --------------------------------------------------------------------------------------
+export const cirkasRu = {
+  img: cirkasAtvaziavoImgRu,
+  id: 1,
+};
 export const cirkasPratarmeRu = [
-  {
-    img: cirkasAtvaziavoImgRu,
-    id: 1,
-  },
   {
     id: 1,
     text: `Учителя музыки и учащиеся музыкальных школ Литвы уже ознакомились с произведениями моего первого фортепианного сборника „ Музыкальные сказки“, который посвящён сказочным героям („Красная шапочка“, „Волк“, „Винни - Пух“, „Баба - Яга“, „Фея“), героям басен („Лиса“, „Ворона“), животным („Кошка“, „Кони“), птицам („Чайка“, „Лебедь“), а также в нём запечатлены времена года и картины природы.`,
@@ -120,12 +120,11 @@ export const cirkasPratarmeRu = [
 ];
 
 // &&&&&&&&&&&&&&&&&&&&&&&&&   VALSAI &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-
+export const valsaiLt = {
+  img: valsaiImgLt,
+  id: 2,
+};
 export const valsaiPratarmeLt = [
-  {
-    img: valsaiImgLt,
-    id: 2,
-  },
   {
     id: 2,
     text: `Dirbdama Nacionalinės M.K.Čiurlionio menų mokyklos Baleto skyriuje, aš,
@@ -169,11 +168,11 @@ export const valsaiPratarmeLt = [
 ];
 
 // -------------------------------------------------------------------------------
+export const valsaiEng = {
+  img: valsaiImgEng,
+  id: 2,
+};
 export const valsaiPratarmeEng = [
-  {
-    img: valsaiImgEng,
-    id: 2,
-  },
   {
     id: 2,
     text: `In the period of my employment at the National M.K. Čiurlionis School of Art Ballet
@@ -220,12 +219,11 @@ export const valsaiPratarmeEng = [
 ];
 
 // -----------------------------------------------------------------------
-
+export const valsaiRu = {
+  img: valsaiImgRu,
+  id: 2,
+};
 export const valsaiPratarmeRu = [
-  {
-    img: valsaiImgRu,
-    id: 2,
-  },
   {
     id: 2,
     text: `Работая в Балетном отделении Национальной школы искусств им.
@@ -279,12 +277,11 @@ export const valsaiPratarmeRu = [
 ];
 
 // &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& pratarme $$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
+export const muzikineLt = {
+  img: muzikinePasakaImgLt,
+  id: 3,
+};
 export const muzikinePasakaPratarmeLt = [
-  {
-    img: muzikinePasakaImgLt,
-    id: 3,
-  },
   {
     id: 3,
     text: `Šis kūrinių rinkinys – aštuonerių darbo metų rezultatas. Juos praleidau akompanuodama aktoriaus
@@ -324,12 +321,11 @@ export const muzikinePasakaPratarmeLt = [
 ];
 
 // ---------------------------------eng-------------------------------------
-
+export const muzikineEng = {
+  img: muzikinePasakaImgEng,
+  id: 3,
+};
 export const muzikinePasakaPratarmeEng = [
-  {
-    img: muzikinePasakaImgEng,
-    id: 3,
-  },
   {
     id: 3,
     text: `This collection of creations is the result of eight-year activities. During the said period, I was an
@@ -377,11 +373,11 @@ export const muzikinePasakaPratarmeEng = [
 ];
 
 // ----------------------------------------------- ru ----------------------
+export const muzikineRu = {
+  img: muzikinePasakaImgRu,
+  id: 3,
+};
 export const muzikinePasakaPratarmeRu = [
-  {
-    img: muzikinePasakaImgRu,
-    id: 3,
-  },
   {
     id: 3,
     text: `Ольга Белюкявичене - аккомпаниатор и преподаватель общего фортепиано Балетного
@@ -444,7 +440,6 @@ export const commentsLt = [
       profesion: `LMTA Pedagogikos katedros lektorė: `,
       name: 'Janina Karalienė',
     },
-    
   ],
   [
     {
@@ -464,10 +459,8 @@ export const commentsLt = [
       profesion: `Lietuvos muzikos ir teatro akademijos humanitarinių mokslų daktarė, profesorė: `,
       name: 'Aldona Adomaitytė',
     },
-    
   ],
 ];
-
 
 export const commentsEng = [
   [
@@ -480,14 +473,13 @@ export const commentsEng = [
       convenient for playing, several of them are of virtuoso character.
       `,
     },
-   
+
     {
       id: 2,
       profesion: `The Chairwoman of the Piano Methodic Board of the National M.K. Čiurlionis School of Arts, an
       inspecting teacher, a lecturer of Lithuanian Music and Theatre Academy Department of Pedagogy`,
       name: 'Janina Karalienė',
     },
-    
   ],
   [
     {
@@ -501,14 +493,13 @@ export const commentsEng = [
         melody, tempo rhythm, dynamism, harmony, and so on – plays an exclusive role both in music/character and
         narrative etudes`,
     },
-   
+
     {
       id: 3,
       profesion: `Doctor of humanities, professor of Lithuanian Music and Theatre Academy,
       A teacher-expert of the National M.K. Čiurlionis School of Arts (drama)`,
       name: 'Aldona Adomaitytė',
     },
-    
   ],
 ];
 
@@ -523,7 +514,7 @@ export const commentsRu = [
       Произведения очень удобны для исполнения, некоторые из них – виртуозного характера.
       `,
     },
-   
+
     {
       id: 2,
       profesion: `Председатель методической комиссии общего фортепиано Национальной школы искусств им.
@@ -531,7 +522,6 @@ export const commentsRu = [
       и театра`,
       name: 'Янина Каралене',
     },
-    
   ],
   [
     {
@@ -549,13 +539,12 @@ export const commentsRu = [
       играют особую роль как в музыкально – характерных, так и в сюжетых этюдах.
         `,
     },
-   
+
     {
       id: 3,
       profesion: ` профессор гуманитарных наук Литовской Академии музыки и театра,
       педагог-эксперт Национальной школы искусств им. М. К. Чюрлёниса - `,
       name: 'Алдона Адомайтите',
     },
-    
   ],
 ];

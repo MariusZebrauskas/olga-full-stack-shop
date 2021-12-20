@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import {  P, Wrapper } from './styledAbout';
+import { P, Wrapper } from './styledAbout';
 import { cirkasPratarmeLt, cirkasPratarmeEng, cirkasPratarmeRu } from './obj-about';
 import { valsaiPratarmeLt, valsaiPratarmeEng, valsaiPratarmeRu } from './obj-about';
 import {
@@ -16,23 +16,20 @@ const Albums = styled.section`
     justify-content: center;
     align-items: center;
   }
+  @media (min-width: 768px) {
+    flex-direction: row;
+    background-color: red;
+  }
 `;
 const Img = styled.img`
   width: 100%;
+  max-width: 400px;
   padding: 1rem 1rem 2rem 1rem;
   cursor: pointer;
-  @media (min-width: 425px) {
-    width: 70%;
-    max-width: 400px;
-  }
-  @media (min-width: 1440px) {
-    /* background-color: red; */
-    width: 25%;
-  }
-  @media (min-width: 2560px) {
-    /* background-color: red; */
-    width: 14%;
-    padding: 3rem 1rem 2rem 1rem;
+  @media (min-width: 768px) {
+    width: 100%;
+    height: 100%;
+    background-color: blue;
   }
 `;
 
@@ -130,7 +127,11 @@ const Pratarme = ({ language }) => {
         albumOne.map((item) => (
           <Wrapper key={Math.random(10)}>
             {item.img ? (
-              <Img onClick={() => openTextHandler(item.id)} src={item.img} alt='IMAGE NOT FOUND' />
+              <Img
+                onClick={() => openTextHandler(item.id)}
+                src={item.img}
+                alt='The Cirkus Has Arived'
+              />
             ) : null}
 
             {isOpen1 ? (
@@ -144,7 +145,11 @@ const Pratarme = ({ language }) => {
         albumTwo.map((item) => (
           <Wrapper key={Math.random(10)}>
             {item.img ? (
-              <Img onClick={() => openTextHandler(item.id)} src={item.img} alt='IMAGE NOT FOUND' />
+              <Img
+                onClick={() => openTextHandler(item.id)}
+                src={item.img}
+                alt='Waltzes For Ballet Lessons'
+              />
             ) : null}
             {isOpen2 ? (
               <P isOpen={isOpen2Main} onClick={() => openTextHandler(item.id)}>
@@ -157,7 +162,11 @@ const Pratarme = ({ language }) => {
         albumThree.map((item) => (
           <Wrapper key={Math.random(10)}>
             {item.img ? (
-              <Img onClick={() => openTextHandler(item.id)} src={item.img} alt='IMAGE NOT FOUND' />
+              <Img
+                onClick={() => openTextHandler(item.id)}
+                src={item.img}
+                alt='Music Fairy Story'
+              />
             ) : null}
             {isOpen3 ? (
               <P isOpen={isOpen3Main} onClick={() => openTextHandler(item.id)}>

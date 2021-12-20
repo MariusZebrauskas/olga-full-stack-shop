@@ -1,0 +1,35 @@
+      {/* slider version1 */}
+          <SliderWrapper>
+            <BookAdjuster variants={variants} initial='hidden' animate='show'>
+              {/* cirkus has arrived */}
+              <SingleAlbum
+                animationActivatedChek={animationActivatedChek}
+                language={language}
+                data={cirkas}
+                bookSize={bookSize}
+              />
+              {/* music fairy story */}
+              <SingleAlbum
+                animationActivatedChek={animationActivatedChek}
+                language={language}
+                data={muzikinePasaka}
+                bookSize={bookSize}
+              />
+              {/* vals */}
+              <SingleAlbum
+                animationActivatedChek={animationActivatedChek}
+                language={language}
+                data={valsai}
+                bookSize={bookSize}
+              />
+            </BookAdjuster>
+
+            {/* Arrow buttons */}
+            <LeftButton left={total.current} onClick={() => moveBooks('add')}></LeftButton>
+            <RightButton right={total.current} onClick={() => moveBooks('minus')}></RightButton>
+          </SliderWrapper>
+          {/* slider version2 */}
+          {/* <Pratarme
+              language={language}
+            ></Pratarme> */}
+          {/* slider version3 */}

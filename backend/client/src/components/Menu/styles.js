@@ -5,15 +5,20 @@ import { FiCheckCircle } from 'react-icons/fi';
 // import { ImCross } from 'react-icons/im';
 
 export const MenuRapper = styled.nav`
-  opacity: 0.98;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: ${(props) => props.theme.colors.black_grey};
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
+
+opacity: 0.98;
+display: flex;
+align-items: center;
+justify-content: space-between;
+background: ${(props) => props.theme.colors.black_grey};
+position: fixed;
+top: 0;
+width: 100%;
+z-index: 100;
+@media (max-width: 768px) {
+    height:calc(3.3rem + 2vh);
+
+  }
 `;
 export const List = styled.ul`
   top: 100%;

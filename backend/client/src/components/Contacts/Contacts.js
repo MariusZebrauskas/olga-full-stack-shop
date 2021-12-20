@@ -98,6 +98,7 @@ const WarningAndSuccessWrapper = styled.section`
 `;
 
 const ContactUsHeader = styled(motion.h1)`
+  /* padding: 5rem 0 0 0; */
   font-size: calc(1.5rem + 0.25vw);
   font-weight: 600;
   /* color: #dcdbd9; */
@@ -269,7 +270,7 @@ const Contacts = ({ language }) => {
     animate: {
       opacity: 1,
       y: 0,
-      transition: { type: 'spring', stiffness: 300, damping: 10, delay: 0.3, },
+      transition: { type: 'spring', stiffness: 300, damping: 10, delay: 0.3 },
     },
   };
   const variantsHeader = {
@@ -292,7 +293,6 @@ const Contacts = ({ language }) => {
           {header}
         </ContactUsHeader>
         <Form onSubmit={sendEmail} variants={variantsForm} initial='hidden' animate='animate'>
-        
           <NameAndEmail>
             <Name>
               <label htmlFor='name'>{nameLabel}:</label>
