@@ -33,7 +33,7 @@ export const DescriptionWraapper = styled(motion.div)`
   top: 0;
   z-index: 200;
   width: 100%;
-  min-height: 100vh;
+  min-height: ${({ clientFullHeight }) => (clientFullHeight ? `${clientFullHeight}px` : '250vh')};
 `;
 
 export const DescriptionText = styled(motion.div)`
@@ -42,16 +42,15 @@ export const DescriptionText = styled(motion.div)`
   align-items: center;
   text-align: center;
   flex-direction: column;
-  padding: 2rem;
-  
+  padding: calc(2rem + 3vw) 2rem;
 `;
 
 export const DescriptionButton = styled(MdClose)`
   color: #f3b432;
   position: absolute;
   font-size: 3rem;
-  top: 1rem;
-  right: 1rem;
+  top: calc(.5rem + 1vw);
+  right: calc(.5rem + 1vw);
   transition: transform ease-in-out 0.7s;
   &:hover {
     transform: rotate(500deg);
@@ -62,7 +61,6 @@ export const DescriptionButton = styled(MdClose)`
 
 export const P = styled.p`
   width: 95%;
-  cursor: ${({ comment }) => (comment ? 'auto' : `pointer`)};
   color: #f3b432;
   text-align: justify;
   /* padding: 0 1rem; */

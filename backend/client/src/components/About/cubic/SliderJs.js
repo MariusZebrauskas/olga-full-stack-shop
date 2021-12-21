@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { cirkasLt, cirkasEng, cirkasRu } from '../obj-about';
 import { valsaiLt, valsaiRu, valsaiEng } from '../obj-about';
 import { muzikineLt, muzikineEng, muzikineRu } from '../obj-about';
@@ -120,14 +120,23 @@ const SliderJs = ({ language }) => {
     setCirkasOpen(false);
     setMuzikinePasakaOpen(false);
   };
+
+  const [clientFullHeight, setClientFullHeight] = useState("250vh");
+  
+  useEffect(() => {
+    console.dir(window.document.body);
+    setClientFullHeight(window.document.body.offsetHeight);
+    console.log('clientFullHeight:', clientFullHeight)
+  }, [clientFullHeight]);
   return (
-    <Wrapper>
+    <Wrapper >
       {/* description pop up valsai */}
       {valsaiOpen && (
         <DescriptionWraapper
           variants={variantsDescriptionWrapper}
           initial='hidden'
           animate='animate'
+          clientFullHeight={clientFullHeight}
         >
           <DescriptionText variants={variantsText}>
             {destriptiontext.map((item) => (
@@ -143,6 +152,7 @@ const SliderJs = ({ language }) => {
           variants={variantsDescriptionWrapper}
           initial='hidden'
           animate='animate'
+          clientFullHeight={clientFullHeight}
         >
           <DescriptionText variants={variantsText}>
             {destriptiontext.map((item) => (
@@ -158,6 +168,7 @@ const SliderJs = ({ language }) => {
           variants={variantsDescriptionWrapper}
           initial='hidden'
           animate='animate'
+          clientFullHeight={clientFullHeight}
         >
           <DescriptionText variants={variantsText}>
             {destriptiontext.map((item) => (
@@ -167,6 +178,7 @@ const SliderJs = ({ language }) => {
           <DescriptionButton onClick={closeHandler}></DescriptionButton>
         </DescriptionWraapper>
       )}
+      {/* swiper */}
       <SwiperChanged
         effect={'cube'}
         grabCursor={true}

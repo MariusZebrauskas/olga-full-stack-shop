@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import { CurrenPerson } from './context/AuthContex';
 import Home from './components/Home/Home';
 import styled from 'styled-components';
@@ -188,8 +188,10 @@ function App() {
       pleaseLogInToYourAccount('Prašome Prisijungti Prie Savo Paskyros');
     }
   };
+
+
   return (
-    <BodyWrapper>
+    <BodyWrapper >
       <Menu
         pagesSetUp={pagesSetUp}
         language={language}
@@ -229,7 +231,7 @@ function App() {
         {/* INFO */}
 
         <Route exact path='/info'>
-          <About language={language} />
+          <About language={language}  />
         </Route>
 
         {/* CONTACT */}

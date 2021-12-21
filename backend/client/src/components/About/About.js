@@ -79,7 +79,7 @@ const About = ({ language }) => {
         <Header>INFORMATION ABOUT OUR AWESOME ALBUMS</Header>
         <Wrapeer>
           
-          <SliderJs language={language} />
+          <SliderJs  language={language} />
 
           <Comments
             commentsRu={commentsRu}
