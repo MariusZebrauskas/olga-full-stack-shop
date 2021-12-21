@@ -33,7 +33,7 @@ export const DescriptionWraapper = styled(motion.div)`
   top: 0;
   z-index: 200;
   width: 100%;
-  min-height: ${({ clientFullHeight }) => (clientFullHeight ? `${clientFullHeight}px` : '250vh')};
+  min-height: ${({ clientFullHeight }) => (clientFullHeight ? `${clientFullHeight}px` : null)};
 `;
 
 export const DescriptionText = styled(motion.div)`
@@ -49,8 +49,8 @@ export const DescriptionButton = styled(MdClose)`
   color: #f3b432;
   position: absolute;
   font-size: 3rem;
-  top: calc(.5rem + 1vw);
-  right: calc(.5rem + 1vw);
+  top: calc(0.5rem + 1vw);
+  right: calc(0.5rem + 1vw);
   transition: transform ease-in-out 0.7s;
   &:hover {
     transform: rotate(500deg);

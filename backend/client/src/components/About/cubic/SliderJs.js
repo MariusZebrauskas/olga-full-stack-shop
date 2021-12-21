@@ -121,17 +121,17 @@ const SliderJs = ({ language }) => {
     setMuzikinePasakaOpen(false);
   };
 
-  const [clientFullHeight, setClientFullHeight] = useState("250vh");
-  
+  const [clientFullHeight, setClientFullHeight] = useState(null);
   useEffect(() => {
-    console.dir(window.document.body);
     setClientFullHeight(window.document.body.offsetHeight);
-    console.log('clientFullHeight:', clientFullHeight)
-  }, [clientFullHeight]);
+    return () => {
+      setClientFullHeight(null);
+    };
+  });
   return (
-    <Wrapper >
+    <Wrapper>
       {/* description pop up valsai */}
-      {valsaiOpen && (
+      {valsaiOpen && clientFullHeight && (
         <DescriptionWraapper
           variants={variantsDescriptionWrapper}
           initial='hidden'
@@ -147,7 +147,7 @@ const SliderJs = ({ language }) => {
         </DescriptionWraapper>
       )}
       {/* description pop up muzikinePasaka */}
-      {muzikinePasakaOpen && (
+      {muzikinePasakaOpen && clientFullHeight && (
         <DescriptionWraapper
           variants={variantsDescriptionWrapper}
           initial='hidden'
@@ -163,7 +163,7 @@ const SliderJs = ({ language }) => {
         </DescriptionWraapper>
       )}
       {/* description pop up Cirkas */}
-      {cirkasOpen && (
+      {cirkasOpen && clientFullHeight && (
         <DescriptionWraapper
           variants={variantsDescriptionWrapper}
           initial='hidden'
