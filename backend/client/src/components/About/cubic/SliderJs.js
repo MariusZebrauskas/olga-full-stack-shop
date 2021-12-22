@@ -115,7 +115,7 @@ const SliderJs = ({ language }) => {
     }
   };
 
-  const closeHandler = (props) => {
+  const closeHandler = () => {
     setValsaiOpen(false);
     setCirkasOpen(false);
     setMuzikinePasakaOpen(false);

@@ -15,11 +15,11 @@ export const SwiperChanged = styled(Swiper)`
   padding: 1.5rem;
   @media (min-width: 425px) {
     width: 30rem;
-    padding: 3rem;
+    padding: 1.5rem 3rem 3rem 3rem;
   }
   @media (min-width: 746px) {
     width: 40rem;
-    padding: 6rem;
+    padding: 2rem 6rem 6rem 6rem;
   }
 `;
 export const Img = styled.img`

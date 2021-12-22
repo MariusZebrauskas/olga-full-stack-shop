@@ -1,4 +1,3 @@
-
 import styled, { keyframes } from 'styled-components';
 import { FaPlayCircle } from 'react-icons/fa';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
@@ -27,11 +26,12 @@ export const Playlist = styled.article`
   }
 `;
 export const H1 = styled.h1`
-  color: ${(props) => props.theme.colors.h1_2};
+  color: ${(props) => props.theme.colors.header};
   background: ${(props) => props.theme.colors.white};
   z-index: 3;
-  padding: calc(0.2em + 0.2vw) calc(1em + 0.5vw);
-  font-size: ${({ comment }) => (comment ? `calc(1.3rem + 0.2vw)` : `calc(0.9rem + 0.2vw)`)};
+  padding: calc(0.2rem + 0.2vw) calc(1rem + 0.5vw);
+  font-size: ${(props) => (props.comment ? `calc(1.3rem + 0.2vw)` : props.theme.fontSize.h1)};
+  margin: 0;
 `;
 
 export const MainWrapper = styled.main`

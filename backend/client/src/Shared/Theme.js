@@ -1,5 +1,6 @@
 export const Theme = {
   colors: {
+    header: '#07282f',
     black_grey: '#304246e1',
     yellow: '#fcb72b',
     filtras: 'rgb(48, 66, 70)', //++background
@@ -13,5 +14,8 @@ export const Theme = {
     loggedInCollor: '#cddc39',
     loggedInDangger: '#e1713c',
     inputColor: '#ffffff',
+  },
+  fontSize: {
+    h1: 'calc(1.3rem + 0.2vw)',
   },
 };

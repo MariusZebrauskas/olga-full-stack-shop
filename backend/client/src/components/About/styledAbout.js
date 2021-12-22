@@ -74,8 +74,8 @@ export const WrapperCommetns = styled.section`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 0;
-  padding: 0 0 5rem 0;
+  margin-top: 5rem;
+  padding: 0 0 3rem 0;
   justify-content: center;
   align-items: center;
 `;
@@ -117,6 +117,12 @@ export const H5 = styled.h5`
 export const Header = styled.h1`
   margin: 10rem 0 0 0;
   text-align: center;
+  font-size: ${props => props.theme.fontSize.h1};
+  color: ${props => props.theme.colors.header};
+  @media (min-width: 767px) {
+  margin: 12rem 0 0 0;
+    
+  }
 `;
 
 // Album SlideWrapper
