@@ -25,11 +25,11 @@ import {
   DescriptionButton,
   DescriptionText,
   DescriptionWraapper,
-  Img,
   P,
   SwiperChanged,
   Wrapper,
 } from './styles';
+import { Img } from '../styledAbout';
 
 // install Swiper modules
 SwiperCore.use([EffectCube, Pagination, Navigation]);
@@ -186,8 +186,8 @@ const SliderJs = ({ language }) => {
         cubeEffect={{
           shadow: true,
           slideShadows: true,
-          shadowOffset: 10,
-          shadowScale: 0.94,
+          shadowOffset: 20,
+          shadowScale: 0.87,
         }}
         pagination={true}
         className='mySwiper'

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../PlayList/Header';
 import Comment from './Comment';
-import FadeIN from '../../Shared/FadeIN'
+import FadeIN from '../../Shared/FadeIN';
 import { WrapperCommetns, WrapperCommetn } from './styledAbout';
 
 const Comments = ({ commentsLt, language, commentsEng, commentsRu }) => {

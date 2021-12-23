@@ -3,28 +3,27 @@ import { Swiper } from 'swiper/react';
 import { motion } from 'framer-motion';
 import { MdClose } from 'react-icons/md';
 
+
 export const Wrapper = styled.section`
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  
 `;
 export const SwiperChanged = styled(Swiper)`
   /* height: 15rem; */
   width: 23rem;
-  padding: 1.5rem;
+  padding: 1.5rem 3rem 3rem 3rem;
   @media (min-width: 425px) {
     width: 30rem;
     padding: 1.5rem 3rem 3rem 3rem;
   }
   @media (min-width: 746px) {
     width: 40rem;
-    padding: 2rem 6rem 6rem 6rem;
+    padding: 2rem 6rem 3rem 6rem;
   }
-`;
-export const Img = styled.img`
-  width: 100%;
-  background-image: cover;
+  
 `;
 
 export const DescriptionWraapper = styled(motion.div)`

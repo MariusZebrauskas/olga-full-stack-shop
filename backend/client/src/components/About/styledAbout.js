@@ -74,7 +74,7 @@ export const WrapperCommetns = styled.section`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 5rem;
+  margin-top: 3rem;
   padding: 0 0 3rem 0;
   justify-content: center;
   align-items: center;
@@ -113,18 +113,42 @@ export const H5 = styled.h5`
   }
 `;
 // About headers
-
-export const Header = styled.h1`
-  margin: 10rem 0 0 0;
-  text-align: center;
-  font-size: ${props => props.theme.fontSize.h1};
-  color: ${props => props.theme.colors.header};
-  @media (min-width: 767px) {
-  margin: 12rem 0 0 0;
-    
-  }
+export const HederWrapper = styled.section`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
+export const SubText = styled.p`
+  color: #007aff;
+  height: 1rem;
+  font-size: 0.75rem;
+  border-top: 2px dotted ${(props) => props.theme.colors.header};
+  margin: 0.1rem 0;
+  padding: 0.1rem;
+  transition: all ease-in-out 0.2s;
+  
 
+`;
+export const Header = styled.h1`
+  margin: 8rem 0 0 0;
+  text-align: center;
+  font-size: ${(props) => props.theme.fontSize.h1};
+  width: 100%;
+  color: ${(props) => props.theme.colors.header};
+  @media (min-width: 767px) {
+    margin: 12rem 0 0 0;
+  }
+ 
+`;
+export const Img = styled.img`
+  width: 100%;
+  background-image: cover;
+
+  
+ 
+`;
+// FIXME: on hover changhe color + make text in midle all time
 // Album SlideWrapper
 
 export const SliderWrapper = styled.section`
@@ -137,6 +161,7 @@ export const SliderWrapper = styled.section`
   align-items: center;
   overflow-x: hidden;
   position: relative;
+  
 `;
 export const BookAdjuster = styled(motion.div)`
   display: flex;
@@ -151,7 +176,6 @@ export const ButtonWrapper = styled.div`
   align-items: center;
   position: absolute;
   pointer-events: none;
-  
 `;
 
 export const RightButton = styled(CgArrowRightR)`
@@ -162,7 +186,7 @@ export const RightButton = styled(CgArrowRightR)`
   color: ${(props) => (props.right < 0 ? '#00000000' : '#dbdfe0')};
   background-color: ${(props) => (props.right < 0 ? '#00000000' : '#676767')};
   right: 0;
-  transition: all  cubic-bezier(.69,.13,.18,.5) 1s;
+  transition: all cubic-bezier(0.69, 0.13, 0.18, 0.5) 1s;
 `;
 export const LeftButton = styled(CgArrowLeftR)`
   font-size: calc(2rem + 1vw);
@@ -172,7 +196,7 @@ export const LeftButton = styled(CgArrowLeftR)`
   color: ${(props) => (props.left > 0 ? '#00000000' : '#dbdfe0')};
   background-color: ${(props) => (props.left > 0 ? '#00000000' : '#676767')};
   left: 0;
-  transition: all  cubic-bezier(.69,.13,.18,.5) 1s;
+  transition: all cubic-bezier(0.69, 0.13, 0.18, 0.5) 1s;
 `;
 
 // SIGLE BOOK CSS

@@ -241,10 +241,13 @@ export const RegisterButton = styled(SingIn)`
 `;
 
 // dont have anaccount
-
 export const WrapperDontHaveAccount = styled.section`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
   p {
     font-size: calc(0.7rem + 0.1vw);
+    line-height: 1.6em;
   }
   b {
     font-size: calc(0.8rem +0.1vw);

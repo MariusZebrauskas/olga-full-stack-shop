@@ -8,6 +8,8 @@ import {
   LeftButton,
   RightButton,
   Header,
+  SubText,
+  HederWrapper,
 } from './styledAbout';
 import Pratarme from './Pratarme';
 import SingleAlbum from './SingleAlbum';
@@ -73,12 +75,24 @@ const About = ({ language }) => {
       return total;
     }
   };
+  const [info, setInfo] = useState('Please click on image to see more info')
+  const [header, setHeader] = useState('ALBUM DESCRIPTION')
+  const [hover, setHover] = useState(false);
+
+  const onMouseEnter = () => {
+    return setHover(true);
+  };
+  const onMouseLeave = () => {
+    return setHover(false);
+  };
   return (
     <>
       <RenderingStyles>
-        <Header>INFORMATION ABOUT OUR AWESOME ALBUMS</Header>
+        <HederWrapper>
+          <Header>{header}</Header>
+          <SubText className="hoverClass" >{info}</SubText>
+        </HederWrapper>
         <Wrapeer>
-          
           <SliderJs  language={language} />
 
           <Comments

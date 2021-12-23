@@ -111,7 +111,7 @@ const Register = ({ changeComponent, language, history }) => {
         }
       })
       .catch((error) => {
-        console.log('register error' + error);
+        setError("Server error please refresh page");
       });
   };
 

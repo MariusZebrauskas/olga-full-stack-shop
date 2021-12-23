@@ -13,7 +13,6 @@ import { motion } from 'framer-motion';
 
 const Body = styled.section`
   width: 100%;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,6 +22,14 @@ const Body = styled.section`
   background-position: center center;
   background-size: cover;
   font-family: 'Poppins', sans-serif;
+  @media (max-width: 425px) {
+    padding: 5rem 0 0 0;
+  }
+  @media (min-width: 425px) {
+    height: 100vh;
+    padding: 0;
+
+  }
 `;
 
 const Form = styled(motion.form)`
