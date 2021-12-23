@@ -9,21 +9,20 @@ export const Wrapper = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  flex-direction: column;
 `;
 export const SwiperChanged = styled(Swiper)`
-  /* height: 15rem; */
-  width: 23rem;
+  width: 20rem;
   padding: 1.5rem 3rem 3rem 3rem;
   @media (min-width: 425px) {
-    width: 30rem;
+    width: 25rem;
     padding: 1.5rem 3rem 3rem 3rem;
   }
   @media (min-width: 746px) {
     width: 40rem;
     padding: 2rem 6rem 3rem 6rem;
   }
-  
+ 
 `;
 
 export const DescriptionWraapper = styled(motion.div)`

@@ -12,9 +12,9 @@ export const Playlist = styled.article`
   margin: ${({ comment }) => (comment ? `0rem 0 1rem 0` : `5rem 0 1rem 0`)};
   width: 100%;
   padding: 1rem 0;
-  @media (min-width: 1440px) {
+  /* @media (min-width: 1440px) {
     width: 95%;
-  }
+  } */
   div {
     position: absolute;
     border-bottom: 0.1rem solid ${(props) => props.theme.colors.grey};

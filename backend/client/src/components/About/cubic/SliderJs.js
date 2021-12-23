@@ -29,7 +29,7 @@ import {
   SwiperChanged,
   Wrapper,
 } from './styles';
-import { Img } from '../styledAbout';
+import { Header, HederWrapper, Img, SubText } from '../styledAbout';
 
 // install Swiper modules
 SwiperCore.use([EffectCube, Pagination, Navigation]);
@@ -128,6 +128,7 @@ const SliderJs = ({ language }) => {
       setClientFullHeight(null);
     };
   });
+
   return (
     <Wrapper>
       {/* description pop up valsai */}

@@ -27,17 +27,25 @@ const About = ({ language }) => {
   const [muzikinePasaka, setMuzikinePasaka] = useState(null);
   const [valsai, setValsai] = useState(null);
   const [animationActivatedChek, setAnimationActivatedChek] = useState(false);
-
+  const [header, setHeader] = useState('ALBUM DESCRIPTION');
+  const [info, setInfo] = useState('Please click on image to see more info');
   useEffect(() => {
     if (language === 'lt') {
+      setHeader('ALBUMŲ APRAŠYMAS');
+      setInfo('Jaigu norite pamatyti išsamiau spauskite ant paveiksliuko');
       setCirkas(cirkasLt);
       setMuzikinePasaka(muzikineLt);
+
       setValsai(valsaiLt);
     } else if (language === 'eng') {
+      setHeader('ALBUM DESCRIPTION');
+      setInfo('Please click on image to see more info');
       setCirkas(cirkasEng);
       setMuzikinePasaka(muzikineEng);
       setValsai(valsaiEng);
     } else if (language === 'ru') {
+      setHeader('ОПИСАНИЕ АЛЬБОМА');
+      setInfo('Если вы хотите увидеть подробности, нажмите на картинку');
       setCirkas(cirkasRu);
       setMuzikinePasaka(muzikineRu);
       setValsai(valsaiRu);
@@ -75,25 +83,16 @@ const About = ({ language }) => {
       return total;
     }
   };
-  const [info, setInfo] = useState('Please click on image to see more info')
-  const [header, setHeader] = useState('ALBUM DESCRIPTION')
-  const [hover, setHover] = useState(false);
 
-  const onMouseEnter = () => {
-    return setHover(true);
-  };
-  const onMouseLeave = () => {
-    return setHover(false);
-  };
   return (
     <>
       <RenderingStyles>
         <HederWrapper>
           <Header>{header}</Header>
-          <SubText className="hoverClass" >{info}</SubText>
+          <SubText className='hoverClass'>{info}</SubText>
         </HederWrapper>
         <Wrapeer>
-          <SliderJs  language={language} />
+          <SliderJs language={language} />
 
           <Comments
             commentsRu={commentsRu}

@@ -5,19 +5,17 @@ import { FiCheckCircle } from 'react-icons/fi';
 // import { ImCross } from 'react-icons/im';
 
 export const MenuRapper = styled.nav`
-
-opacity: 0.98;
-display: flex;
-align-items: center;
-justify-content: space-between;
-background: ${(props) => props.theme.colors.black_grey};
-position: fixed;
-top: 0;
-width: 100%;
-z-index: 100;
-@media (max-width: 768px) {
-    height:calc(3.3rem + 2vh);
-
+  opacity: 0.98;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: ${(props) => props.theme.colors.black_grey};
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  @media (max-width: 768px) {
+    height: calc(3.3rem + 2vh);
   }
 `;
 export const List = styled.ul`
@@ -41,6 +39,7 @@ export const List = styled.ul`
       `;
   }}
   @media (min-width: 768px) {
+    top: 0;
     position: relative;
     transform: translateX(0);
     opacity: 1;
@@ -186,7 +185,6 @@ export const User = styled(FaUserCheck)`
 export const Home = styled(FaHome)`
   color: ${(props) => props.theme.colors.grey};
   margin: 0rem ${({ language }) => (language === 'lt' ? '0.75em' : '0.25em')} 0 0;
-
 `;
 export const ShoppingCart = styled(FiShoppingCart)`
   color: ${(props) => props.theme.colors.grey};
@@ -246,11 +244,20 @@ export const SubWrapper = styled.div`
   @media (min-width: 768px) {
     background: ${(props) => props.theme.colors.black_grey};
     position: absolute;
-    top: 100%;
-    right: 0%;
+    top: 117%;
+    right: 10%;
     &.radius {
       border-end-end-radius: 0.7rem;
       border-end-start-radius: 0.7rem;
     }
+  @media (min-width: 768px) {
+    
+    top: 135%;
+    
+  }
+  @media (min-width: 2560px) {
+    
+    top: 120%;
+    
   }
 `;

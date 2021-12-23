@@ -118,17 +118,18 @@ export const HederWrapper = styled.section`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  @media (min-width: 2560px) {
+    margin-bottom: 1rem;
+  }
 `;
 export const SubText = styled.p`
-  color: #007aff;
+  color: ${(props) => props.theme.colors.header};
   height: 1rem;
   font-size: 0.75rem;
   border-top: 2px dotted ${(props) => props.theme.colors.header};
   margin: 0.1rem 0;
   padding: 0.1rem;
   transition: all ease-in-out 0.2s;
-  
-
 `;
 export const Header = styled.h1`
   margin: 8rem 0 0 0;
@@ -137,16 +138,18 @@ export const Header = styled.h1`
   width: 100%;
   color: ${(props) => props.theme.colors.header};
   @media (min-width: 767px) {
+    margin: 10rem 0 0 0;
+  }
+  @media (min-width: 1440px) {
     margin: 12rem 0 0 0;
   }
- 
+  @media (min-width: 2560px) {
+    margin: 14rem 0 0 0;
+  }
 `;
 export const Img = styled.img`
   width: 100%;
   background-image: cover;
-
-  
- 
 `;
 // FIXME: on hover changhe color + make text in midle all time
 // Album SlideWrapper
@@ -161,7 +164,6 @@ export const SliderWrapper = styled.section`
   align-items: center;
   overflow-x: hidden;
   position: relative;
-  
 `;
 export const BookAdjuster = styled(motion.div)`
   display: flex;
