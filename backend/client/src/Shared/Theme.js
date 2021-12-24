@@ -17,5 +17,11 @@ export const Theme = {
   },
   fontSize: {
     h1: 'calc(1.3rem + 0.2vw)',
+    h1Mid: 'calc(1.5rem + 0.2vw)',
+    h1Big: 'calc(1.7rem + 0.2vw)',
+    p: 'calc(.6rem + 0.2vw)',
+    pMid: 'calc(.7rem + 0.2vw)',
+    pBig: 'calc(.8rem + 0.2vw)',
+    fontWeight1: 800,
   },
 };

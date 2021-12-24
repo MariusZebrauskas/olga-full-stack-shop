@@ -13,6 +13,8 @@ const ButtonForAlbums = styled.button`
   transition: all 0.2s ease 0s;
   font-weight: bold;
   background-color: ${(props) => (props.click ? 'cyan' : "#fff")};
+  font-size: ${(props) => props.theme.fontSize.p};
+
   &:hover {
     background-color: ${(props) => (props.click ? 'cyan' : '#08282f')};
     box-shadow:  ${(props) => (props.click ? '0px 1px 4px cyan' : '0px 5px 10px #08282f')};
@@ -20,7 +22,7 @@ const ButtonForAlbums = styled.button`
     cursor: pointer;
   }
   @media (min-width: 768px) {
-    font-size: calc(0.85rem + 0.1vw);
+    font-size: ${(props) => props.theme.fontSize.pMid};
   }
 `;
 // let albumScreen;

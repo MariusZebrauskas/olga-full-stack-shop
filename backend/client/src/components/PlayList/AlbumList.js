@@ -4,18 +4,15 @@ import { ClipLoader } from 'react-spinners';
 import { LoadingContext } from '../../context/LoadingContext';
 
 const P = styled.h3`
-  font-size: calc(0.8rem + 0.5vw);
+  font-size: ${(props) => props.theme.fontSize.pBig};
   padding: 0.1rem 0.3rem;
   margin: 0.5rem 0 0 0.3rem;
 `;
 const H4 = styled.h1`
   padding: 0.1rem 0.3rem;
   transition: transform 1s;
-  font-size: calc(1.4rem + 1.5vw);
-  @media (min-width: 768px) {
-    font-size: calc(1.4rem + .5vw);
+  font-size: ${props => props.theme.fontSize.h1};
 
-  }
 `;
 const SongListWrapper = styled.section`
   color: #fefbfd;
@@ -45,7 +42,7 @@ const SongList = styled.div`
 `;
 
 const ButtonBuyAllbum = styled.button`
-  margin: 3rem;
+  margin: 3rem 0;
   width: 100%;
   padding: 0.5em 1em;
   background-color: transparent;
@@ -53,7 +50,7 @@ const ButtonBuyAllbum = styled.button`
   color: #fefbfd;
   transition: border-color 0.2s, color 0.2s, transform 0.2s;
   h2 {
-    font-size: calc(1rem + 0.5vw);
+    font-size: calc(.7rem + 0.2vw);
 
     /* margin-bottom:.7rem; */
   }

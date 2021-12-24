@@ -37,18 +37,16 @@ export const P = styled.p`
   cursor: ${({ comment }) => (comment ? 'auto' : `pointer`)};
   color: black;
   text-align: justify;
-  /* padding: 0 1rem; */
-  padding: 0;
-  margin: 0.5rem 0;
-  &:nth-child(1) {
-    padding: 1rem 0 0 0;
-  }
-  font-size: calc(1rem + 1vw);
+  font-size: ${(props) => props.theme.fontSize.pBig};
   text-indent: 2.5em;
   animation: ${({ isOpen }) => (!isOpen ? onCloseText : onRenderText)} ease-in-out 0.3s;
+  &:nth-child(1) {
+    margin: 0.1rem 0 0 0;
+  }
+
   @media (min-width: 1440px) {
     width: ${(props) => (props.ultrawide ? '90%' : '70%')};
-    font-size: calc(1rem + 0.4vw);
+    font-size: ${(props) => props.theme.fontSize.pBig};
   }
 `;
 export const Wrapper = styled.section`
@@ -82,6 +80,7 @@ export const WrapperCommetns = styled.section`
 export const WrapperCommetn = styled.section`
   box-shadow: 1px 1px 1px 2px #7d7676, 2px 2px 2px 2px #928585, 3px 4px 5px 4px #979da2b5;
   margin: 2rem 1rem;
+  padding: 1rem 0 0 0;
   background: linear-gradient(217deg, rgb(245 244 244 / 80%), rgba(255, 0, 0, 0) 70.71%),
     linear-gradient(127deg, rgb(215 226 215 / 80%), rgba(0, 255, 0, 0) 70.71%),
     linear-gradient(336deg, rgb(227 227 239 / 80%), rgba(0, 0, 255, 0) 70.71%);
@@ -92,15 +91,13 @@ export const WrapperCommetn = styled.section`
     align-items: center;
     flex-direction: column;
     width: 100%;
-    margin: 0;
   }
   @media (min-width: 1440px) {
     width: 70%;
-    /* font-size: calc(1rem + .4vw); */
   }
 `;
 export const H5 = styled.h5`
-  font-size: calc(0.8rem + 0.5vw);
+  font-size: ${(props) => props.theme.fontSize.p};
   /* word-spacing: calc(0.6rem + .1vw); */
   line-height: calc(1rem + 1vw);
   text-align: justify;
@@ -108,7 +105,7 @@ export const H5 = styled.h5`
   width: 90%;
   max-width: 50rem;
   @media (min-width: 1440px) {
-    font-size: calc(1rem + 0.12vw);
+    font-size: ${(props) => props.theme.fontSize.pBig};
     line-height: calc(1rem + 0.3vw);
   }
 `;

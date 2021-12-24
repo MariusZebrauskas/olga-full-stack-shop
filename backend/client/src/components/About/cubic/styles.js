@@ -64,14 +64,16 @@ export const P = styled.p`
   /* padding: 0 1rem; */
   padding: 0;
   margin: 0.5rem 0;
+  line-height:calc(1.2rem + 1vw);
   &:nth-child(1) {
     padding: 3rem 0 0 0;
   }
 
-  font-size: calc(1rem + 1vw);
+  font-size: ${props => props.theme.fontSize.h1};
   text-indent: 2.5em;
   @media (min-width: 1440px) {
     width: ${(props) => (props.ultrawide ? '90%' : '70%')};
-    font-size: calc(1rem + 0.4vw);
+    font-size: ${props => props.theme.fontSize.h1Big};
+
   }
 `;

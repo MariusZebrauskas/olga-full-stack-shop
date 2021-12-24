@@ -106,7 +106,7 @@ const WarningAndSuccessWrapper = styled.section`
 
 const ContactUsHeader = styled(motion.h1)`
   /* padding: 5rem 0 0 0; */
-  font-size: calc(1.5rem + 0.25vw);
+  font-size: ${props => props.theme.fontSize.h1Mid};
   font-weight: 600;
   /* color: #dcdbd9; */
   color: ${(props) => props.theme.colors.grey};

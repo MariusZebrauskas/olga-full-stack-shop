@@ -31,7 +31,7 @@ export const H1 = styled.h1`
   background: ${(props) => props.theme.colors.white};
   z-index: 3;
   padding: calc(0.2rem + 0.2vw) calc(1rem + 0.5vw);
-  font-size: ${(props) => (props.comment ? `calc(1.3rem + 0.2vw)` : props.theme.fontSize.h1)};
+  font-size: ${(props) => props.theme.fontSize.h1};
   margin: 0;
 `;
 
@@ -141,6 +141,9 @@ export const AlbumWrapper = styled.div`
   width: min(50rem, 95%);
   background-image: linear-gradient(to bottom, #82549d 61%, rgba(255, 0, 0, 1));
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  @media (min-width: 2560px) {
+    width: min(80rem, 95%);
+  }
 `;
 
 export const MainAlbumWrapper = styled.section`
@@ -161,8 +164,8 @@ export const AlbumPickerHeader = styled.h3`
   padding: 1rem 0 0 0;
   position: relative;
   z-index: 2;
-  font-size: 2rem;
-  font-weight: 800;
+  font-size: ${(props) => props.theme.fontSize.h1};
+  font-weight: ${props => props.theme.fontSize.fontWeight1};
   color: #092930;
   position: relative;
 
@@ -196,6 +199,9 @@ export const SelectAlbums = styled.section`
     bottom: 0;
     position: absolute;
     background: rgba(36, 188, 223, 0.212);
+  }
+  @media (min-width: 2560px) {
+    max-width: 80rem;
   }
 `;
 
