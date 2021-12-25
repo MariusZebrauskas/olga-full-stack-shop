@@ -1,63 +1,9 @@
-//--------------------------------------------CIRKAS ATVAZIAVO--------------------------------------------------//
 
-//card1
-import video1 from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/1. Cirko marsas/video1.mp4';
+let testPicture =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fpictures%2Fcirkas-atvaziavo-lt-eng.jpg?alt=media&token=54527cdf-b607-4da4-9b7d-896a895a8230';
 
-//card2
-import video2 from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/2. Linksmojo klouno dainelė/video2.mp4';
-
-//card3
-import video3 from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/3. Oro gimnastai/video3.mp4';
-
-//card4
-import video4 from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/4. Meška šoka/video4.mp4';
-
-//card5
-import video5 from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/5. Gimnastė ant gaublio/video5.mp4';
-
-//card6
-import video6 from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/6. Cirko šuniukai/video6.mp4';
-
-//card7
-import video7 from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/7. Akrobatai I/video7.mp4';
-
-//card8
-import video8 from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/8. Galiūnas/video8.mp4';
-
-//card9
-import video9 from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/9. Fakyras - gyvačių kerėtojas/video9.mp4';
-
-//card10
-import video10 from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/10. Akrobatai II/video10.mp4';
-
-//card11
-import video11 from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/11. Dramblys/video11.mp4';
-
-//card12
-import video12 from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/12. Žonglieriai/video12.mp4';
-
-//card13
-import video13 from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/13. Cirko arkliukai/video13.mp4';
-
-//card14
-import video14 from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/14. Liūdnojo klouno dainelė/video14.mp4';
-
-//card15
-import video15 from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/15. Linksmosios beždžionėlės/video15.mp4';
-
-//card16
-import video16 from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/16. Pudeliuko šokis/video16.mp4';
-
-//card17
-import video17 from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/17. Tigrai/video17.mp4';
-
-//card18
-import video18 from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/18. Atsisveikinimo maršas/video18.mp4';
-
-//mainAlbum picture lt eng
-import testPicture from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/1. Cirko marsas/cirkas-atvaziavo-lt-eng.jpg';
-//mainAlbum picture ru
-import testPictureRu from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/1. Cirko marsas/cirkas-atvaziavo-ru.jpg';
+let testPictureRu =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fpictures%2Fcirkas-atvaziavo-ru.jpg?alt=media&token=f7d5ed97-133d-4336-b7bf-b055dd43f6b3';
 
 export const theCirkusHasArivedLt = [
   {
@@ -65,7 +11,8 @@ export const theCirkusHasArivedLt = [
     noteID: 1,
     songprice: 1.5,
     buy: false,
-    video: video1,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo1.mp4?alt=media&token=b00a1d3b-dd5a-48f8-98b0-af3c865c1db3',
     song: 'Cirko maršas',
     picture: testPicture,
     album: 'Cirkas atvažiavo!',
@@ -77,7 +24,8 @@ export const theCirkusHasArivedLt = [
     noteID: 2,
     songprice: 1.5,
     buy: false,
-    video: video2,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo2.mp4?alt=media&token=a37b3d2a-08e9-4803-8bf6-94a974b7ed1f',
     song: 'Linksmojo klouno dainelė',
     albumprice: 12,
     picture: testPicture,
@@ -88,7 +36,8 @@ export const theCirkusHasArivedLt = [
     noteID: 3,
     songprice: 1.5,
     buy: false,
-    video: video3,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo3.mp4?alt=media&token=ec87d5ef-fc70-4977-bc83-ecccf0ae79ab',
     song: 'Oro gimnastai',
     picture: testPicture,
     albumprice: 12,
@@ -99,7 +48,8 @@ export const theCirkusHasArivedLt = [
     noteID: 4,
     songprice: 1.5,
     buy: false,
-    video: video4,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo4.mp4?alt=media&token=d7463c01-5240-4545-8235-a64329d6add7',
     song: 'Meška Šoka',
     picture: testPicture,
     albumprice: 12,
@@ -110,7 +60,8 @@ export const theCirkusHasArivedLt = [
     noteID: 5,
     songprice: 1.5,
     buy: false,
-    video: video5,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo5.mp4?alt=media&token=dff85a04-58a9-4028-9e96-7af513edbf7e',
     song: 'Gimnastė ant gaublio',
     picture: testPicture,
     albumprice: 12,
@@ -121,7 +72,8 @@ export const theCirkusHasArivedLt = [
     noteID: 6,
     songprice: 1.5,
     buy: false,
-    video: video6,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo6.mp4?alt=media&token=cc47978e-e4e8-4ddf-af09-e33ae5004575',
     song: 'Cirko šuniukai',
     picture: testPicture,
     albumprice: 12,
@@ -132,7 +84,8 @@ export const theCirkusHasArivedLt = [
     noteID: 7,
     songprice: 2,
     buy: false,
-    video: video7,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo7.mp4?alt=media&token=02daf874-e650-4f25-8307-92829aaa1913',
     song: 'Akrobatai I',
     picture: testPicture,
     albumprice: 12,
@@ -143,7 +96,8 @@ export const theCirkusHasArivedLt = [
     noteID: 8,
     songprice: 1.5,
     buy: false,
-    video: video8,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo8.mp4?alt=media&token=912391c5-4ac0-4151-8bfe-050554b0cc90',
     song: 'Galiūnas',
     picture: testPicture,
     albumprice: 12,
@@ -154,7 +108,8 @@ export const theCirkusHasArivedLt = [
     noteID: 9,
     songprice: 2,
     buy: false,
-    video: video9,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo9.mp4?alt=media&token=f342e5e3-fcda-4ce7-9888-860464a34d3d',
     song: 'Fakyras - gyvačių kerėtojas',
     picture: testPicture,
     albumprice: 12,
@@ -165,7 +120,8 @@ export const theCirkusHasArivedLt = [
     noteID: 10,
     songprice: 2,
     buy: false,
-    video: video10,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo10.mp4?alt=media&token=bb30a7e6-64d3-4415-a146-f35535b4eb03',
     song: 'Akrobatai II',
     picture: testPicture,
     albumprice: 12,
@@ -176,7 +132,8 @@ export const theCirkusHasArivedLt = [
     noteID: 11,
     songprice: 1,
     buy: false,
-    video: video11,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo11.mp4?alt=media&token=20bb9ed6-1e52-4216-bec7-792fa4ab5353',
     song: 'Dramblys',
     picture: testPicture,
     albumprice: 12,
@@ -187,7 +144,8 @@ export const theCirkusHasArivedLt = [
     noteID: 12,
     songprice: 2,
     buy: false,
-    video: video12,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo12.mp4?alt=media&token=a6fdb0fe-e375-4d69-8687-4c255f1021ce',
     song: 'Žonglieriai',
     picture: testPicture,
     albumprice: 12,
@@ -198,7 +156,8 @@ export const theCirkusHasArivedLt = [
     noteID: 13,
     songprice: 1,
     buy: false,
-    video: video13,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo13.mp4?alt=media&token=c7967a64-2231-4109-a5b8-cb0e7ae1b6e1',
     song: 'Cirko arkliukai',
     picture: testPicture,
     albumprice: 12,
@@ -209,7 +168,8 @@ export const theCirkusHasArivedLt = [
     noteID: 14,
     songprice: 1.5,
     buy: false,
-    video: video14,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo14.mp4?alt=media&token=a54f34e2-e181-49d3-9c06-43d03d066c96',
     song: 'Liūdnojo klouno dainelė',
     picture: testPicture,
     albumprice: 12,
@@ -220,7 +180,8 @@ export const theCirkusHasArivedLt = [
     noteID: 15,
     songprice: 1.5,
     buy: false,
-    video: video15,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo15.mp4?alt=media&token=f374372a-3432-4513-b66d-c7e2aed76d88',
     song: 'Linksmosios beždžionėlės',
     picture: testPicture,
     albumprice: 12,
@@ -231,7 +192,8 @@ export const theCirkusHasArivedLt = [
     noteID: 16,
     songprice: 1.5,
     buy: false,
-    video: video16,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo16.mp4?alt=media&token=79271f1a-2c24-4657-b345-bf87ea5de5fa',
     song: 'Pudeliuko šokis',
     picture: testPicture,
     albumprice: 12,
@@ -242,7 +204,8 @@ export const theCirkusHasArivedLt = [
     noteID: 17,
     songprice: 1.5,
     buy: false,
-    video: video17,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo17.mp4?alt=media&token=3885e4e7-c8cf-4ee5-89a2-f8c9f99f3862',
     song: 'Tigrai',
     picture: testPicture,
     albumprice: 12,
@@ -253,7 +216,8 @@ export const theCirkusHasArivedLt = [
     noteID: 18,
     songprice: 1.5,
     buy: false,
-    video: video18,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo18.mp4?alt=media&token=97278719-572a-4dbd-92a0-995ce40cdfa0',
     song: 'Atsisveikinimo maršas',
     picture: testPicture,
     albumprice: 12,
@@ -267,7 +231,8 @@ export const theCirkusHasArivedEng = [
     noteID: 19,
     songprice: 1.5,
     buy: false,
-    video: video1,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo1.mp4?alt=media&token=b00a1d3b-dd5a-48f8-98b0-af3c865c1db3',
     song: 'The Circus March',
     picture: testPicture,
     albumprice: 12,
@@ -278,7 +243,8 @@ export const theCirkusHasArivedEng = [
     noteID: 20,
     songprice: 1.5,
     buy: false,
-    video: video2,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo2.mp4?alt=media&token=a37b3d2a-08e9-4803-8bf6-94a974b7ed1f',
     song: "The Merry Clown's song",
     picture: testPicture,
     albumprice: 12,
@@ -289,7 +255,8 @@ export const theCirkusHasArivedEng = [
     noteID: 21,
     songprice: 1.5,
     buy: false,
-    video: video3,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo3.mp4?alt=media&token=ec87d5ef-fc70-4977-bc83-ecccf0ae79ab',
     song: 'Air gymnasts',
     picture: testPicture,
     albumprice: 12,
@@ -300,7 +267,8 @@ export const theCirkusHasArivedEng = [
     noteID: 22,
     songprice: 1.5,
     buy: false,
-    video: video4,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo4.mp4?alt=media&token=d7463c01-5240-4545-8235-a64329d6add7',
     song: 'The Bear is dancing',
     picture: testPicture,
     albumprice: 12,
@@ -311,7 +279,8 @@ export const theCirkusHasArivedEng = [
     noteID: 23,
     songprice: 1.5,
     buy: false,
-    video: video5,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo5.mp4?alt=media&token=dff85a04-58a9-4028-9e96-7af513edbf7e',
     song: 'The Gymnast on the Globe',
     picture: testPicture,
     albumprice: 12,
@@ -322,7 +291,8 @@ export const theCirkusHasArivedEng = [
     noteID: 24,
     songprice: 1.5,
     buy: false,
-    video: video6,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo6.mp4?alt=media&token=cc47978e-e4e8-4ddf-af09-e33ae5004575',
     song: 'The Circus Puppies',
     picture: testPicture,
     albumprice: 12,
@@ -333,7 +303,8 @@ export const theCirkusHasArivedEng = [
     noteID: 25,
     songprice: 2,
     buy: false,
-    video: video7,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo7.mp4?alt=media&token=02daf874-e650-4f25-8307-92829aaa1913',
     song: 'Acrobats I',
     picture: testPicture,
     albumprice: 12,
@@ -344,7 +315,8 @@ export const theCirkusHasArivedEng = [
     noteID: 26,
     songprice: 1.5,
     buy: false,
-    video: video8,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo8.mp4?alt=media&token=912391c5-4ac0-4151-8bfe-050554b0cc90',
     song: 'The Mighty Men',
     picture: testPicture,
     albumprice: 12,
@@ -355,7 +327,8 @@ export const theCirkusHasArivedEng = [
     noteID: 27,
     songprice: 2,
     buy: false,
-    video: video9,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo9.mp4?alt=media&token=f342e5e3-fcda-4ce7-9888-860464a34d3d',
     song: 'The Fakir-Snake Charmer',
     picture: testPicture,
     albumprice: 12,
@@ -366,7 +339,8 @@ export const theCirkusHasArivedEng = [
     noteID: 28,
     songprice: 2,
     buy: false,
-    video: video10,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo10.mp4?alt=media&token=bb30a7e6-64d3-4415-a146-f35535b4eb03',
     song: 'Acrobats II',
     picture: testPicture,
     albumprice: 12,
@@ -377,7 +351,8 @@ export const theCirkusHasArivedEng = [
     noteID: 29,
     songprice: 1,
     buy: false,
-    video: video11,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo11.mp4?alt=media&token=20bb9ed6-1e52-4216-bec7-792fa4ab5353',
     song: 'The Elephant',
     picture: testPicture,
     albumprice: 12,
@@ -388,7 +363,8 @@ export const theCirkusHasArivedEng = [
     noteID: 30,
     songprice: 2,
     buy: false,
-    video: video12,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo12.mp4?alt=media&token=a6fdb0fe-e375-4d69-8687-4c255f1021ce',
     song: 'The Jugglers',
     picture: testPicture,
     albumprice: 12,
@@ -399,7 +375,8 @@ export const theCirkusHasArivedEng = [
     noteID: 31,
     songprice: 1,
     buy: false,
-    video: video13,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo13.mp4?alt=media&token=c7967a64-2231-4109-a5b8-cb0e7ae1b6e1',
     song: 'The Circus Horses',
     picture: testPicture,
     albumprice: 12,
@@ -410,7 +387,8 @@ export const theCirkusHasArivedEng = [
     noteID: 32,
     songprice: 1.5,
     buy: false,
-    video: video14,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo14.mp4?alt=media&token=a54f34e2-e181-49d3-9c06-43d03d066c96',
     song: "The Sad Clown's song",
     picture: testPicture,
     albumprice: 12,
@@ -421,7 +399,8 @@ export const theCirkusHasArivedEng = [
     noteID: 33,
     songprice: 1.5,
     buy: false,
-    video: video15,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo15.mp4?alt=media&token=f374372a-3432-4513-b66d-c7e2aed76d88',
     song: 'The Merry Monkeys',
     picture: testPicture,
     albumprice: 12,
@@ -432,7 +411,8 @@ export const theCirkusHasArivedEng = [
     noteID: 34,
     songprice: 1.5,
     buy: false,
-    video: video16,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo16.mp4?alt=media&token=79271f1a-2c24-4657-b345-bf87ea5de5fa',
     song: "The Small Poodle's Dance",
     picture: testPicture,
     albumprice: 12,
@@ -443,7 +423,8 @@ export const theCirkusHasArivedEng = [
     noteID: 35,
     songprice: 1.5,
     buy: false,
-    video: video17,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo17.mp4?alt=media&token=3885e4e7-c8cf-4ee5-89a2-f8c9f99f3862',
     song: 'The Tigers',
     picture: testPicture,
     albumprice: 12,
@@ -454,7 +435,8 @@ export const theCirkusHasArivedEng = [
     noteID: 36,
     songprice: 1.5,
     buy: false,
-    video: video18,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo18.mp4?alt=media&token=97278719-572a-4dbd-92a0-995ce40cdfa0',
     song: 'The Farewell March',
     picture: testPicture,
     albumprice: 12,
@@ -467,7 +449,8 @@ export const theCirkusHasArivedRu = [
     noteID: 37,
     songprice: 1.5,
     buy: false,
-    video: video1,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo1.mp4?alt=media&token=b00a1d3b-dd5a-48f8-98b0-af3c865c1db3',
     song: 'Цирковой марш',
     picture: testPictureRu,
     albumprice: 12,
@@ -478,7 +461,8 @@ export const theCirkusHasArivedRu = [
     noteID: 38,
     songprice: 1.5,
     buy: false,
-    video: video2,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo2.mp4?alt=media&token=a37b3d2a-08e9-4803-8bf6-94a974b7ed1f',
     song: 'Песенка весёлого клоуна',
     picture: testPictureRu,
     albumprice: 12,
@@ -489,7 +473,8 @@ export const theCirkusHasArivedRu = [
     noteID: 39,
     songprice: 1.5,
     buy: false,
-    video: video3,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo3.mp4?alt=media&token=ec87d5ef-fc70-4977-bc83-ecccf0ae79ab',
     song: 'Воздушные гимнасты',
     picture: testPictureRu,
     albumprice: 12,
@@ -500,7 +485,8 @@ export const theCirkusHasArivedRu = [
     noteID: 40,
     songprice: 1.5,
     buy: false,
-    video: video4,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo4.mp4?alt=media&token=d7463c01-5240-4545-8235-a64329d6add7',
     song: 'Медведь танцует',
     picture: testPictureRu,
     albumprice: 12,
@@ -511,7 +497,8 @@ export const theCirkusHasArivedRu = [
     noteID: 41,
     songprice: 1.5,
     buy: false,
-    video: video5,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo5.mp4?alt=media&token=dff85a04-58a9-4028-9e96-7af513edbf7e',
     song: 'Гимнастка на шаре',
     picture: testPictureRu,
     albumprice: 12,
@@ -522,7 +509,8 @@ export const theCirkusHasArivedRu = [
     noteID: 42,
     songprice: 1.5,
     buy: false,
-    video: video6,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo6.mp4?alt=media&token=cc47978e-e4e8-4ddf-af09-e33ae5004575',
     song: 'Цирковые собачки',
     picture: testPictureRu,
     albumprice: 12,
@@ -533,7 +521,8 @@ export const theCirkusHasArivedRu = [
     noteID: 43,
     songprice: 2,
     buy: false,
-    video: video7,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo7.mp4?alt=media&token=02daf874-e650-4f25-8307-92829aaa1913',
     song: 'Акробаты I',
     picture: testPictureRu,
     albumprice: 12,
@@ -544,7 +533,8 @@ export const theCirkusHasArivedRu = [
     noteID: 44,
     songprice: 1.5,
     buy: false,
-    video: video8,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo8.mp4?alt=media&token=912391c5-4ac0-4151-8bfe-050554b0cc90',
     song: 'Силач',
     picture: testPictureRu,
     albumprice: 12,
@@ -555,7 +545,8 @@ export const theCirkusHasArivedRu = [
     noteID: 45,
     songprice: 2,
     buy: false,
-    video: video9,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo9.mp4?alt=media&token=f342e5e3-fcda-4ce7-9888-860464a34d3d',
     song: 'Факир-заклинатель змей',
     picture: testPictureRu,
     albumprice: 12,
@@ -566,7 +557,8 @@ export const theCirkusHasArivedRu = [
     noteID: 46,
     songprice: 2,
     buy: false,
-    video: video10,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo10.mp4?alt=media&token=bb30a7e6-64d3-4415-a146-f35535b4eb03',
     song: 'Акробаты II',
     picture: testPictureRu,
     albumprice: 12,
@@ -577,7 +569,8 @@ export const theCirkusHasArivedRu = [
     noteID: 47,
     songprice: 1,
     buy: false,
-    video: video11,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo11.mp4?alt=media&token=20bb9ed6-1e52-4216-bec7-792fa4ab5353',
     song: 'Слон',
     picture: testPictureRu,
     albumprice: 12,
@@ -588,7 +581,8 @@ export const theCirkusHasArivedRu = [
     noteID: 48,
     songprice: 2,
     buy: false,
-    video: video12,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo12.mp4?alt=media&token=a6fdb0fe-e375-4d69-8687-4c255f1021ce',
     song: 'Жонглёры',
     picture: testPictureRu,
     albumprice: 12,
@@ -599,7 +593,8 @@ export const theCirkusHasArivedRu = [
     noteID: 49,
     songprice: 1,
     buy: false,
-    video: video13,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo13.mp4?alt=media&token=c7967a64-2231-4109-a5b8-cb0e7ae1b6e1',
     song: 'Цирковые лошадки',
     picture: testPictureRu,
     albumprice: 12,
@@ -610,7 +605,8 @@ export const theCirkusHasArivedRu = [
     noteID: 50,
     songprice: 1.5,
     buy: false,
-    video: video14,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo14.mp4?alt=media&token=a54f34e2-e181-49d3-9c06-43d03d066c96',
     song: 'Песенка грустного клоуна',
     picture: testPictureRu,
     albumprice: 12,
@@ -621,7 +617,8 @@ export const theCirkusHasArivedRu = [
     noteID: 51,
     songprice: 1.5,
     buy: false,
-    video: video15,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo15.mp4?alt=media&token=f374372a-3432-4513-b66d-c7e2aed76d88',
     song: 'Весёлые обезьянки',
     picture: testPictureRu,
     albumprice: 12,
@@ -632,7 +629,8 @@ export const theCirkusHasArivedRu = [
     noteID: 52,
     songprice: 1.5,
     buy: false,
-    video: video16,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo16.mp4?alt=media&token=79271f1a-2c24-4657-b345-bf87ea5de5fa',
     song: 'Танец пуделя',
     picture: testPictureRu,
     albumprice: 12,
@@ -643,7 +641,8 @@ export const theCirkusHasArivedRu = [
     noteID: 53,
     songprice: 1.5,
     buy: false,
-    video: video17,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo17.mp4?alt=media&token=3885e4e7-c8cf-4ee5-89a2-f8c9f99f3862',
     song: 'Тигры',
     picture: testPictureRu,
     albumprice: 12,
@@ -654,7 +653,8 @@ export const theCirkusHasArivedRu = [
     noteID: 54,
     songprice: 1.5,
     buy: false,
-    video: video18,
+    video:
+      'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fvideo18.mp4?alt=media&token=97278719-572a-4dbd-92a0-995ce40cdfa0',
     song: 'Прощальный марш',
     picture: testPictureRu,
     albumprice: 12,

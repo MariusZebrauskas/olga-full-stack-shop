@@ -1,16 +1,34 @@
-import cirkasAtvaziavoImgLt from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/cirkas-atvaziavo-lt-eng.jpg';
-import cirkasAtvaziavoImgEng from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/cirkas-atvaziavo-lt-eng.jpg';
-import cirkasAtvaziavoImgRu from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/cirkas-atvaziavo-ru.jpg';
+// import cirkasAtvaziavoImgLt from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/cirkas-atvaziavo-lt-eng.jpg';
+// import cirkasAtvaziavoImgEng from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/cirkas-atvaziavo-lt-eng.jpg';
+// import cirkasAtvaziavoImgRu from '../../Albumbs/mariui antras rinkinys cirkas atvaziavo/cirkas-atvaziavo-ru.jpg';
 // -----------------------------------------------------------------
-import valsaiImgLt from '../../Albumbs/valsai-baleto-pamokos/A4+3mm virselis - rišimui spirale LT_1.jpg';
-import valsaiImgEng from '../../Albumbs/valsai-baleto-pamokos/A4+3mm virselis - rišimui spirale EN - x-WEB_Page_1.jpg';
-import valsaiImgRu from '../../Albumbs/valsai-baleto-pamokos/A4 virselis - rišimui spirale RU 2021 03 17_1 - derinimui (2).jpg';
+// import valsaiImgLt from '../../Albumbs/valsai-baleto-pamokos/A4+3mm virselis - rišimui spirale LT_1.jpg';
+// import valsaiImgEng from '../../Albumbs/valsai-baleto-pamokos/A4+3mm virselis - rišimui spirale EN - x-WEB_Page_1.jpg';
+// import valsaiImgRu from '../../Albumbs/valsai-baleto-pamokos/A4 virselis - rišimui spirale RU 2021 03 17_1 - derinimui (2).jpg';
 // -----------------------------------------------------------------
-import muzikinePasakaImgLt from '../../Albumbs/muzikinė-pasaka/virselis/Muzikine pasaka LT-EN - web-pages-1-1.jpg';
-import muzikinePasakaImgEng from '../../Albumbs/muzikinė-pasaka/virselis/Muzikine pasaka LT-EN - web-pages-1-1.jpg';
-import muzikinePasakaImgRu from '../../Albumbs/muzikinė-pasaka/virselis/Muzikine pasaka RU-EN - web-pages-1-1.jpg';
+// import muzikinePasakaImgLt from '../../Albumbs/muzikinė-pasaka/virselis/Muzikine pasaka LT-EN - web-pages-1-1.jpg';
+// import muzikinePasakaImgEng from '../../Albumbs/muzikinė-pasaka/virselis/Muzikine pasaka LT-EN - web-pages-1-1.jpg';
+// import muzikinePasakaImgRu from '../../Albumbs/muzikinė-pasaka/virselis/Muzikine pasaka RU-EN - web-pages-1-1.jpg';
 
 // --------------------------------------------------------------------------------------
+let muzikinePasakaImgLt =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2Fimg%2FMuzikine%20pasaka%20LT-EN%20-%20web-pages-1-1.jpg?alt=media&token=ade27c57-46b6-499a-b11c-bf3b8461df2e';
+let muzikinePasakaImgEng =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2Fimg%2FMuzikine%20pasaka%20LT-EN%20-%20web-pages-1-1.jpg?alt=media&token=ade27c57-46b6-499a-b11c-bf3b8461df2e';
+let muzikinePasakaImgRu =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2Fimg%2FMuzikine%20pasaka%20RU-EN%20-%20web-pages-1-1.jpg?alt=media&token=bcbaa31f-a667-4de6-bf5d-fe6950954d58';
+let valsaiImgLt =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/valsai%2Fimg%2FA4%2B3mm%20virselis%20-%20ri%C5%A1imui%20spirale%20LT_1.jpg?alt=media&token=d8cd69d0-378a-47f7-ad37-500ffea69b21';
+let valsaiImgEng =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/valsai%2Fimg%2FA4%2B3mm%20virselis%20-%20ri%C5%A1imui%20spirale%20EN%20-%20x-WEB_Page_1.jpg?alt=media&token=19cd2c04-d703-428b-8fc8-d12606f01eb7';
+let valsaiImgRu =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/valsai%2Fimg%2FA4%20virselis%20-%20ri%C5%A1imui%20spirale%20RU%202021%2003%2017_1%20-%20derinimui%20(2).jpg?alt=media&token=8e22f01e-fffa-46e9-8281-3f14c182a030';
+let cirkasAtvaziavoImgEng =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fpictures%2Fcirkas-atvaziavo-lt-eng.jpg?alt=media&token=54527cdf-b607-4da4-9b7d-896a895a8230';
+let cirkasAtvaziavoImgRu =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fpictures%2Fcirkas-atvaziavo-ru.jpg?alt=media&token=f7d5ed97-133d-4336-b7bf-b055dd43f6b3';
+let cirkasAtvaziavoImgLt =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/cirkas%2Fpictures%2Fcirkas-atvaziavo-lt-eng.jpg?alt=media&token=54527cdf-b607-4da4-9b7d-896a895a8230';
 export const cirkasLt = {
   img: cirkasAtvaziavoImgLt,
   id: 1,

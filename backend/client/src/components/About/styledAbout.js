@@ -37,7 +37,7 @@ export const P = styled.p`
   cursor: ${({ comment }) => (comment ? 'auto' : `pointer`)};
   color: black;
   text-align: justify;
-  font-size: ${(props) => props.theme.fontSize.pBig};
+  font-size: ${(props) => props.theme.fontSize.pLarge};
   text-indent: 2.5em;
   animation: ${({ isOpen }) => (!isOpen ? onCloseText : onRenderText)} ease-in-out 0.3s;
   &:nth-child(1) {
@@ -46,7 +46,7 @@ export const P = styled.p`
 
   @media (min-width: 1440px) {
     width: ${(props) => (props.ultrawide ? '90%' : '70%')};
-    font-size: ${(props) => props.theme.fontSize.pBig};
+    font-size: ${(props) => props.theme.fontSize.pLarge};
   }
 `;
 export const Wrapper = styled.section`
@@ -104,8 +104,9 @@ export const H5 = styled.h5`
   padding: 0 1rem;
   width: 90%;
   max-width: 50rem;
+  font-size: ${(props) => props.theme.fontSize.pBig};
+
   @media (min-width: 1440px) {
-    font-size: ${(props) => props.theme.fontSize.pBig};
     line-height: calc(1rem + 0.3vw);
   }
 `;

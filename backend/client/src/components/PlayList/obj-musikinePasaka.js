@@ -1,40 +1,73 @@
-import video1 from '../../Albumbs/muzikinė-pasaka/1.Pasakų-šalis/1.mp4';
-import video2 from '../../Albumbs/muzikinė-pasaka/2.Vilkas/2.mp4'; //FIXME:atskirti kepure nuo vilko
+// import video1 from '../../Albumbs/muzikinė-pasaka/1.Pasakų-šalis/1.mp4';
+
+// import video2 from '../../Albumbs/muzikinė-pasaka/2.Vilkas/2.mp4'; //FIXME:atskirti kepure nuo vilko
 // import video3 from "../../Albumbs/muzikinė-pasaka/3.Raudonkepuraite/3.mp4"; nera //FIXME:atskirti kepure nuo vilko
-import video4 from '../../Albumbs/muzikinė-pasaka/4.Meška/4.mp4';
-import video5 from '../../Albumbs/muzikinė-pasaka/5.Bitės/5.mp4';
-import video6 from '../../Albumbs/muzikinė-pasaka/6.Meškiukas-Pūkoutukas/6.mp4';
-import video7 from '../../Albumbs/muzikinė-pasaka/7.Liūdnas-asiliukas/7.mp4';
-import video8 from '../../Albumbs/muzikinė-pasaka/8.Išmintinga-pelėda/8.mp4';
-import video9 from '../../Albumbs/muzikinė-pasaka/9.Pasiklydę-vaikai/9.mp4';
-import video10 from '../../Albumbs/muzikinė-pasaka/10.Ragana/10.mp4';
-import video11 from '../../Albumbs/muzikinė-pasaka/11.Nykštukai/11.mp4';
-import video12 from '../../Albumbs/muzikinė-pasaka/12.Fėja/12.mp4';
-import video13 from '../../Albumbs/muzikinė-pasaka/13.Burtininkas/13.mp4';
-import video14 from '../../Albumbs/muzikinė-pasaka/14.Varna/14.mp4';
-import video15 from '../../Albumbs/muzikinė-pasaka/15.Lapė/15.mp4';
-import video16 from '../../Albumbs/muzikinė-pasaka/16.Vikšras-Peteliškė/16.mp4';
-import video17 from '../../Albumbs/muzikinė-pasaka/17.Vištos-ir-gaidžiai/17.mp4';
-import video18 from '../../Albumbs/muzikinė-pasaka/18.Katė/18.mp4';
-import video19 from '../../Albumbs/muzikinė-pasaka/19.Žuvėdra/19.mp4';
-import video20 from '../../Albumbs/muzikinė-pasaka/20.Bangos/20.mp4';
-import video21 from '../../Albumbs/muzikinė-pasaka/21.Gulbė/21.mp4';
-import video22 from "../../Albumbs/muzikinė-pasaka/22.Žirgaii II/22.mp4"; 
-import video23 from '../../Albumbs/muzikinė-pasaka/23.Gėlės/23.mp4';
-import video24 from '../../Albumbs/muzikinė-pasaka/24.Oro-balionėlis/24.mp4';
-import video25 from '../../Albumbs/muzikinė-pasaka/25.Pavasaris/25.mp4';
-import video26 from '../../Albumbs/muzikinė-pasaka/26.Vasara-prie-jūros/26.mp4';
-import video27 from '../../Albumbs/muzikinė-pasaka/27.Ruduo-vėjas-ir-lapai/27.mp4';
-import video28 from '../../Albumbs/muzikinė-pasaka/28.Žiema-nuo-kalniuko/28.mp4';
-import video29 from '../../Albumbs/muzikinė-pasaka/29.Bangos-II/29.mp4';
 
-// Album pictures
 
-import pictureLtEng from '../../Albumbs/muzikinė-pasaka/virselis/Muzikine pasaka LT-EN - web-pages-1-1.jpg';
-import pictureRu from '../../Albumbs/muzikinė-pasaka/virselis/Muzikine pasaka RU-EN - web-pages-1-1.jpg';
-
+let pictureLtEng =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2Fimg%2FMuzikine%20pasaka%20LT-EN%20-%20web-pages-1-1.jpg?alt=media&token=ade27c57-46b6-499a-b11c-bf3b8461df2e';
+let pictureRu =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2Fimg%2FMuzikine%20pasaka%20RU-EN%20-%20web-pages-1-1.jpg?alt=media&token=bcbaa31f-a667-4de6-bf5d-fe6950954d58';
 // FIXME: truksta 2 dainu
 
+
+let video1 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F1.mp4?alt=media&token=5d5eff22-3010-4289-af0a-b60a6582aeb5';
+let video2 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F2.mp4?alt=media&token=a9bfb246-a4f5-49b5-a9ef-6c587eb222aa';
+let video3 = null; //FIXME: ADD 2,3 songs
+let video4 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F4.mp4?alt=media&token=d53fde8e-d71d-4e53-a06e-786524f4f100';
+let video5 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F5.mp4?alt=media&token=83438d41-e428-42cb-8962-ed2543b1420a';
+let video6 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F6.mp4?alt=media&token=af1f32d8-151c-4db4-8df8-1729365a8481';
+let video7 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F7.mp4?alt=media&token=ade3e126-4788-4f30-a94b-79bb2d659045';
+let video8 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F8.mp4?alt=media&token=e5fac55d-2992-4ed9-b815-b2444eabc6ac';
+let video9 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F9.mp4?alt=media&token=3e2f8451-07ab-463d-89f1-5d01eb58675d';
+let video10 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F10.mp4?alt=media&token=afb600d6-dbcb-4682-971c-a49fcc9a9259';
+let video11 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F11.mp4?alt=media&token=9714e136-e55b-46e6-9da6-3364f5654e98';
+let video12 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F12.mp4?alt=media&token=874e126c-1bcd-42c6-a7c7-c76d4e024c45';
+let video13 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F13.mp4?alt=media&token=33d46a50-8d89-4886-a87f-61150fcc7a73';
+let video14 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F14.mp4?alt=media&token=ae4caa67-305a-40e3-97d9-8ddbae310828';
+let video15 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F15.mp4?alt=media&token=b4d2edef-a932-4be3-b646-99a7902661b1';
+let video16 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F16.mp4?alt=media&token=b9999c3a-ca66-43ae-b91a-1b4053d5ba19';
+let video17 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F17.mp4?alt=media&token=892296fe-6988-4ec3-bf3e-1afb3c659840';
+let video18 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F18.mp4?alt=media&token=1e77d338-897f-4aca-84c8-fc692baf6156';
+let video19 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F19.mp4?alt=media&token=ffdbe92b-c792-4c80-903f-2fa6c2024e55';
+let video20 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F20.mp4?alt=media&token=7a55b0f8-e4bf-4efe-9f57-ea3a42a4f8c0';
+let video21 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F21.mp4?alt=media&token=9ffe4041-5a53-4d13-b0dc-3165f3f54a3d';
+let video22 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F22.mp4?alt=media&token=1b8750c8-dea3-4b10-812f-e57d94ee5583';
+let video23 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F23.mp4?alt=media&token=d7802a65-a3ca-4278-b9b2-4bc3743fc3f0';
+let video24 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F24.mp4?alt=media&token=c74e626e-a31e-4c60-8fe4-3418657578cf';
+let video25 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F25.mp4?alt=media&token=022de627-e397-4865-8318-cd6a6189719d';
+let video26 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F26.mp4?alt=media&token=0ee4ab17-2fe5-43ff-8b59-1ab8bb388c3d';
+let video27 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F27.mp4?alt=media&token=947f5874-13fa-4ac9-91be-66e1a524fd42';
+let video28 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F28.mp4?alt=media&token=4f7e4a23-a758-4a0a-a675-cb59dfc0861d';
+let video29 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F29.mp4?alt=media&token=dd2e2088-5026-4b40-91e8-deb51e6a1d23';
 export const muzikinePasakaLt = [
   {
     id: 1,

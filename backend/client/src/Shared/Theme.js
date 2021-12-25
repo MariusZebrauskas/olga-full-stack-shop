@@ -22,6 +22,7 @@ export const Theme = {
     p: 'calc(.6rem + 0.2vw)',
     pMid: 'calc(.7rem + 0.2vw)',
     pBig: 'calc(.8rem + 0.2vw)',
+    pLarge: 'calc(1rem + 0.2vw)',
     fontWeight1: 800,
   },
 };
