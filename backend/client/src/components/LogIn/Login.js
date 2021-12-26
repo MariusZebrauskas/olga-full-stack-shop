@@ -80,7 +80,7 @@ const Login = ({ changeComponent, language, history, pleaseLogIN, setPleaseLogIN
     setLoadingDb(true);
 
     axios
-      .post('/auth/login', { email: emailRef.current.value, password: passwordRef.current.value })
+      .post('/api/auth/login', { email: emailRef.current.value, password: passwordRef.current.value })
       .then((response) => {
         // items going to local storrage
         // FIXME:push items to local storrage

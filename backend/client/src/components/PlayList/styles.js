@@ -39,6 +39,7 @@ export const MainWrapper = styled.main`
   position: relative;
   overflow-x: hidden;
   padding: 0 0 5rem 0;
+ 
 `;
 export const SlideWrapper = styled.main`
   background: white;
@@ -48,6 +49,9 @@ export const SlideWrapper = styled.main`
   transition: margin ease-in-out 1s;
 
   padding: 0;
+  &:hover{
+    cursor: grab;
+  }
   @media (max-width: 768px) {
     overflow-x: auto; //need to set it back
   }

@@ -14,8 +14,8 @@ let pictureRu =
 let video1 =
   'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F1.mp4?alt=media&token=5d5eff22-3010-4289-af0a-b60a6582aeb5';
 let video2 =
-  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F2.mp4?alt=media&token=a9bfb246-a4f5-49b5-a9ef-6c587eb222aa';
-let video3 = null; //FIXME: ADD 2,3 songs
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F2.mp4?alt=media&token=ddde4152-7890-486c-b412-9fe4d557ff6b';
+let video3 = "https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F3.mp4?alt=media&token=edde3347-32bb-45c2-b397-ae811966fada";
 let video4 =
   'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F4.mp4?alt=media&token=d53fde8e-d71d-4e53-a06e-786524f4f100';
 let video5 =
@@ -97,7 +97,7 @@ export const muzikinePasakaLt = [
     noteID: 171,
     songprice: 1,
     buy: false,
-    video: null,
+    video: video3,
     song: 'Raudonkepuraitė',
     picture: pictureLtEng,
     album: 'Muzikinė Pasaka',
@@ -419,7 +419,7 @@ export const muzikinePasakaEng = [
     noteID: 200,
     songprice: 1,
     buy: false,
-    video: null,
+    video: video3,
     song: 'Little Red Riding Hood',
     picture: pictureLtEng,
     album: 'Musical Fairy Tale',
@@ -740,7 +740,7 @@ export const muzikinePasakaRu = [
     id: 3,
     noteID: 229,
     songprice: 1,
-    buy: false,
+    buy: video3,
     video: null,
     song: 'Красная Шапочка',
     picture: pictureRu,

@@ -66,7 +66,7 @@ function App() {
   const fechCartData = async () => {
     let id = loggedIn._id;
     axios
-      .post('/cart/', { _id: id })
+      .post('/api/cart/', { _id: id })
       .then((res) => {
         setShopItemsDb([...res.data.shopItemsDb]);
         setLoadingDb(false);
@@ -92,7 +92,7 @@ function App() {
     let id = loggedIn._id;
 
     axios
-      .post('/cart/add', { _id: id, shopItemsDb: [params] })
+      .post('/api/cart/add', { _id: id, shopItemsDb: [params] })
       .then((res) => {
         setLoadingDb(false);
         fechCartData();

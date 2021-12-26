@@ -104,7 +104,7 @@ const Shop = ({
 
   const deleteFromDb = async (params) => {
     axios
-      .post('/cart/delete/', { _id: loggedIn._id, deleteId: params })
+      .post('/api/cart/delete/', { _id: loggedIn._id, deleteId: params })
       .then((res) => {
         fechCartData();
         setLoadingDb(false);
@@ -189,10 +189,10 @@ const Shop = ({
     const id = loggedIn._id;
     const email = loggedIn.email;
     axios
-      .post('/cart/pay', { token, id, email })
+      .post('/api/cart/pay', { token, id, email })
       .then((res) => {
         axios
-          .post('/cart/email', { res, id, email })
+          .post('/api/cart/email', { res, id, email })
           .then((res) => {
             // console.log('res:', res.config.data);
             const recepyData = async () => {
@@ -260,7 +260,7 @@ const Shop = ({
     let id = loggedIn._id;
     if (puchaseCompleate) {
       axios
-        .post('/cart/', { _id: id })
+        .post('/api/cart/', { _id: id })
         .then((res) => {
           cleanUpBags();
           shopCardCurrentItems([...res.data.shopItemsDb]);

@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState, useContext } from 'react';
 import { CurrenPerson } from '../../context/AuthContex';
 import styled from 'styled-components';
-import backgroundImg from './3.jpg';
 import { RenderingStyles } from '../../Shared/renderingStyles';
 import { useHistory } from 'react-router';
 import axios from 'axios';
@@ -11,6 +10,8 @@ import { ClipLoader } from 'react-spinners';
 import { LoadingContext } from '../../context/LoadingContext';
 import { motion } from 'framer-motion';
 
+let backgroundImg =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/images%2F3-min.jpg?alt=media&token=9e874d45-4bd0-4ea9-bd4c-46bf38054c0e';
 const Body = styled.section`
   width: 100%;
   display: flex;
@@ -28,7 +29,6 @@ const Body = styled.section`
   @media (min-width: 425px) {
     height: 100vh;
     padding: 0;
-
   }
 `;
 
@@ -106,7 +106,7 @@ const WarningAndSuccessWrapper = styled.section`
 
 const ContactUsHeader = styled(motion.h1)`
   /* padding: 5rem 0 0 0; */
-  font-size: ${props => props.theme.fontSize.h1Mid};
+  font-size: ${(props) => props.theme.fontSize.h1Mid};
   font-weight: 600;
   /* color: #dcdbd9; */
   color: ${(props) => props.theme.colors.grey};
@@ -244,7 +244,7 @@ const Contacts = ({ language }) => {
     const email = loggedIn.email;
     const newMessage = messageFocus.current.value;
     axios
-      .post('/cart/message', { _id: id, email: email, newMessage: newMessage })
+      .post('/api/cart/message', { _id: id, email: email, newMessage: newMessage })
       .then((response) => {
         const { status } = response;
         if (status === 200) {

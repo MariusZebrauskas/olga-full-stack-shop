@@ -64,7 +64,7 @@ export const P = styled.p`
   /* padding: 0 1rem; */
   padding: 0;
   margin: 0.5rem 0;
-  line-height:calc(1.2rem + 1vw);
+  line-height:calc(1.4rem + 1vw);
   &:nth-child(1) {
     padding: 3rem 0 0 0;
   }

@@ -244,9 +244,9 @@ router.post('/message', async (req, res) => {
   const person = {
     id: req.body._id,
     email: req.body.email,
-    message: req.body.message
+    message: req.body.newMessage
   };
-
+  
   try{
     const userRequest = await User.findOne({ _id: person.id});
     if(userRequest.email === person.email){
@@ -257,7 +257,7 @@ router.post('/message', async (req, res) => {
           pass: process.env.EMAIL_PASS,
         };
 
-        const sendTo = "zebrauskas.mar@gmail.com" //FIXME:OLGOS EMAILA
+        const sendTo = "olgabeliukevich@gmail.com" 
 
         const transporter = nodemailer.createTransport({
           host: 'smtp.mail.yahoo.com',
@@ -276,7 +276,7 @@ router.post('/message', async (req, res) => {
         let info = await transporter.sendMail({
           from: testAccount.user, // sender address
           to: sendTo, // list of receivers
-          subject: '✔ Client Message', // Subject line
+          subject: `✔ Client Message: ${person.email}`, // Subject line
           html: `<div>
               
               <h4>${person.message}</h4>
@@ -292,7 +292,7 @@ router.post('/message', async (req, res) => {
         .then(()=> {
           return res.status(200).json({message:`your message been sent`});
         })
-      // FIXME:email
+      
 
 
     } else {

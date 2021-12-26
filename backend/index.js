@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 8800;
+const PORT = process.env.PORT || 8800;
 const cartRoutes = require('./routes/cart');
 const authRoutes = require('./routes/auth');
 const recoverRoutes = require('./routes/recover');
@@ -56,11 +56,12 @@ app.get('*', (req, res) => {
 //error handler MAIN
 // app.use(errorHandler);
 mongoose.connect(process.env.MONGO_URL, () => {
-  app.listen(port, (req, res) => {
-    console.log(`app is running on ${port} + mongo`);
+  app.listen(PORT, (req, res) => {
+    console.log(`app is running on ${PORT} + mongo`);
   });
 });
 
-// FIXME: valsai  ,31, , dar neturime
+// FIXME: valsai  ,31, , dar neturime valsas 8 neturi garso
 // FIXME: music fairy stories 2,3 dar neturime
-//FIXME: About page comments nustumti zemiau
+// FIXME: parasyti komentara drag mouse left or right po kuriniais
+

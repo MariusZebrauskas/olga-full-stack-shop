@@ -97,7 +97,7 @@ const ForgotPassword = ({ changeComponent, language, history }) => {
   const sendEmailRecover = (e) => {
     e.preventDefault();
     axios
-      .post('/recover', { email: emailRef.current.value, username: usernameRef.current.value })
+      .post('/api/recover', { email: emailRef.current.value, username: usernameRef.current.value })
       .then((response) => {
         setUserId(response.data.userId);
       })
@@ -122,7 +122,7 @@ const ForgotPassword = ({ changeComponent, language, history }) => {
       return;
     }
     axios
-      .post('/recover/password', { _id: userId, password: passwordRef.current.value })
+      .post('/api/recover/password', { _id: userId, password: passwordRef.current.value })
       .then((response) => {
         if (response.data.message) {
           setChanged(true);

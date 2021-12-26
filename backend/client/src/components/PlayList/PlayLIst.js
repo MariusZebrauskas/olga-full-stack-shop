@@ -190,7 +190,7 @@ const PlayLIst = ({
         muzikinePasakaEng={muzikinePasakaEng}
       ></Albums>
       <Header currentCard={currentCard} language={language}></Header>
-      <MainWrapper>
+      <MainWrapper >
         <SlideWrapper
           ref={ref}
           onMouseUp={onMouseUp}

@@ -87,7 +87,7 @@ const Register = ({ changeComponent, language, history }) => {
 
     // post data to backend
     await axios
-      .post('/auth/register', {
+      .post('/api/auth/register', {
         username: await nameRef.current.value,
         email: await emailRef.current.value,
         password: await passwordRef.current.value,

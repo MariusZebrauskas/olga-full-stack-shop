@@ -1,8 +1,12 @@
 import styled, { css } from 'styled-components';
-import mobile from './backgrounds/9.jpg';
-import plancet from './backgrounds/12.jpg';
+// import mobile from './backgrounds/9.jpg';
+// import plancet from './backgrounds/12.jpg';
 import { motion } from 'framer-motion';
 
+let plancet =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/images%2F12-min.jpg?alt=media&token=953588de-2cf3-42bc-9ad4-29086b1d8625';
+let mobile =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/images%2F9-min.jpg?alt=media&token=fa846e04-1596-4014-a3c7-271ab4f8962a';
 export const Section = styled.section`
   /* background-image: url(${mobile}); */
   ${(props) => {

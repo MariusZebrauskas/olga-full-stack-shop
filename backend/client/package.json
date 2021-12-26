@@ -21,12 +21,13 @@
     "swiper": "^6.8.4",
     "web-vitals": "^1.1.1"
   },
-  "proxy": "http://localhost:8800/api",
+  "proxy": "http://localhost:8800",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false && cd client && npm install && npm run build"
   },
   "eslintConfig": {
     "extends": [
