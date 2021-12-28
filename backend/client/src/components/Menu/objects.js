@@ -35,7 +35,7 @@ export const menuRu = {
   disconected: 'ОТКЛЮЧЕНО',
   shop: 'МАГАЗИН',
   contact: 'КОНТАКТЫ',
-  information: 'ИНФОРМАЦИЙ',
+  information: 'Информация',
   languages: ' LANGUAGES',
   languageLt: 'ЛИТОВСКИЙ',
   languageEng: 'АНГЛИЙСКИЙ',

@@ -27,15 +27,15 @@ const Welcome = ({ language }) => {
   useEffect(() => {
     if (language === 'lt') {
       setH1('NATOS FORTEPIJONUI');
-      setH12('Muzikos mokyklų moksleiviams');
+      setH12('muzikos mokyklų moksleiviams');
     }
     if (language === 'eng') {
       setH1('NOTES OF PIANO');
-      setH12('For music school students');
+      setH12('for music school students');
     }
     if (language === 'ru') {
       setH1('НОТЫ ДЛЯ ФОРТЕПИАНО');
-      setH12('Ноты для учеников музыкальных сколу');
+      setH12('учащимся детских музыкальных школ');
     }
   }, [language]);
 

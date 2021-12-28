@@ -44,24 +44,27 @@ app.use('/api/cart', cartRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/recover', recoverRoutes);
 
-// https referirect
+// https redirect
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(enforce.HTTPS({ trustProtoHeader: true }));
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(enforce.HTTPS({ trustProtoHeader: true }));
+// }
+
 app.use(express.static('client/build'));
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
 //error handler MAIN
-// app.use(errorHandler);
 mongoose.connect(process.env.MONGO_URL, () => {
   app.listen(PORT, (req, res) => {
     console.log(`app is running on ${PORT} + mongo`);
   });
 });
 
-// FIXME: valsai  ,31, , dar neturime valsas 8 neturi garso
-// FIXME: music fairy stories 2,3 dar neturime
+  
 // FIXME: parasyti komentara drag mouse left or right po kuriniais
+
+// FIXME: tikrasalbumo pavadinimas Muzikines pasakos 
+// 7 kuriinys Liūdnas Asiliukas
+// 9 pasiklyde vaikai 
 
