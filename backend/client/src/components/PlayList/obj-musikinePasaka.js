@@ -3,19 +3,18 @@
 // import video2 from '../../Albumbs/muzikinė-pasaka/2.Vilkas/2.mp4'; //FIXME:atskirti kepure nuo vilko
 // import video3 from "../../Albumbs/muzikinė-pasaka/3.Raudonkepuraite/3.mp4"; nera //FIXME:atskirti kepure nuo vilko
 
-
 let pictureLtEng =
   'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2Fimg%2FMuzikine%20pasaka%20LT-EN%20-%20web-pages-1-1.jpg?alt=media&token=ade27c57-46b6-499a-b11c-bf3b8461df2e';
 let pictureRu =
   'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2Fimg%2FMuzikine%20pasaka%20RU-EN%20-%20web-pages-1-1.jpg?alt=media&token=bcbaa31f-a667-4de6-bf5d-fe6950954d58';
 // FIXME: truksta 2 dainu
 
-
 let video1 =
   'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F1.mp4?alt=media&token=5d5eff22-3010-4289-af0a-b60a6582aeb5';
 let video2 =
   'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F2.mp4?alt=media&token=ddde4152-7890-486c-b412-9fe4d557ff6b';
-let video3 = "https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F3.mp4?alt=media&token=edde3347-32bb-45c2-b397-ae811966fada";
+let video3 =
+  'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F3.mp4?alt=media&token=edde3347-32bb-45c2-b397-ae811966fada';
 let video4 =
   'https://firebasestorage.googleapis.com/v0/b/pianonotes-a108c.appspot.com/o/muzikinepasaka%2F4.mp4?alt=media&token=d53fde8e-d71d-4e53-a06e-786524f4f100';
 let video5 =
@@ -740,8 +739,8 @@ export const muzikinePasakaRu = [
     id: 3,
     noteID: 229,
     songprice: 1,
-    buy: video3,
-    video: null,
+    buy: false,
+    video: video3,
     song: 'Красная Шапочка',
     picture: pictureRu,
     album: 'Музыкальные сказки',

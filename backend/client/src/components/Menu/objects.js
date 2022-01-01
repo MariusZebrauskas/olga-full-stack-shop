@@ -42,5 +42,5 @@ export const menuRu = {
   languageRu: 'РУССКИЙ',
   sayYes: "Напишите да",
   toLogoutMessage: "Если вы хотите выйти из системы пользователя: ",
-  home: 'главный',
+  home: 'ГЛАВНОЕ',
 };
