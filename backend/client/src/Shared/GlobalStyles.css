@@ -38,21 +38,16 @@ svg {
 
 ::-webkit-scrollbar {
   height: 1.3rem;
+  display: none;
 }
 
 ::-webkit-scrollbar-thumb {
+  width: 5rem;
   background: #dadedf;
-  min-width: 15rem;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #6f7475;
 }
-
-
-
-
-
-
 /*# sourceMappingURL=GlobalStyles.css.map */

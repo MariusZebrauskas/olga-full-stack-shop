@@ -52,8 +52,10 @@ export const SlideWrapper = styled.main`
   &:hover{
     cursor: grab;
   }
-  @media (max-width: 780px) {
-    overflow-x: auto; //need to set it back was 768pxgit add .
+  /* FIXME: this setting was in media query  */
+  overflow-x: auto;
+   //need to set it back was 768px
+  @media (max-width: 768px) {
   }
 `;
 

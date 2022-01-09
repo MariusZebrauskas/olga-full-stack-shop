@@ -26,7 +26,6 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Poppins', sans-serif;
-
 }
 
 a,
@@ -52,10 +51,12 @@ svg {
 
 ::-webkit-scrollbar {
   height: 1.3rem;
+  // remove scroll bar because its buggy x(horizontal)
+  display: none;
 }
 ::-webkit-scrollbar-thumb {
+  width: 5rem;
   background: #dadedf;
-  min-width: 15rem;
   border-radius: 5px;
   &:hover {
     background: #6f7475;
