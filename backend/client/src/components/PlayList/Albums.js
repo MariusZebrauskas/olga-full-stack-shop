@@ -36,7 +36,7 @@ const Albums = ({
     if (language === 'lt') {
       setAlbumHeader('ALBUMAI');
       setCirkasAtvaziavo('cirkas atvažiavo!');
-      setMuzikinePasaka('muzikinė Pasaka');
+      setMuzikinePasaka('muzikinės Pasakos');
       setValsai('valsai baleto pamokoms');
     } else if (language === 'eng') {
       setAlbumHeader('ALBUMS');

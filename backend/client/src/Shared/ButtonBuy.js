@@ -41,7 +41,7 @@ const ButtonBuy = ({ language, children, albumOne, id, addToShopCartSingleSong }
       setItemSold('ITEM IS IN THE BAG');
     }
     if (language === 'ru') {
-      setItemSold('ПУНКТ В СУМКЕ');
+      setItemSold('ТОВАР В КОРЗИНЕ');
     }
   }, [language]);
 

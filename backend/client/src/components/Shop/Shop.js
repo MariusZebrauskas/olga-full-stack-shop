@@ -62,7 +62,7 @@ const Shop = ({
   useEffect(() => {
     if (language === 'lt') {
       setAlbum('Albumai');
-      setSongs('Dainos / Nr Albume');
+      setSongs('Pjesės pavadinimas / Nr Albume');
       setAlbumSongNumber('Dainų');
       setPrice('Kaina');
       setTotalPrice('Bendra kaina su pvm');
@@ -71,10 +71,10 @@ const Shop = ({
     }
     if (language === 'eng') {
       setAlbum('Albums');
-      setSongs('Song name / Index In Album');
+      setSongs('Title  / Index In Album');
       setAlbumSongNumber('Songs');
       setPrice('Price');
-      setTotalPrice('Total Price with pvm');
+      setTotalPrice('Total Price with vat');
       setBackToTheShop('Back To The Shop');
       setChekoutsecurity('chekout securly');
     }
@@ -85,7 +85,7 @@ const Shop = ({
       setPrice('Цена');
       setTotalPrice('общая цена с пвм');
       setBackToTheShop('Вернуться в магазин');
-      setChekoutsecurity('безопасность на кассе');
+      setChekoutsecurity('ОПЛАТИТЬ ТОВАР');
     }
   }, [language]);
 

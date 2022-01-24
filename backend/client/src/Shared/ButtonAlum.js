@@ -55,7 +55,7 @@ const ButtonAlum = ({
       changeAlbum(theCirkusHasArivedRu);
     }
     //muzikine pasaka
-    if (props === 'MUZIKINĖ PASAKA') {
+    if (props === 'MUZIKINĖS PASAKOS') {
       changeAlbum(muzikinePasakaLt);
     }
     if (props === 'MUSIC FAIRY STORIES') {
