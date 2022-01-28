@@ -60,9 +60,15 @@ const Shop = ({
   const [loggedIn] = useContext(CurrenPerson);
 
   useEffect(() => {
+    // scroll up on render
+    window.scroll(0, 0);
+    return () => {};
+  }, []);
+
+  useEffect(() => {
     if (language === 'lt') {
       setAlbum('Albumai');
-      setSongs('Pjesės pavadinimas / Nr Albume');
+      setSongs('Pjesės pavadinimas / Nr');
       setAlbumSongNumber('Dainų');
       setPrice('Kaina');
       setTotalPrice('Bendra kaina su pvm');
@@ -71,19 +77,19 @@ const Shop = ({
     }
     if (language === 'eng') {
       setAlbum('Albums');
-      setSongs('Title  / Index In Album');
+      setSongs('Title  / № In Album');
       setAlbumSongNumber('Songs');
       setPrice('Price');
-      setTotalPrice('Total Price with vat');
+      setTotalPrice('Total Price With VAT');
       setBackToTheShop('Back To The Shop');
       setChekoutsecurity('chekout securly');
     }
     if (language === 'ru') {
       setAlbum('Альбомы');
-      setSongs('Песни / Nr B Aльбоме');
+      setSongs('Название пьесы / №');
       setAlbumSongNumber('Песни');
       setPrice('Цена');
-      setTotalPrice('общая цена с пвм');
+      setTotalPrice('общая цена с НДС ');
       setBackToTheShop('Вернуться в магазин');
       setChekoutsecurity('ОПЛАТИТЬ ТОВАР');
     }

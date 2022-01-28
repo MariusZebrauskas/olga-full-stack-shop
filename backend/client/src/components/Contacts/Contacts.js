@@ -183,6 +183,11 @@ const H4 = styled.h4`
 // Logic ************************************************************************************************
 //focus on render and enter button logic
 const Contacts = ({ language }) => {
+  useEffect(() => {
+    // scroll up on render
+    window.scroll(0, 0);
+    return () => {};
+  }, []);
   const history = useHistory();
   const messageFocus = useRef(null);
   useEffect(() => {

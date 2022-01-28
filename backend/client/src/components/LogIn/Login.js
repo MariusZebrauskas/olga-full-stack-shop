@@ -37,6 +37,11 @@ const Login = ({ changeComponent, language, history, pleaseLogIN, setPleaseLogIN
   const [oneNow, setOneNow] = useState('One Now');
   const [warningMessage, setWarningMessage] = useState();
   const [autoCompleate] = useState(false);
+  useEffect(() => {
+    // scroll up on render
+    window.scroll(0, 0);
+    return () => {};
+  }, []);
 
   useEffect(() => {
     if (language === 'lt') {

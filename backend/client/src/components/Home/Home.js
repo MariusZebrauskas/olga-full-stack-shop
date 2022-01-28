@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Welcome from '../WelcomeImg/Welcome';
 import Playlist from '../PlayList/PlayLIst';
 import { RenderingStyles } from '../../Shared/renderingStyles';
@@ -19,6 +19,11 @@ const Home = ({
   muzikinePasakaRu,
   muzikinePasakaEng,
 }) => {
+  useEffect(() => {
+    // scroll up on render
+    window.scroll(0, 0);
+    return () => {};
+  }, []);
   return (
     <RenderingStyles>
       <Welcome language={language}></Welcome>

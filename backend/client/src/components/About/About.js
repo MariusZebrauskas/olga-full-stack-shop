@@ -30,6 +30,11 @@ const About = ({ language }) => {
   const [header, setHeader] = useState('ALBUM DESCRIPTION');
   const [info, setInfo] = useState('Please click on image to see more info');
   useEffect(() => {
+    // scroll up on render
+    window.scroll(0, 0);
+    return () => {};
+  }, []);
+  useEffect(() => {
     if (language === 'lt') {
       setHeader('ALBUMŲ APRAŠYMAS');
       setInfo('Jaigu norite pamatyti išsamiau spauskite ant paveiksliuko');
