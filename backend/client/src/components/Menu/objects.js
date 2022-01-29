@@ -31,7 +31,7 @@ export const menuEng = {
 };
 
 export const menuRu = {
-  logged: ' ВО ВХОДИЛ',
+  logged: 'ВКЛЮЧЕНО',
   disconected: 'ОТКЛЮЧЕНО',
   shop: 'МАГАЗИН',
   contact: 'КОНТАКТЫ',

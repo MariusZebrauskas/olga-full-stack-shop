@@ -44,7 +44,7 @@ function App() {
   const [loggedIn] = useContext(CurrenPerson);
 
   //set LANGUAGE
-  const [language, setLanguage] = useState(localStorage.getItem('mainLanguage') || 'lt');
+  const [language, setLanguage] = useState(localStorage.getItem('mainLanguage') || 'eng');
   const [setPage] = useState('home');
   const pagesSetUp = (params) => {
     setPage(params);
