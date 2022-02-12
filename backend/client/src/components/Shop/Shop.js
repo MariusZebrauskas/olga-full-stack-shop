@@ -82,7 +82,7 @@ const Shop = ({
       setPrice('Price');
       setTotalPrice('Total Price With VAT');
       setBackToTheShop('Back To The Shop');
-      setChekoutsecurity('chekout securly');
+      setChekoutsecurity('checkout securely');
     }
     if (language === 'ru') {
       setAlbum('Альбомы');

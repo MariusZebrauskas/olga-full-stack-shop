@@ -28,6 +28,7 @@ import {
   muzikinePasakaRu,
 } from './components/PlayList/obj-musikinePasaka';
 import Login from './components/LogIn/Login';
+import ErrorPage from './components/error/ErrorPage';
 //FIXME: add 3rd album
 
 const BodyWrapper = styled.section`
@@ -189,9 +190,8 @@ function App() {
     }
   };
 
-
   return (
-    <BodyWrapper >
+    <BodyWrapper>
       <Menu
         pagesSetUp={pagesSetUp}
         language={language}
@@ -206,7 +206,7 @@ function App() {
         setOpenMenu={setOpenMenu}
         popEror={popEror}
       />
-
+      {/* <ErrorPage></ErrorPage> */}
       <Switch>
         {/* HOME */}
         <Route exact path='/'>
@@ -231,7 +231,7 @@ function App() {
         {/* INFO */}
 
         <Route exact path='/info'>
-          <About language={language}  />
+          <About language={language} />
         </Route>
 
         {/* CONTACT */}

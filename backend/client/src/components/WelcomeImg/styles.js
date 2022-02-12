@@ -48,6 +48,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-size: 5rem;
 `;
 
 export const H1 = styled(motion.h1)`
