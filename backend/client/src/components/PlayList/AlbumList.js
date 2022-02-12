@@ -79,7 +79,7 @@ const AlbumList = ({ currentCard, language, addToShopCartAlbum }) => {
     } else if (language === 'eng') {
       // setHeader('SONG LIST');
       setButtonText(`ADD FULL ALBUM FOR ${currentCard[0].albumprice} €`);
-      setIsAlbumSold('ITEM IS ALLREADY IN THE BAG');
+      setIsAlbumSold('ITEM IS ALREADY IN THE BAG');
     } else if (language === 'ru') {
       // setHeader('СПИСОК ПЕСЕН');
       setButtonText(`ДОБАВИТЬ ПОЛНЫЙ АЛЬБОМ ЗА ${currentCard[0].albumprice} €`);
